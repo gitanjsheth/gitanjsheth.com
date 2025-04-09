@@ -78,18 +78,20 @@
                 </form>
 
                 <script>
-                document.getElementById('early-access-form').addEventListener('submit', function(event) {
-                    var consent = document.getElementById('consent');
-                    var warning = document.getElementById('consent-warning');
-                    if (!consent.checked) {
-                    event.preventDefault();
-                    warning.style.display = 'block';
-                    setTimeout(function() {
-                        warning.style.display = 'none';
-                    }, 5000);
-                    return false;
-                    }
-                });
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.getElementById('early-access-form').addEventListener('submit', function(event) {
+                            var consent = document.getElementById('consent');
+                            var warning = document.getElementById('consent-warning');
+                            if (!consent.checked) {
+                                event.preventDefault();
+                                warning.style.display = 'block';
+                                setTimeout(function() {
+                                    warning.style.display = 'none';
+                                }, 5000);
+                                return false;
+                            }
+                        });
+                    });
                 </script>
 
                 <hr />

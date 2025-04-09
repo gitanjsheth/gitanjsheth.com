@@ -24,7 +24,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="about.html">About Us</a></li>
-                            <li><a href="earlyaccess.html">Early Access</a></li>
+                            <li><a href="earlyaccess.html"><strong>Early Access</strong></a></li>
                             <li><a href="terms.html">Terms</a></li>
                             <li><a href="privacy.html">Privacy</a></li>
                         </ul>
@@ -43,7 +43,7 @@
         </header>
         <section class="wrapper style5">
             <div class="inner">
-                <h3>Sign Up Now</h3>
+                <h3>Sign Up For Early Access</h3>
                 <form method="post" action="https://api.gitanjsheth.com/submit">
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-12">
                             <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I consent to receive communication about ArthAssure services and updates.</label>
+                            <label for="consent">By signing up, you agree to our <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</label>
                         </div>
                         <div class="col-12">
                             <div class="g-recaptcha" data-sitekey="6LcUChErAAAAAFx98l2ByxCkymecJqQQpS8bbN1k"></div>
@@ -71,8 +71,31 @@
                                 <li><input type="reset" value="Reset" /></li>
                             </ul>
                         </div>
+                        <div id="consent-warning" style="display:none; color: red; font-size: 0.9em; margin-top: 10px;">
+                            Kindly agree to our Terms and Privacy Policy to proceed for sign up.
+                        </div>
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('early-access-form').addEventListener('submit', function(event) {
+                    var consent = document.getElementById('consent');
+                    var warning = document.getElementById('consent-warning');
+                    if (!consent.checked) {
+                    event.preventDefault();
+                    warning.style.display = 'block';
+                    setTimeout(function() {
+                        warning.style.display = 'none';
+                    }, 5000);
+                    return false;
+                    }
+                });
+                
+                // Handle redirect after successful submission
+                if (window.location.search.includes('submitted=true')) {
+                    window.location.href = '/thankyou.html';
+                }
+                </script>
 
                 <hr />
 

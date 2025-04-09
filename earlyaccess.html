@@ -37,14 +37,16 @@
     <article id="main">
         <header>
             <h2>Join Early Access</h2>
-            <p>Secure your seat in the ArthAssure Pilot Batch. </p> 
+            <p>Secure your seat in the ArthAssure Pilot Batch.</p> 
             <br> 
             <h4>Limited slots. Serious sellers only.</h4>
         </header>
+
         <section class="wrapper style5">
             <div class="inner">
                 <h3>Sign Up For Early Access</h3>
-                <form id="early-access-form" method="post" action="https://api.gitanjsheth.com/submit">
+
+                <form id="early-access-form" method="POST" action="https://api.gitanjsheth.com/submit">
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" name="name" id="name" placeholder="Your Name" required />
@@ -58,40 +60,66 @@
                         <div class="col-6 col-12-xsmall">
                             <input type="email" name="email" id="email" placeholder="Email Address" required />
                         </div>
+
                         <div class="col-12">
                             <input type="checkbox" id="consent" name="consent" checked required>
                             <label for="consent">By signing up, you agree to our <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</label>
                         </div>
+
                         <div class="col-12">
-                            <div class="g-recaptcha" data-sitekey="6LcUChErAAAAAFx98l2ByxCkymecJqQQpS8bbN1k"></div>
+                            <div id="recaptcha-container" class="g-recaptcha" 
+                                 data-sitekey="6LcUChErAAAAAFx98l2ByxCkymecJqQQpS8bbN1k" 
+                                 data-callback="onRecaptchaSuccess"></div>
                         </div>
+
                         <div class="col-12">
                             <ul class="actions">
-                                <li><input type="submit" value="Join Early Access" class="primary" /></li>
+                                <li><button type="button" class="primary" onclick="validateForm()">Join Early Access</button></li>
                                 <li><input type="reset" value="Reset" /></li>
                             </ul>
                         </div>
+
                         <div id="consent-warning" style="display:none; color: red; font-size: 0.9em; margin-top: 10px;">
                             Kindly agree to our Terms and Privacy Policy to proceed for sign up.
                         </div>
+
+                        <div id="captcha-warning" style="display:none; color: red; font-size: 0.9em; margin-top: 10px;">
+                            Please complete the CAPTCHA to proceed.
+                        </div>
+
                     </div>
                 </form>
 
                 <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        document.getElementById('early-access-form').addEventListener('submit', function(event) {
-                            var consent = document.getElementById('consent');
-                            var warning = document.getElementById('consent-warning');
-                            if (!consent.checked) {
-                                event.preventDefault();
-                                warning.style.display = 'block';
-                                setTimeout(function() {
-                                    warning.style.display = 'none';
-                                }, 5000);
-                                return false;
-                            }
-                        });
-                    });
+                function validateForm() {
+                    var consent = document.getElementById('consent');
+                    var warning = document.getElementById('consent-warning');
+                    var captcha = grecaptcha.getResponse();
+                    var captchaWarning = document.getElementById('captcha-warning');
+
+                    if (!consent.checked) {
+                        warning.style.display = 'block';
+                        setTimeout(function() {
+                            warning.style.display = 'none';
+                        }, 5000);
+                        return false;
+                    }
+
+                    if (!captcha) {
+                        captchaWarning.style.display = 'block';
+                        setTimeout(function() {
+                            captchaWarning.style.display = 'none';
+                        }, 5000);
+                        return false;
+                    }
+
+                    // If consent ticked and captcha passed -> submit form
+                    document.getElementById('early-access-form').submit();
+                }
+
+                function onRecaptchaSuccess() {
+                    // Optionally handle captcha success event
+                }
                 </script>
 
                 <hr />
@@ -104,6 +132,7 @@
                 </ul>
                 <br>
                 <p style="font-size: 0.9em; color: #777;">*Early access is subject to availability. Only shortlisted entries will be invited for onboarding.*</p>
+
             </div>
         </section>
     </article>

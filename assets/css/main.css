@@ -981,7 +981,7 @@ input, select, textarea {
 					}
 
 						.row.gtr-uniform > * {
-							padding-top: 1.5em;
+							padding-top: 1.3em;
 						}
 
 				.row.gtr-150 {
@@ -2798,7 +2798,7 @@ input, select, textarea {
 /* Wrapper */
 
 	.wrapper {
-		padding: 2em 0 2em 0 ;
+		padding: 1.5em 0 2em 0 ;
 	}
 
 		.wrapper > .inner {
@@ -3865,7 +3865,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			#main > header {
-				padding: 3em 3em 3em 3em ;
+				padding: 2.5em 3em 1.5em 3em ;
 			}
 
 		}

@@ -1,0 +1,24 @@
+{
+  "client": "Example Distribution (placeholder)",
+  "confidential": false,
+  "sector": { "en": "Distribution", "hi": "वितरण" },
+  "featured": false,
+  "order": 4,
+  "placeholder": true,
+  "title": {
+    "en": "From a drowning spreadsheet to a decision dashboard",
+    "hi": "डूबती स्प्रेडशीट से एक निर्णय-डैशबोर्ड तक"
+  },
+  "problem": {
+    "en": "The business sat on years of sales and operations data but made every call on gut, unable to see what was coming.",
+    "hi": "व्यवसाय के पास वर्षों का बिक्री और संचालन डेटा था पर हर निर्णय अंदाज़े से होता था, यह देख पाने में असमर्थ कि आगे क्या आ रहा है।"
+  },
+  "approach": {
+    "en": "We turned the raw data into a clean model with the unit economics that mattered, surfaced in a dashboard the team could actually read.",
+    "hi": "हमने कच्चे डेटा को एक स्वच्छ मॉडल में बदला, उन इकाई-अर्थशास्त्रों के साथ जो मायने रखते थे, और उसे ऐसे डैशबोर्ड में सामने रखा जिसे टीम सचमुच पढ़ सके।"
+  },
+  "outcome": {
+    "en": "Forecasts replaced guesses. The team now decides on next quarter with numbers it trusts, not hunches it hopes on.",
+    "hi": "अनुमानों की जगह पूर्वानुमान आ गए। टीम अब अगली तिमाही का निर्णय उन आँकड़ों से करती है जिन पर वह भरोसा करती है, न कि उन अंदाज़ों से जिन पर वह आस लगाती थी।"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Placeholder Expert Two",
+  "domain": { "en": "Corporate Finance & CFO Advisory", "hi": "कॉर्पोरेट वित्त और सीएफ़ओ सलाह" },
+  "blurb": {
+    "en": "Builds the models and unit economics that turn messy books into decisions. Has taken fundraises through programs that reject most applicants.",
+    "hi": "वे मॉडल और इकाई-अर्थशास्त्र बनाते हैं जो बिखरे बहीखातों को निर्णयों में बदल देते हैं। ऐसे कार्यक्रमों से वित्त-संग्रह कराया है जो अधिकांश आवेदकों को लौटा देते हैं।"
+  },
+  "order": 2,
+  "placeholder": true
+}

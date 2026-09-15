@@ -1,0 +1,24 @@
+{
+  "client": "Confidential",
+  "confidential": true,
+  "sector": { "en": "Real Estate", "hi": "रियल एस्टेट" },
+  "featured": false,
+  "order": 3,
+  "placeholder": true,
+  "title": {
+    "en": "The go/no-go call that avoided a costly bet",
+    "hi": "वह हाँ/ना का फ़ैसला जिसने एक महँगे दाँव से बचाया"
+  },
+  "problem": {
+    "en": "A promoter was weeks from committing years and significant capital to an expansion everyone around them was cheering on.",
+    "hi": "एक प्रवर्तक कुछ ही हफ़्तों में वर्षों और भारी पूँजी उस विस्तार में लगाने वाले थे जिसका आस-पास हर कोई समर्थन कर रहा था।"
+  },
+  "approach": {
+    "en": "We stress-tested the plan against the numbers and the market, isolating the single assumption the whole case rested on.",
+    "hi": "हमने योजना को आँकड़ों और बाज़ार की कसौटी पर कसा, उस एकमात्र अनुमान को अलग किया जिस पर पूरा मामला टिका था।"
+  },
+  "outcome": {
+    "en": "The verdict was a clear no-go on the current terms, with the precise condition under which it would become a yes. The bet was restructured, not abandoned.",
+    "hi": "फ़ैसला मौजूदा शर्तों पर स्पष्ट \u2018ना\u2019 था, साथ ही वह सटीक शर्त बताई गई जिसके पूरा होने पर यह \u2018हाँ\u2019 बन जाता। दाँव को छोड़ा नहीं, बल्कि नए सिरे से गढ़ा गया।"
+  }
+}

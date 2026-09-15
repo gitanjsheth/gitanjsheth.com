@@ -1,0 +1,20 @@
+{
+  "order": 15,
+  "category": "finance",
+  "title": {
+    "en": "Numbers You Can Steer By",
+    "hi": "ऐसे आँकड़े जिनसे आप दिशा तय करें"
+  },
+  "discipline": {
+    "en": "Financial Modelling & CFO-Level Advisory",
+    "hi": "वित्तीय मॉडलिंग और सीएफ़ओ-स्तरीय सलाह"
+  },
+  "symptomLine": {
+    "en": "CFO-grade clarity without a full-time CFO on payroll.",
+    "hi": "पूर्णकालिक सीएफ़ओ के बिना सीएफ़ओ-स्तरीय स्पष्टता।"
+  },
+  "description": {
+    "en": "You're flying on gut and a messy spreadsheet, and no one can tell you what next quarter looks like. Our finance team builds the model, the unit economics, and the dashboard that turn your numbers into decisions — CFO-grade clarity without a full-time CFO on payroll.",
+    "hi": "आप अंदाज़े और एक बिखरी हुई स्प्रेडशीट के भरोसे चल रहे हैं, और कोई नहीं बता पाता कि अगली तिमाही कैसी दिखेगी। हमारी वित्त टीम वह मॉडल, इकाई-अर्थशास्त्र, और डैशबोर्ड बनाती है जो आपके आँकड़ों को निर्णयों में बदल देते हैं — पूर्णकालिक सीएफ़ओ के बिना सीएफ़ओ-स्तरीय स्पष्टता।"
+  }
+}

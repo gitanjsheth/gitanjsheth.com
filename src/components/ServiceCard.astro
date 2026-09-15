@@ -1,0 +1,33 @@
+---
+import type { Locale } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  discipline: string;
+  line: string;
+  href?: string;
+}
+const { locale, title, discipline, line, href } = Astro.props;
+const Tag = href ? "a" : "div";
+---
+
+<Tag
+  href={href}
+  class="card group flex h-full flex-col p-6"
+  lang={locale}
+>
+  <span class="eyebrow">{discipline}</span>
+  <h3 class="mt-3 text-xl leading-snug">{title}</h3>
+  <p class="mt-3 text-sm text-muted measure">{line}</p>
+  {
+    href && (
+      <span
+        class="mt-auto pt-5 text-sm text-gold opacity-0 -translate-x-1 transition-all duration-250 group-hover:opacity-100 group-hover:translate-x-0"
+        aria-hidden="true"
+      >
+        &rarr;
+      </span>
+    )
+  }
+</Tag>

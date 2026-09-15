@@ -1,0 +1,10 @@
+{
+  "name": "Placeholder Expert Four",
+  "domain": { "en": "Data & Decision Intelligence", "hi": "डेटा और निर्णय बुद्धिमत्ता" },
+  "blurb": {
+    "en": "Turns years of untouched data into models, dashboards and forecasts that tell a business what to do next — not just what already happened.",
+    "hi": "वर्षों के अछूते डेटा को ऐसे मॉडल, डैशबोर्ड और पूर्वानुमानों में बदलते हैं जो व्यवसाय को बताते हैं कि आगे क्या करना है — न कि सिर्फ़ जो हो चुका।"
+  },
+  "order": 4,
+  "placeholder": true
+}

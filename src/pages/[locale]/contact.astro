@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EnquiryForm from "../../components/EnquiryForm.astro";
+import { localeStaticPaths, useTranslations, type Locale } from "../../i18n/utils";
+import { CONTACT_EMAIL } from "../../config";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = Astro.params.locale as Locale;
+const t = useTranslations(locale);
+const phone = t("contact.phone");
+---
+
+<BaseLayout locale={locale} pagePath="contact" title={t("contact.title")} description={t("contact.intro")}>
+  <section>
+    <div class="container-x py-16 md:py-24">
+      <p class="eyebrow">{t("nav.contact")}</p>
+      <h1 class="mt-4 text-4xl md:text-5xl">{t("contact.title")}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("contact.intro")}</p>
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10">
+    <div class="container-x grid gap-12 py-14 md:grid-cols-[2fr_1fr] md:py-20">
+      <!-- Enquiry form -->
+      <div id="enquire" class="scroll-mt-24 order-2 md:order-1">
+        <EnquiryForm locale={locale} />
+      </div>
+
+      <!-- Direct details -->
+      <aside class="order-1 md:order-2">
+        <h2 class="eyebrow text-gold">{t("contact.detailsLabel")}</h2>
+        <dl class="mt-5 space-y-4 text-sm">
+          <div>
+            <dt class="text-muted">{t("contact.emailLabel")}</dt>
+            <dd class="mt-1">
+              <a href={`mailto:${CONTACT_EMAIL}`} class="link">{CONTACT_EMAIL}</a>
+            </dd>
+          </div>
+          {
+            phone && (
+              <div>
+                <dt class="text-muted">{t("contact.phoneLabel")}</dt>
+                <dd class="mt-1">
+                  <a href={`tel:${phone}`} class="link">{phone}</a>
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

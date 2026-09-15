@@ -1,0 +1,20 @@
+{
+  "order": 2,
+  "category": "flagship",
+  "title": {
+    "en": "The Second Opinion After the Experts Failed",
+    "hi": "विशेषज्ञों के असफल होने के बाद की दूसरी राय"
+  },
+  "discipline": {
+    "en": "Independent Advisory",
+    "hi": "स्वतंत्र सलाह"
+  },
+  "symptomLine": {
+    "en": "The opinion after the opinions failed.",
+    "hi": "तमाम रायों के असफल होने के बाद की राय।"
+  },
+  "description": {
+    "en": "You've already paid consultants and you're no closer — or worse off. Our team gives you one unhedged read on what they missed and what to actually do, with no interest in keeping you on a retainer. The opinion after the opinions failed.",
+    "hi": "आप पहले ही सलाहकारों को भुगतान कर चुके हैं और फिर भी कोई प्रगति नहीं — या हालत और बिगड़ गई। हमारी टीम आपको एक स्पष्ट, बिना लाग-लपेट राय देती है कि उन्होंने क्या चूका और आपको वास्तव में क्या करना चाहिए — बिना आपको रिटेनर पर बनाए रखने की किसी मंशा के। तमाम रायों के असफल होने के बाद की राय।"
+  }
+}

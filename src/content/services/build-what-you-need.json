@@ -1,0 +1,20 @@
+{
+  "order": 7,
+  "category": "technology",
+  "title": {
+    "en": "Build What Your Business Needs",
+    "hi": "वही बनाइए जिसकी आपके व्यवसाय को ज़रूरत है"
+  },
+  "discipline": {
+    "en": "Custom Software & Automation for Businesses",
+    "hi": "व्यवसायों के लिए कस्टम सॉफ़्टवेयर और स्वचालन"
+  },
+  "symptomLine": {
+    "en": "You describe what's slowing you down; we hand back a tool that quietly does its job.",
+    "hi": "आप बताइए क्या धीमा कर रहा है; हम एक ऐसा औज़ार सौंपते हैं जो चुपचाप अपना काम करता है।"
+  },
+  "description": {
+    "en": "You know your pain, and you know software could end it — you just don't have a tech team, and the developers you approached ghosted you or treated your problem like a science project. You don't want to touch code; you want the thing built and working. You describe what's slowing you down; we hand back a tool that quietly does its job.",
+    "hi": "आप अपनी तकलीफ़ जानते हैं, और यह भी जानते हैं कि सॉफ़्टवेयर इसे ख़त्म कर सकता है — बस आपके पास तकनीकी टीम नहीं है, और जिन डेवलपर्स से आप मिले उन्होंने या तो जवाब देना बंद कर दिया या आपकी समस्या को किसी प्रयोग जैसा बना दिया। आप कोड को छूना नहीं चाहते; आप चाहते हैं कि चीज़ बने और चले। आप बताइए क्या धीमा कर रहा है; हम एक ऐसा औज़ार सौंपते हैं जो चुपचाप अपना काम करता है।"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "order": 5,
+  "category": "strategy",
+  "title": {
+    "en": "Idea to Working System",
+    "hi": "विचार से चलती हुई व्यवस्था तक"
+  },
+  "discipline": {
+    "en": "New-Venture Systems & Structure",
+    "hi": "नव-उद्यम व्यवस्था और संरचना"
+  },
+  "symptomLine": {
+    "en": "The skeleton to execute on, instead of guessing your way there.",
+    "hi": "अमल के लिए ढाँचा, अनुमान से रास्ता टटोलने के बजाय।"
+  },
+  "description": {
+    "en": "You have the vision, the capital, and the conviction — what you don't have is the operating framework underneath it. We design the structure and systems your venture runs on: how the pieces fit, how work flows, what gets built. You get the skeleton to execute on instead of guessing your way there.",
+    "hi": "आपके पास दृष्टि है, पूँजी है, और दृढ़ विश्वास है — जो नहीं है वह है उसके नीचे का परिचालन ढाँचा। हम वह संरचना और व्यवस्थाएँ बनाते हैं जिन पर आपका उद्यम चलता है: टुकड़े कैसे जुड़ते हैं, काम कैसे बहता है, क्या बनाया जाता है। आपको अमल के लिए ढाँचा मिलता है, अनुमान से रास्ता टटोलने के बजाय।"
+  }
+}

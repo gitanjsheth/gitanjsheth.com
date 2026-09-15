@@ -1,0 +1,169 @@
+{
+  "site": {
+    "name": "Gitanj Sheth & Co.",
+    "shortName": "Gitanj Sheth & Co.",
+    "tagline": "Independent expert advisory.",
+    "description": "An independent expert advisory firm for the problem that belongs to no one — a bench spanning strategy, technology, operations and finance, pointed together at what no single specialist would own."
+  },
+  "gate": {
+    "heading": "Choose your language",
+    "subheading": "भाषा चुनें",
+    "english": "English",
+    "hindi": "हिन्दी",
+    "continue": "Continue",
+    "hint": "You can change this any time from the header."
+  },
+  "nav": {
+    "story": "Our Story",
+    "services": "Services",
+    "caseStudies": "Case Studies",
+    "testimonials": "Testimonials",
+    "experts": "Experts",
+    "howWeEngage": "How We Engage",
+    "contact": "Contact",
+    "enquire": "Enquire",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "langSwitch": {
+    "label": "Language",
+    "toEnglish": "English",
+    "toHindi": "हिन्दी"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Independent Expert Advisory",
+      "title": "The problem that belongs to no one.",
+      "subtitle": "When a problem sits between disciplines and every specialist calls it someone else's, we are the bench built to own it.",
+      "cta": "Request an intro call"
+    },
+    "story": {
+      "label": "Our Story",
+      "title": "Built for the problem no single expert would own.",
+      "body": [
+        "Gitanj Sheth & Co. is an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
+        "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own.",
+        "The result is judgement you can trust: unhedged, unsentimental, and accountable to your outcome rather than our billing."
+      ],
+      "more": "Read more"
+    },
+    "services": {
+      "label": "What We Do",
+      "title": "Advisory, named by the symptom you feel.",
+      "intro": "Not service lines — problems. Find the one that sounds like your week.",
+      "viewAll": "View all services"
+    },
+    "featuredCase": {
+      "label": "Selected Work",
+      "viewAll": "View all case studies"
+    },
+    "testimonials": {
+      "label": "In Their Words",
+      "title": "The people we've stood behind.",
+      "viewAll": "View all testimonials"
+    },
+    "engage": {
+      "label": "How We Engage",
+      "title": "A first conversation costs you nothing.",
+      "body": "The first call is free. There is no upfront charge and no commitment to continue. If a visit is needed, only travel and stay at actuals. Scope and consideration are decided together, once value is on the table.",
+      "more": "How we engage"
+    },
+    "ctaBand": {
+      "title": "Tell us the problem no one will own.",
+      "subtitle": "One free call. One honest read on whether we can help.",
+      "button": "Request an intro call"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "intro": "Advisory named by the symptom you feel, not the discipline we happen to sit in. Find the one that sounds like your week.",
+    "detailCta": "Talk to us about this",
+    "backToAll": "All services"
+  },
+  "serviceCategories": {
+    "flagship": "Flagship",
+    "strategy": "Strategy & Growth",
+    "technology": "Technology & Product",
+    "operations": "Operations",
+    "finance": "Finance"
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "intro": "Selected engagements. Some clients are named; others prefer to stay confidential. The work speaks either way.",
+    "confidential": "Confidential",
+    "sectorLabel": "Sector",
+    "problem": "The problem",
+    "approach": "Our approach",
+    "outcome": "The outcome",
+    "readMore": "Read the case study",
+    "backToAll": "All case studies"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "intro": "Signed letters from the people we've worked for. Read the pulled quote, then open the letter itself.",
+    "viewLetter": "View testimonial letter",
+    "letterPlaceholder": "Testimonial letter",
+    "closeLetter": "Close",
+    "fieldLabel": "Field"
+  },
+  "experts": {
+    "title": "Empanelled Experts",
+    "intro": "A standing bench of senior practitioners we bring to bear, chosen for the problem rather than the org chart.",
+    "domainLabel": "Domain"
+  },
+  "engage": {
+    "title": "How We Engage",
+    "intro": "No price list. Just a plain account of how working with us begins and how consideration is decided.",
+    "points": [
+      {
+        "heading": "The first call is free.",
+        "body": "We start with a conversation, at no charge, to understand the problem and tell you honestly whether we're the right people for it."
+      },
+      {
+        "heading": "No upfront charge, no commitment.",
+        "body": "You are not asked to pay to begin, and you are not locked into continuing. We earn the next step, or we don't."
+      },
+      {
+        "heading": "Travel only at actuals.",
+        "body": "If the problem needs us on the ground, you cover travel and stay at actuals — nothing marked up, nothing hidden."
+      },
+      {
+        "heading": "Consideration decided together.",
+        "body": "Scope and fees are agreed mutually once value is on the table, in proportion to what the work is worth to you."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Tell us the problem in a few lines. If it's the kind of thing that belongs to no one, it's ours.",
+    "detailsLabel": "Direct",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "email": "hello@gitanjsheth.com",
+    "phone": ""
+  },
+  "form": {
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "What's the problem / hunch?",
+    "messagePlaceholder": "A few lines on what's going wrong, or the hunch you can't shake.",
+    "submit": "Send enquiry",
+    "sending": "Sending…",
+    "success": "Thank you — your message is on its way. We'll be in touch shortly.",
+    "error": "Something went wrong. Please email us directly at hello@gitanjsheth.com.",
+    "requiredNote": "Fields marked * are required."
+  },
+  "footer": {
+    "tagline": "Independent expert advisory.",
+    "navLabel": "Navigate",
+    "contactLabel": "Contact",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "placeholderBadge": "PLACEHOLDER",
+    "backToHome": "Back to home"
+  }
+}

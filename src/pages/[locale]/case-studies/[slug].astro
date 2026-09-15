@@ -1,0 +1,78 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  locales,
+  localizePath,
+  useTranslations,
+  type Locale,
+} from "../../../i18n/utils";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("caseStudies");
+  return locales.flatMap((locale) =>
+    studies.map((study) => ({
+      params: { locale, slug: study.id },
+      props: { locale, study },
+    }))
+  );
+}
+
+const { locale, study } = Astro.props as {
+  locale: Locale;
+  study: CollectionEntry<"caseStudies">;
+};
+const t = useTranslations(locale);
+const d = study.data;
+
+const sections = [
+  { label: t("caseStudies.problem"), body: d.problem[locale] },
+  { label: t("caseStudies.approach"), body: d.approach[locale] },
+  { label: t("caseStudies.outcome"), body: d.outcome[locale] },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  pagePath={`case-studies/${study.id}`}
+  title={d.title[locale]}
+  description={d.problem[locale]}
+>
+  <article>
+    <section class="section-ink">
+      <div class="container-x py-16 md:py-24">
+        <a href={localizePath(locale, "case-studies")} class="link text-sm text-ivory/70">
+          &larr; {t("caseStudies.backToAll")}
+        </a>
+        <p class="eyebrow mt-8">
+          {d.confidential ? t("caseStudies.confidential") : d.client}
+          <span class="mx-2">·</span>
+          {d.sector[locale]}
+        </p>
+        <h1 class="mt-4 max-w-3xl text-4xl md:text-5xl">{d.title[locale]}</h1>
+      </div>
+    </section>
+
+    <section>
+      <div class="container-x py-16 md:py-20">
+        <div class="grid gap-12 md:grid-cols-1">
+          {
+            sections.map((s) => (
+              <div class="grid gap-4 md:grid-cols-[1fr_2fr]">
+                <h2 class="eyebrow text-gold">{s.label}</h2>
+                <p class="text-lg leading-relaxed measure">{s.body}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <hr class="rule mt-16" />
+        <div class="mt-10">
+          <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-primary">
+            {t("home.ctaBand.button")}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

@@ -1,0 +1,24 @@
+{
+  "client": "Sample Ventures (placeholder)",
+  "confidential": false,
+  "sector": { "en": "Technology", "hi": "तकनीक" },
+  "featured": false,
+  "order": 2,
+  "placeholder": true,
+  "title": {
+    "en": "A product that shipped in days, not months",
+    "hi": "एक उत्पाद जो महीनों नहीं, दिनों में तैयार हुआ"
+  },
+  "problem": {
+    "en": "A venture had been \u201calmost ready\u201d for the better part of a year, with nothing usable to put in front of a customer.",
+    "hi": "एक उद्यम लगभग पूरे साल \u201cलगभग तैयार\u201d रहा, ग्राहक के सामने रखने लायक कुछ भी उपयोगी बने बिना।"
+  },
+  "approach": {
+    "en": "Senior architects scoped a lean, usable core, cut the speculative work, and built and reviewed the system in tight cycles.",
+    "hi": "वरिष्ठ आर्किटेक्ट्स ने एक कसा हुआ, उपयोगी केंद्र तय किया, अटकल भरे काम को हटाया, और व्यवस्था को छोटे-छोटे चक्रों में बनाया व समीक्षित किया।"
+  },
+  "outcome": {
+    "en": "A working system was in front of real users inside two weeks, and the roadmap after it was finally grounded in something real.",
+    "hi": "दो हफ़्तों के भीतर एक चलती-फिरती व्यवस्था असली उपयोगकर्ताओं के सामने थी, और उसके बाद की योजना आख़िरकार किसी ठोस चीज़ पर टिकी।"
+  }
+}

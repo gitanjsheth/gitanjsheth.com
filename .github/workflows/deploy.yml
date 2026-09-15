@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Deploy on every push to main…
+  push:
+    branches: [main]
+  # …and allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+# Permissions the official Pages deploy needs.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one live deployment at a time; let the newest finish.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build with Astro
+        uses: withastro/action@v3
+        # Optional: pass the Web3Forms key as a repo secret so it isn't in git.
+        # Add PUBLIC_WEB3FORMS_ACCESS_KEY under Settings → Secrets → Actions.
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

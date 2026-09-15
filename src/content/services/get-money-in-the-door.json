@@ -1,0 +1,20 @@
+{
+  "order": 14,
+  "category": "finance",
+  "title": {
+    "en": "Get the Money In the Door",
+    "hi": "पूँजी को दरवाज़े के भीतर लाइए"
+  },
+  "discipline": {
+    "en": "Fundraising, Grants & Investor Readiness",
+    "hi": "वित्त-संग्रह, अनुदान और निवेशक-तैयारी"
+  },
+  "symptomLine": {
+    "en": "Packaged to survive scrutiny — the documents that actually get approved.",
+    "hi": "जाँच में टिकने लायक तैयार — वे दस्तावेज़ जो सचमुच मंज़ूर होते हैं।"
+  },
+  "description": {
+    "en": "You need capital — a grant, an investor, a startup program — and your applications keep dying in the pile. We package the raise so it survives scrutiny: the model, the narrative, and the documents that actually get approved. We've won funding from programs that turn most applicants away.",
+    "hi": "आपको पूँजी चाहिए — कोई अनुदान, कोई निवेशक, कोई स्टार्टअप कार्यक्रम — और आपके आवेदन ढेर में दम तोड़ते रहते हैं। हम इस प्रस्ताव को इस तरह तैयार करते हैं कि वह जाँच में टिके: मॉडल, कथानक, और वे दस्तावेज़ जो सचमुच मंज़ूर होते हैं। हमने उन कार्यक्रमों से वित्त जीता है जो अधिकांश आवेदकों को लौटा देते हैं।"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Placeholder Expert Three",
+  "domain": { "en": "Operations & Process Controls", "hi": "संचालन और प्रक्रिया नियंत्रण" },
+  "blurb": {
+    "en": "Traces stubborn losses to their source and designs the controls that catch them automatically. Believes most \u201cpeople problems\u201d are systems problems.",
+    "hi": "ज़िद्दी नुकसान को उसके स्रोत तक खोजते हैं और वे नियंत्रण बनाते हैं जो उन्हें स्वतः पकड़ लेते हैं। मानते हैं कि अधिकांश \u201cलोगों की समस्याएँ\u201d दरअसल व्यवस्था की समस्याएँ हैं।"
+  },
+  "order": 3,
+  "placeholder": true
+}

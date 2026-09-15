@@ -1,0 +1,20 @@
+{
+  "order": 13,
+  "category": "operations",
+  "title": {
+    "en": "Close the Gaps Your Losses Slip Through",
+    "hi": "उन दरारों को भरिए जिनसे आपका नुकसान फिसल जाता है"
+  },
+  "discipline": {
+    "en": "Process Controls & Audit Systems",
+    "hi": "प्रक्रिया नियंत्रण और ऑडिट व्यवस्थाएँ"
+  },
+  "symptomLine": {
+    "en": "Gaps caught by the system, instead of slipping through.",
+    "hi": "दरारें व्यवस्था से पकड़ी जाएँ, फिसल जाने के बजाय।"
+  },
+  "description": {
+    "en": "Stock that doesn't add up, numbers that won't reconcile, claims or entries you suspect are being gamed — but nothing in your process reliably catches it. We build the controls that should have been there: verification checkpoints, audit trails, reconciliation, and tamper-resistant workflows, so gaps get caught by the system instead of slipping through.",
+    "hi": "स्टॉक जो मिलान नहीं खाता, आँकड़े जो नहीं जुड़ते, दावे या प्रविष्टियाँ जिन पर आपको हेराफेरी का शक है — पर आपकी प्रक्रिया में कुछ भी इसे भरोसे से नहीं पकड़ता। हम वे नियंत्रण बनाते हैं जो पहले से होने चाहिए थे: सत्यापन चौकियाँ, ऑडिट ट्रेल, मिलान, और छेड़छाड़-रोधी कार्यप्रवाह, ताकि दरारें फिसलने के बजाय व्यवस्था से पकड़ी जाएँ।"
+  }
+}

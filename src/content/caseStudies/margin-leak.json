@@ -1,0 +1,24 @@
+{
+  "client": "Confidential",
+  "confidential": true,
+  "sector": { "en": "Manufacturing", "hi": "विनिर्माण" },
+  "featured": true,
+  "order": 1,
+  "placeholder": true,
+  "title": {
+    "en": "The margin leak every audit missed",
+    "hi": "वह मुनाफ़े का रिसाव जिसे हर ऑडिट चूक गया"
+  },
+  "problem": {
+    "en": "A profitable plant was quietly losing margin every quarter. Internal audits came back clean, yet the numbers kept sliding and no one could say why.",
+    "hi": "एक मुनाफ़े वाला संयंत्र हर तिमाही चुपचाप मुनाफ़ा खो रहा था। आंतरिक ऑडिट साफ़ लौटते, फिर भी आँकड़े फिसलते रहे और कोई नहीं बता पाया क्यों।"
+  },
+  "approach": {
+    "en": "We traced the flow of material and money end to end, instrumented the handoffs no report covered, and reconciled physical output against what the books claimed.",
+    "hi": "हमने सामग्री और धन के प्रवाह को आद्योपांत खोजा, उन हस्तांतरणों को मापा जिन्हें कोई रिपोर्ट नहीं छूती थी, और वास्तविक उत्पादन का मिलान बहीखातों के दावे से किया।"
+  },
+  "outcome": {
+    "en": "The loss was a systems gap at a single handoff. Closing it recovered the leaked margin within one quarter and gave the team a control that catches it automatically.",
+    "hi": "नुकसान एक ही हस्तांतरण पर व्यवस्था की दरार थी। उसे भरने से रिसा हुआ मुनाफ़ा एक तिमाही में वापस मिल गया और टीम को एक ऐसा नियंत्रण मिला जो इसे स्वतः पकड़ लेता है।"
+  }
+}

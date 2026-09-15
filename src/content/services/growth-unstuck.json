@@ -1,0 +1,20 @@
+{
+  "order": 3,
+  "category": "strategy",
+  "title": {
+    "en": "Growth, Unstuck",
+    "hi": "विकास, अवरोध-मुक्त"
+  },
+  "discipline": {
+    "en": "Business & Growth Strategy",
+    "hi": "व्यवसाय और विकास रणनीति"
+  },
+  "symptomLine": {
+    "en": "Not another deck — the bottleneck named and broken.",
+    "hi": "एक और प्रेज़ेंटेशन नहीं — अड़चन को पहचान कर तोड़ना।"
+  },
+  "description": {
+    "en": "Your revenue's plateaued and the usual playbooks — more ads, more hires, more hustle — stopped working months ago. Our strategists pull apart your growth engine, find the one constraint no one else spotted, and remove it. Not another deck — the bottleneck named and broken.",
+    "hi": "आपका राजस्व ठहर गया है और सामान्य तरीके — ज़्यादा विज्ञापन, ज़्यादा भर्तियाँ, ज़्यादा मेहनत — महीनों पहले काम करना बंद कर चुके हैं। हमारे रणनीतिकार आपके विकास-तंत्र को टुकड़ों में खोलते हैं, वह एक अड़चन ढूँढते हैं जिसे किसी और ने नहीं देखा, और उसे हटा देते हैं। एक और प्रेज़ेंटेशन नहीं — अड़चन को पहचान कर तोड़ना।"
+  }
+}

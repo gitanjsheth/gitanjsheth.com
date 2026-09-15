@@ -1,0 +1,62 @@
+---
+import Logo from "./Logo.astro";
+import { localizePath, useTranslations, type Locale } from "../i18n/utils";
+import { CONTACT_EMAIL } from "../config";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+
+const nav = [
+  { key: "services", href: localizePath(locale, "services") },
+  { key: "caseStudies", href: localizePath(locale, "case-studies") },
+  { key: "testimonials", href: localizePath(locale, "testimonials") },
+  { key: "experts", href: localizePath(locale, "experts") },
+  { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
+  { key: "contact", href: localizePath(locale, "contact") },
+];
+---
+
+<footer class="section-ink">
+  <div class="container-x py-14">
+    <div class="grid gap-10 md:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <Logo variant="reversed" />
+        <p class="mt-4 text-sm text-ivory/70 measure">{t("footer.tagline")}</p>
+      </div>
+
+      <!-- Nav -->
+      <nav aria-label="Footer">
+        <h2 class="eyebrow mb-4">{t("footer.navLabel")}</h2>
+        <ul class="space-y-2">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} class="text-sm text-ivory/80 hover:text-ivory transition-colors duration-250">
+                  {t(`nav.${item.key}`)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div>
+        <h2 class="eyebrow mb-4">{t("footer.contactLabel")}</h2>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="text-sm text-ivory/80 hover:text-ivory transition-colors duration-250">
+          {CONTACT_EMAIL}
+        </a>
+      </div>
+    </div>
+
+    <hr class="rule rule-gold mt-12 mb-6 opacity-40" />
+    <p class="text-xs text-ivory/50">
+      &copy; {year} {t("site.name")} &middot; {t("footer.rights")}
+    </p>
+  </div>
+</footer>

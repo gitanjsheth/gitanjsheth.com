@@ -1,0 +1,20 @@
+{
+  "order": 10,
+  "category": "technology",
+  "title": {
+    "en": "Modernize What's Holding You Back",
+    "hi": "जो पीछे खींच रहा है उसे आधुनिक बनाइए"
+  },
+  "discipline": {
+    "en": "Legacy Systems & Process Modernization",
+    "hi": "पुरानी व्यवस्थाएँ और प्रक्रिया आधुनिकीकरण"
+  },
+  "symptomLine": {
+    "en": "Do more with fewer resources — without torching everything and starting over.",
+    "hi": "कम संसाधनों में अधिक — सब कुछ जलाकर नए सिरे से शुरू किए बिना।"
+  },
+  "description": {
+    "en": "You're running on software or manual processes built for a smaller, slower version of your business — and now they cost you time, people, and output every single day. We map what you have, find what's dragging, and move you to modern systems that do more with fewer resources — without torching everything and starting over.",
+    "hi": "आप ऐसे सॉफ़्टवेयर या मैनुअल प्रक्रियाओं पर चल रहे हैं जो आपके व्यवसाय के एक छोटे, धीमे रूप के लिए बने थे — और अब वे हर दिन आपका समय, लोग और उत्पादन खा रहे हैं। हम आपके पास जो है उसका नक्शा बनाते हैं, ढूँढते हैं क्या रोक रहा है, और आपको ऐसी आधुनिक व्यवस्थाओं तक ले जाते हैं जो कम संसाधनों में अधिक करती हैं — सब कुछ जलाकर नए सिरे से शुरू किए बिना।"
+  }
+}

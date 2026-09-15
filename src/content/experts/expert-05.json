@@ -1,0 +1,10 @@
+{
+  "name": "Placeholder Expert Five",
+  "domain": { "en": "Strategy & Feasibility", "hi": "रणनीति और व्यवहार्यता" },
+  "blurb": {
+    "en": "Stress-tests big bets against the numbers and hands over one cold verdict. No incentive to flatter a plan into existence.",
+    "hi": "बड़े दाँवों को आँकड़ों की कसौटी पर कसते हैं और एक ठंडा फ़ैसला सौंपते हैं। किसी योजना को फुसलाकर खड़ा करने का कोई स्वार्थ नहीं।"
+  },
+  "order": 5,
+  "placeholder": true
+}

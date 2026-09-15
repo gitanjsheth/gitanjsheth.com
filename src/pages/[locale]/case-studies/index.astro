@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  localeStaticPaths,
+  localizePath,
+  useTranslations,
+  type Locale,
+} from "../../../i18n/utils";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = Astro.params.locale as Locale;
+const t = useTranslations(locale);
+
+const studies = (await getCollection("caseStudies")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout locale={locale} pagePath="case-studies" title={t("caseStudies.title")} description={t("caseStudies.intro")}>
+  <section>
+    <div class="container-x py-16 md:py-24">
+      <p class="eyebrow">{t("home.featuredCase.label")}</p>
+      <h1 class="mt-4 text-4xl md:text-5xl">{t("caseStudies.title")}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("caseStudies.intro")}</p>
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10">
+    <div class="container-x py-14 md:py-20">
+      <div class="grid gap-5 md:grid-cols-2">
+        {
+          studies.map((c) => (
+            <a
+              href={localizePath(locale, `case-studies/${c.id}`)}
+              class="card group flex h-full flex-col p-7"
+            >
+              <p class="text-xs uppercase tracking-caps text-muted">
+                {c.data.confidential ? t("caseStudies.confidential") : c.data.client}
+                <span class="mx-2 text-gold">·</span>
+                {c.data.sector[locale]}
+                {c.data.placeholder && <span class="ml-2 opacity-60">· placeholder</span>}
+              </p>
+              <h2 class="mt-3 text-2xl leading-snug">{c.data.title[locale]}</h2>
+              <p class="mt-3 flex-1 text-muted measure">{c.data.problem[locale]}</p>
+              <span class="mt-5 text-sm text-gold">{t("caseStudies.readMore")} &rarr;</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

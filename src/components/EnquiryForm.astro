@@ -1,0 +1,122 @@
+---
+/**
+ * Enquiry form → Web3Forms (free, static-friendly; emails to hello@gitanjsheth.com).
+ * Submits via fetch so there's no page reload; shows a clean inline confirmation.
+ * Includes a hidden honeypot ("botcheck") for spam.
+ */
+import { useTranslations, type Locale } from "../i18n/utils";
+import { WEB3FORMS_ACCESS_KEY, CONTACT_EMAIL } from "../config";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<form class="enquiry-form" data-enquiry lang={locale} novalidate>
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="subject" value={`New enquiry — Gitanj Sheth & Co. (${locale})`} />
+  <input type="hidden" name="from_name" value="gitanjsheth.com" />
+  <!-- Honeypot: humans never see or fill this. -->
+  <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.name")} *</span>
+      <input type="text" name="name" required autocomplete="name" class="field" />
+    </label>
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.company")}</span>
+      <input type="text" name="company" autocomplete="organization" class="field" />
+    </label>
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.email")} *</span>
+      <input type="email" name="email" required autocomplete="email" class="field" />
+    </label>
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.phone")}</span>
+      <input type="tel" name="phone" autocomplete="tel" class="field" />
+    </label>
+  </div>
+
+  <label class="mt-5 block">
+    <span class="mb-1.5 block text-sm font-medium">{t("form.message")} *</span>
+    <textarea name="message" required rows="5" placeholder={t("form.messagePlaceholder")} class="field"></textarea>
+  </label>
+
+  <p class="mt-3 text-xs text-muted">{t("form.requiredNote")}</p>
+
+  <div class="mt-5 flex flex-wrap items-center gap-4">
+    <button type="submit" class="btn btn-primary" data-submit>{t("form.submit")}</button>
+    <p class="text-sm" role="status" aria-live="polite" data-status></p>
+  </div>
+
+  <!-- Localised strings for the client script -->
+  <template
+    data-strings
+    data-sending={t("form.sending")}
+    data-submit-label={t("form.submit")}
+    data-success={t("form.success")}
+    data-error={t("form.error")}
+    data-email={CONTACT_EMAIL}
+  ></template>
+</form>
+
+<style>
+  .field {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    font: inherit;
+    color: var(--ink);
+    transition: border-color 250ms ease;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("form[data-enquiry]").forEach((form) => {
+    const strings = form.querySelector<HTMLElement>("[data-strings]")!.dataset;
+    const statusEl = form.querySelector<HTMLElement>("[data-status]")!;
+    const submitBtn = form.querySelector<HTMLButtonElement>("[data-submit]")!;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = strings.sending ?? "Sending…";
+      statusEl.textContent = "";
+      statusEl.style.color = "";
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          form.reset();
+          statusEl.textContent = strings.success ?? "Thank you.";
+          statusEl.style.color = "var(--ink)";
+        } else {
+          throw new Error(data.message || "Request failed");
+        }
+      } catch {
+        statusEl.textContent = strings.error ?? "Something went wrong.";
+        statusEl.style.color = "#9b2c2c";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = strings.submitLabel ?? "Send";
+      }
+    });
+  });
+</script>

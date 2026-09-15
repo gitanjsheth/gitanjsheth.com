@@ -1,0 +1,26 @@
+---
+/**
+ * Compact pulled-quote used in the Home testimonials row. Quote only — never a
+ * full letter inline. `quote` is already the locale-appropriate string.
+ */
+import type { Locale } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+  quote: string;
+  name: string;
+  company: string;
+  placeholder?: boolean;
+}
+const { locale, quote, name, company, placeholder = false } = Astro.props;
+---
+
+<figure class="card flex h-full flex-col p-6" lang={locale}>
+  <span class="text-gold text-3xl leading-none font-display" aria-hidden="true">&ldquo;</span>
+  <blockquote class="mt-2 flex-1 text-base leading-relaxed">{quote}</blockquote>
+  <figcaption class="mt-5 border-t border-ink/10 pt-4 text-sm">
+    <span class="font-semibold">{name}</span>
+    <span class="block text-muted">{company}</span>
+    {placeholder && <span class="eyebrow mt-2 inline-block opacity-60">placeholder</span>}
+  </figcaption>
+</figure>

@@ -1,0 +1,20 @@
+{
+  "order": 9,
+  "category": "technology",
+  "title": {
+    "en": "Salvage the Build Gone Wrong",
+    "hi": "बिगड़े हुए निर्माण को बचाइए"
+  },
+  "discipline": {
+    "en": "Software Audit & Rescue",
+    "hi": "सॉफ़्टवेयर ऑडिट और बचाव"
+  },
+  "symptomLine": {
+    "en": "An unsentimental teardown, and a save-or-scrap verdict.",
+    "hi": "बिना भावुकता की चीर-फाड़, और बचाएँ-या-छोड़ें का फ़ैसला।"
+  },
+  "description": {
+    "en": "You paid for software and what came back is broken, unmaintainable, or abandoned halfway. We give you an unsentimental teardown, a save-or-scrap verdict, and a path to a system that actually works — no loyalty to code that already failed you.",
+    "hi": "आपने सॉफ़्टवेयर के लिए भुगतान किया और जो लौटा वह टूटा हुआ, संभालने लायक नहीं, या बीच में छोड़ा हुआ है। हम आपको बिना भावुकता की चीर-फाड़ देते हैं, बचाएँ-या-छोड़ें का फ़ैसला, और एक ऐसी व्यवस्था तक रास्ता जो वास्तव में चले — उस कोड के प्रति कोई मोह नहीं जो पहले ही आपको धोखा दे चुका।"
+  }
+}

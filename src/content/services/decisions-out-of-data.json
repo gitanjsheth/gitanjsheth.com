@@ -1,0 +1,20 @@
+{
+  "order": 6,
+  "category": "strategy",
+  "title": {
+    "en": "Decisions Out of Your Data",
+    "hi": "आपके डेटा से निर्णय"
+  },
+  "discipline": {
+    "en": "Data & Decision Intelligence",
+    "hi": "डेटा और निर्णय बुद्धिमत्ता"
+  },
+  "symptomLine": {
+    "en": "What to do next, not just what already happened.",
+    "hi": "आगे क्या करना है, न कि सिर्फ़ जो हो चुका।"
+  },
+  "description": {
+    "en": "You're sitting on data — sales, operations, customers — and drowning in it instead of deciding. Our data team turns it into models, dashboards, and forecasts that tell you what to do next, not just what already happened.",
+    "hi": "आप डेटा के ढेर पर बैठे हैं — बिक्री, संचालन, ग्राहक — और निर्णय लेने के बजाय उसमें डूब रहे हैं। हमारी डेटा टीम इसे मॉडल, डैशबोर्ड और पूर्वानुमानों में बदल देती है जो बताते हैं कि आगे क्या करना है, न कि सिर्फ़ जो पहले हो चुका।"
+  }
+}

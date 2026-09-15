@@ -1,0 +1,20 @@
+{
+  "order": 1,
+  "category": "flagship",
+  "title": {
+    "en": "The Problem That Belongs to No One",
+    "hi": "वह समस्या जो किसी की नहीं"
+  },
+  "discipline": {
+    "en": "Multidisciplinary Consulting",
+    "hi": "बहु-विषयक परामर्श"
+  },
+  "symptomLine": {
+    "en": "A bench pointed together at the problem no single expert would own.",
+    "hi": "एक टीम, उस समस्या पर एक साथ केंद्रित जिसे कोई अकेला विशेषज्ञ नहीं अपनाता।"
+  },
+  "description": {
+    "en": "Your problem sits between disciplines — part technical, part financial, part operational, part human — so every specialist you called said \u201cnot my domain\u201d and passed you on. That's exactly what we're built for: a bench spanning software, finance, operations, and strategy, pointed together at the problem no single expert would own.",
+    "hi": "आपकी समस्या विभिन्न विषयों के बीच फँसी है — कुछ तकनीकी, कुछ वित्तीय, कुछ संचालन-संबंधी, कुछ मानवीय — इसलिए आपने जिस भी विशेषज्ञ को बुलाया उसने कहा \u201cयह मेरा क्षेत्र नहीं\u201d और आगे टाल दिया। हम ठीक इसी के लिए बने हैं: सॉफ़्टवेयर, वित्त, संचालन और रणनीति तक फैली एक टीम, जिसे उस समस्या पर एक साथ केंद्रित किया जाता है जिसे कोई अकेला विशेषज्ञ अपनाना नहीं चाहता।"
+  }
+}

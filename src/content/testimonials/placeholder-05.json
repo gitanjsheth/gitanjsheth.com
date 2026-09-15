@@ -1,0 +1,11 @@
+{
+  "name": "Placeholder Name Five",
+  "company": "Example Healthcare Services",
+  "field": "Healthcare",
+  "date": "2025",
+  "quote_en": "They asked the questions no one inside had asked in years — and handed us a leaner way to run.",
+  "quote_hi": "उन्होंने वे सवाल पूछे जो भीतर किसी ने वर्षों से नहीं पूछे थे — और हमें चलाने का एक अधिक कसा हुआ तरीका सौंपा।",
+  "featured": true,
+  "order": 5,
+  "placeholder": true
+}

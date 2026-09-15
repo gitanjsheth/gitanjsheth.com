@@ -1,0 +1,20 @@
+{
+  "order": 4,
+  "category": "strategy",
+  "title": {
+    "en": "The Brutal Go / No-Go",
+    "hi": "बेलाग हाँ / ना का फ़ैसला"
+  },
+  "discipline": {
+    "en": "Feasibility & Due Diligence",
+    "hi": "व्यवहार्यता और सम्यक जाँच"
+  },
+  "symptomLine": {
+    "en": "One cold verdict — survive or die, and exactly where it breaks.",
+    "hi": "एक ठंडा फ़ैसला — टिकेगा या ढहेगा, और ठीक कहाँ टूटेगा।"
+  },
+  "description": {
+    "en": "You're about to commit real money or years, and everyone around you is a cheerleader or a coward. Our analysts stress-test the bet against the numbers and hand you one cold verdict — survive or die, and exactly where it breaks. No incentive to flatter you into it.",
+    "hi": "आप असली पैसा या वर्षों दाँव पर लगाने वाले हैं, और आपके आस-पास हर कोई या तो चापलूस है या डरपोक। हमारे विश्लेषक इस दाँव को आँकड़ों की कसौटी पर कसते हैं और आपको एक ठंडा फ़ैसला देते हैं — टिकेगा या ढहेगा, और ठीक कहाँ टूटेगा। आपको फुसलाने का हमारा कोई स्वार्थ नहीं।"
+  }
+}

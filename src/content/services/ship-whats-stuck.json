@@ -1,0 +1,20 @@
+{
+  "order": 8,
+  "category": "technology",
+  "title": {
+    "en": "Ship What's Been Stuck",
+    "hi": "जो अटका है उसे पूरा कीजिए"
+  },
+  "discipline": {
+    "en": "Product Development & Rapid Build",
+    "hi": "उत्पाद विकास और तेज़ निर्माण"
+  },
+  "symptomLine": {
+    "en": "Months of stall, moving in days.",
+    "hi": "महीनों का ठहराव, दिनों में गतिमान।"
+  },
+  "description": {
+    "en": "Your product has been \u201calmost ready\u201d for months and there's still nothing you can put in front of a user. We turn a working, usable system around fast — backends, marketplaces, internal tools — built and reviewed by senior architects. Months of stall, moving in days.",
+    "hi": "आपका उत्पाद महीनों से \u201cलगभग तैयार\u201d है और अब भी उपयोगकर्ता के सामने रखने लायक कुछ नहीं। हम एक चलती-फिरती, उपयोगी व्यवस्था तेज़ी से तैयार करते हैं — बैकएंड, मार्केटप्लेस, आंतरिक औज़ार — वरिष्ठ आर्किटेक्ट्स द्वारा निर्मित और समीक्षित। महीनों का ठहराव, दिनों में गतिमान।"
+  }
+}

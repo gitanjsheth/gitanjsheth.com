@@ -1,0 +1,20 @@
+{
+  "order": 11,
+  "category": "operations",
+  "title": {
+    "en": "Find Where It's Bleeding",
+    "hi": "पता लगाइए कहाँ रिस रहा है"
+  },
+  "discipline": {
+    "en": "Operational Diagnostics",
+    "hi": "परिचालन निदान"
+  },
+  "symptomLine": {
+    "en": "We trace the loss to its source and hand you the fix.",
+    "hi": "हम नुकसान को उसके स्रोत तक खोजते हैं और आपको उपाय सौंपते हैं।"
+  },
+  "description": {
+    "en": "Money, time, or quality is leaking and no one can tell you where — every audit came back clean, every explanation a shrug. We trace the loss to its source and hand you the fix, because bleeding this stubborn is a systems problem, not a people problem.",
+    "hi": "पैसा, समय, या गुणवत्ता रिस रही है और कोई नहीं बता पाता कहाँ — हर ऑडिट साफ़ लौटा, हर स्पष्टीकरण महज़ कंधे उचकाना। हम नुकसान को उसके स्रोत तक खोजते हैं और आपको उपाय सौंपते हैं, क्योंकि इतना ज़िद्दी रिसाव व्यवस्था की समस्या है, लोगों की नहीं।"
+  }
+}

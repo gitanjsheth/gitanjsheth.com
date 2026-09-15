@@ -1,0 +1,61 @@
+---
+/**
+ * Language switcher — swaps to the SAME page in another locale and persists the
+ * choice (cookie + localStorage) so the root gate is skipped next time.
+ * Renders one toggle entry per locale; scales automatically as locales are added.
+ */
+import { locales, localeLabels, localizePath, type Locale } from "../i18n/utils";
+import { LOCALE_STORAGE_KEY } from "../config";
+
+interface Props {
+  locale: Locale;
+  pagePath: string;
+  class?: string;
+}
+const { locale, pagePath, class: className = "" } = Astro.props;
+---
+
+<div
+  class={`lang-switch inline-flex items-center gap-1 text-sm ${className}`}
+  role="group"
+  aria-label="Language"
+  data-storage-key={LOCALE_STORAGE_KEY}
+>
+  {
+    locales.map((loc, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true" class="opacity-40">/</span>}
+        <a
+          href={localizePath(loc, pagePath)}
+          hreflang={loc}
+          lang={loc}
+          data-locale={loc}
+          aria-current={loc === locale ? "true" : undefined}
+          class:list={[
+            "px-1 py-0.5 transition-colors duration-250",
+            loc === locale ? "text-ink font-semibold" : "text-muted hover:text-ink",
+          ]}
+        >
+          {localeLabels[loc]}
+        </a>
+      </>
+    ))
+  }
+</div>
+
+<script>
+  // Persist the chosen locale as the visitor switches, so the gate stays skipped.
+  document.querySelectorAll<HTMLElement>(".lang-switch").forEach((group) => {
+    const key = group.dataset.storageKey || "gsco_locale";
+    group.querySelectorAll<HTMLAnchorElement>("a[data-locale]").forEach((a) => {
+      a.addEventListener("click", () => {
+        const loc = a.dataset.locale;
+        if (!loc) return;
+        try {
+          localStorage.setItem(key, loc);
+        } catch {}
+        document.cookie = `${key}=${loc}; path=/; max-age=31536000; samesite=lax`;
+      });
+    });
+  });
+</script>

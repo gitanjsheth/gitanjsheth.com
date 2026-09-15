@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TestimonialCard from "../../components/TestimonialCard.astro";
+import { localeStaticPaths, useTranslations, type Locale } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = Astro.params.locale as Locale;
+const t = useTranslations(locale);
+
+const testimonials = (await getCollection("testimonials")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout locale={locale} pagePath="testimonials" title={t("testimonials.title")} description={t("testimonials.intro")}>
+  <section>
+    <div class="container-x py-16 md:py-24">
+      <p class="eyebrow">{t("home.testimonials.label")}</p>
+      <h1 class="mt-4 text-4xl md:text-5xl">{t("testimonials.title")}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("testimonials.intro")}</p>
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10">
+    <div class="container-x py-14 md:py-20">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          testimonials.map((x) => (
+            <TestimonialCard
+              locale={locale}
+              id={x.id}
+              name={x.data.name}
+              company={x.data.company}
+              field={x.data.field}
+              quote={locale === "hi" ? x.data.quote_hi : x.data.quote_en}
+              photo={x.data.photo}
+              letterImage={x.data.letterImage}
+              letterThumb={x.data.letterThumb}
+              placeholder={x.data.placeholder}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Open/close the per-letter <dialog> lightboxes.
+  document.querySelectorAll<HTMLButtonElement>("[data-open-dialog]").forEach((btn) => {
+    const id = btn.getAttribute("data-open-dialog");
+    const dialog = id ? document.getElementById(id) : null;
+    if (dialog instanceof HTMLDialogElement) {
+      btn.addEventListener("click", () => dialog.showModal());
+    }
+  });
+
+  document.querySelectorAll<HTMLDialogElement>("dialog.letter-dialog").forEach((dialog) => {
+    // Close button
+    dialog
+      .querySelector<HTMLButtonElement>("[data-close-dialog]")
+      ?.addEventListener("click", () => dialog.close());
+    // Click on backdrop closes.
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+</script>

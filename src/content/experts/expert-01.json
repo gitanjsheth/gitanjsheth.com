@@ -1,0 +1,10 @@
+{
+  "name": "Placeholder Expert One",
+  "domain": { "en": "Software Architecture", "hi": "सॉफ़्टवेयर आर्किटेक्चर" },
+  "blurb": {
+    "en": "Two decades building and rescuing production systems across fintech and marketplaces. Reviews every build for what will still stand in five years.",
+    "hi": "फिनटेक और मार्केटप्लेस में उत्पादन-व्यवस्थाओं के निर्माण और बचाव में दो दशक। हर निर्माण की समीक्षा इस दृष्टि से कि पाँच साल बाद क्या टिकेगा।"
+  },
+  "order": 1,
+  "placeholder": true
+}

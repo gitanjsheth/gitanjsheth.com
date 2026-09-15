@@ -1,0 +1,20 @@
+{
+  "order": 12,
+  "category": "operations",
+  "title": {
+    "en": "Question What No One Has in Years",
+    "hi": "वह पूछिए जो वर्षों से किसी ने नहीं पूछा"
+  },
+  "discipline": {
+    "en": "Operational Optimization",
+    "hi": "परिचालन अनुकूलन"
+  },
+  "symptomLine": {
+    "en": "The relentless questions that drag the waste into the light.",
+    "hi": "वे अथक सवाल जो बर्बादी को रोशनी में खींच लाते हैं।"
+  },
+  "description": {
+    "en": "Nothing's obviously broken — the business just runs the way it always has. But the same eyes have looked at it for years and stopped asking why, and that unasked question is quietly capping your growth. We bring the relentless questions that drag the workarounds, the waste, and the \u201cwe've always done it this way\u201d into the light — then hand you a leaner way to run.",
+    "hi": "स्पष्ट रूप से कुछ भी टूटा नहीं है — व्यवसाय बस वैसे ही चलता है जैसे हमेशा चलता आया। पर वही आँखें वर्षों से इसे देख रही हैं और \u2018क्यों\u2019 पूछना बंद कर चुकी हैं, और वही अनपूछा सवाल चुपचाप आपके विकास पर ढक्कन लगाए है। हम वे अथक सवाल लाते हैं जो जुगाड़ों, बर्बादी और \u201cहम हमेशा ऐसे ही करते आए\u201d को रोशनी में खींच लाते हैं — फिर आपको चलाने का एक अधिक कसा हुआ तरीका सौंपते हैं।"
+  }
+}

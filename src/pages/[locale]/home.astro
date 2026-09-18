@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ServiceCard from "../../components/ServiceCard.astro";
-import TestimonialQuote from "../../components/TestimonialQuote.astro";
+import FounderPortrait from "../../components/FounderPortrait.astro";
+import TestimonialsCarousel from "../../components/TestimonialsCarousel.astro";
 import {
   localeStaticPaths,
   localizePath,
@@ -17,119 +17,156 @@ export function getStaticPaths() {
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
 
-const services = (await getCollection("services")).sort(
-  (a, b) => a.data.order - b.data.order
-);
-
 const testimonials = (await getCollection("testimonials"))
   .filter((x) => x.data.featured)
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 7);
+  .sort((a, b) => a.data.order - b.data.order);
 
 const caseStudies = (await getCollection("caseStudies")).sort(
   (a, b) => a.data.order - b.data.order
 );
-const featuredCase =
-  caseStudies.find((c) => c.data.featured) ?? caseStudies[0];
+const featuredCase = caseStudies.find((c) => c.data.featured) ?? caseStudies[0];
+
+const experts = (await getCollection("experts"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 4);
 
 const storyBody: string[] = t("home.story.body");
+const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
 ---
 
 <BaseLayout locale={locale} pagePath="home" title="" description={t("site.description")}>
-  <!-- 1. HERO -->
+  <!-- 2. HERO — split: statement + founder portrait -->
   <section class="section-ink">
-    <div class="container-x py-24 md:py-36">
-      <p class="eyebrow">{t("home.hero.eyebrow")}</p>
-      <h1
-        class="mt-6 max-w-4xl font-display"
-        style="font-size:clamp(2.25rem,6vw,4.5rem);line-height:1.05;"
-      >
-        {t("home.hero.title")}
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-ivory/80 measure">
-        {t("home.hero.subtitle")}
-      </p>
-      <div class="mt-10">
-        <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
-          {t("home.hero.cta")}
-        </a>
+    <div class="container-x grid items-center gap-10 py-16 md:grid-cols-2 md:py-24 lg:gap-16">
+      <div>
+        <p class="eyebrow">{t("home.hero.eyebrow")}</p>
+        <h1 class="mt-6 font-display" style="font-size:clamp(2.5rem,6vw,4.75rem);line-height:1.02;">
+          {t("home.hero.title")}
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-ivory/80 measure">{t("home.hero.subtitle")}</p>
+        <div class="mt-9">
+          <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
+            {t("home.hero.cta")}
+          </a>
+        </div>
+      </div>
+      <div class="mx-auto w-full max-w-sm md:max-w-md">
+        <FounderPortrait alt={t("home.hero.portraitAlt")} />
       </div>
     </div>
   </section>
 
-  <!-- 2. OUR STORY -->
-  <section id="story" class="scroll-mt-24">
-    <div class="container-x grid gap-10 py-20 md:grid-cols-[1fr_2fr] md:py-28">
+  <!-- 3. THE PERSON — Gitanj (the hook, placed high) -->
+  <section id="person" class="scroll-mt-24">
+    <div class="container-x py-20 md:py-28">
+      <div class="max-w-3xl">
+        <p class="eyebrow">{t("person.eyebrow")}</p>
+        <h2 class="mt-5 text-3xl md:text-5xl">{t("person.name")}</h2>
+        <p class="mt-6 text-xl leading-relaxed measure">{t("person.lead")}</p>
+        <p class="mt-4 text-muted measure">{t("person.combination")}</p>
+      </div>
+
+      <!-- Proof-of-calibre: numbers + institutions, scannable. -->
+      <div class="mt-12">
+        <p class="eyebrow">{t("person.trackRecordLabel")}</p>
+        <dl class="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            trackRecord.map((tr) => (
+              <div class="border-t border-ink/12 pt-4">
+                <dt class="font-display text-2xl leading-none">{tr.value}</dt>
+                <dd class="mt-2 text-sm text-muted">{tr.label}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <!-- Credentials line + link -->
+      <div class="mt-12 grid gap-6 border-t border-ink/12 pt-8 md:grid-cols-2">
+        <div>
+          <p class="eyebrow">{t("person.educationLabel")}</p>
+          <p class="mt-3 text-sm">{t("person.education")}</p>
+          <p class="eyebrow mt-6">{t("person.rolesLabel")}</p>
+          <p class="mt-3 text-sm">{t("person.roles")}</p>
+        </div>
+        <div class="md:text-right">
+          <a href={localizePath(locale, "gitanj-sheth")} class="btn btn-ghost">
+            {t("person.more")} &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. THE FIRM & STORY (short) -->
+  <section id="story" class="scroll-mt-24 section-ink">
+    <div class="container-x grid gap-10 py-20 md:grid-cols-[1fr_1.6fr] md:py-24">
       <div>
         <p class="eyebrow">{t("home.story.label")}</p>
         <h2 class="mt-4 text-3xl md:text-4xl">{t("home.story.title")}</h2>
       </div>
-      <div class="measure space-y-5 text-lg">
+      <div class="measure space-y-5 text-lg text-ivory/85">
         {storyBody.map((para) => <p>{para}</p>)}
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule container-x" />
-
-  <!-- 3. SERVICES OVERVIEW -->
-  <section id="services" class="scroll-mt-24">
-    <div class="container-x py-20 md:py-28">
-      <div class="max-w-2xl">
-        <p class="eyebrow">{t("home.services.label")}</p>
-        <h2 class="mt-4 text-3xl md:text-4xl">{t("home.services.title")}</h2>
-        <p class="mt-4 text-muted measure">{t("home.services.intro")}</p>
-      </div>
-
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          services.map((s) => (
-            <ServiceCard
-              locale={locale}
-              title={s.data.title[locale]}
-              discipline={s.data.discipline[locale]}
-              line={s.data.symptomLine[locale]}
-              href={localizePath(locale, `services/${s.id}`)}
-            />
-          ))
-        }
-      </div>
-
-      <div class="mt-10">
-        <a href={localizePath(locale, "services")} class="btn btn-ghost">
-          {t("home.services.viewAll")}
+        <a href={localizePath(locale, "how-we-engage")} class="link mt-2 inline-block text-sm text-ivory">
+          {t("home.story.more")} &rarr;
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 4. FEATURED CASE STUDY -->
+  <!-- 5. REPAIR / BOOST — two open boxes -->
+  <section id="solutions" class="scroll-mt-24">
+    <div class="container-x py-20 md:py-28">
+      <div class="max-w-2xl">
+        <p class="eyebrow">{t("solutions.eyebrow")}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl">{t("solutions.title")}</h2>
+        <p class="mt-4 text-muted measure">{t("solutions.intro")}</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          [
+            { k: "repair", n: "01" },
+            { k: "boost", n: "02" },
+          ].map(({ k, n }) => (
+            <div class="card flex flex-col p-8 md:p-10">
+              <div class="flex items-baseline justify-between">
+                <h3 class="text-2xl md:text-3xl">{t(`solutions.${k}.label`)}</h3>
+                <span class="font-mono text-sm text-gold">{n}</span>
+              </div>
+              <p class="mt-4 text-lg leading-relaxed text-muted">{t(`solutions.${k}.body`)}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={localizePath(locale, "case-studies")} class="link text-base">
+          {t("solutions.casesLink")} &rarr;
+        </a>
+        <p class="text-sm text-muted">{t("solutions.note")}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FEATURED CASE STUDY -->
   {
     featuredCase && (
       <section class="section-ink">
         <div class="container-x py-20 md:py-28">
-          <p class="eyebrow">{t("home.featuredCase.label")}</p>
+          <p class="eyebrow">{t("featuredCase.label")}</p>
           <div class="mt-6 grid gap-8 md:grid-cols-[2fr_1fr] md:items-end">
             <div>
               <p class="text-sm text-ivory/60">
-                {featuredCase.data.confidential
-                  ? t("caseStudies.confidential")
-                  : featuredCase.data.client}
+                {featuredCase.data.confidential ? t("caseStudies.confidential") : featuredCase.data.client}
                 <span class="mx-2 text-gold">·</span>
                 {featuredCase.data.sector[locale]}
               </p>
-              <h2 class="mt-4 max-w-3xl text-3xl md:text-4xl">
-                {featuredCase.data.title[locale]}
-              </h2>
-              <p class="mt-5 max-w-2xl text-ivory/80 measure">
-                {featuredCase.data.problem[locale]}
-              </p>
+              <h2 class="mt-4 max-w-3xl text-3xl md:text-4xl">{featuredCase.data.title[locale]}</h2>
+              <p class="mt-5 max-w-2xl text-ivory/80 measure">{featuredCase.data.problem[locale]}</p>
             </div>
             <div class="md:text-right">
-              <a
-                href={localizePath(locale, `case-studies/${featuredCase.id}`)}
-                class="btn btn-reversed"
-              >
+              <a href={localizePath(locale, `case-studies/${featuredCase.id}`)} class="btn btn-reversed">
                 {t("caseStudies.readMore")}
               </a>
             </div>
@@ -139,62 +176,75 @@ const storyBody: string[] = t("home.story.body");
     )
   }
 
-  <!-- 5. TESTIMONIALS ROW -->
+  <!-- 7. TESTIMONIALS CAROUSEL -->
   <section id="testimonials" class="scroll-mt-24">
-    <div class="container-x py-20 md:py-28">
+    <div class="container-x pt-20 md:pt-28">
       <div class="max-w-2xl">
-        <p class="eyebrow">{t("home.testimonials.label")}</p>
-        <h2 class="mt-4 text-3xl md:text-4xl">{t("home.testimonials.title")}</h2>
+        <p class="eyebrow">{t("testimonialsHome.label")}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl">{t("testimonialsHome.title")}</h2>
       </div>
-
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          testimonials.map((x) => (
-            <TestimonialQuote
-              locale={locale}
-              quote={locale === "hi" ? x.data.quote_hi : x.data.quote_en}
-              name={x.data.name}
-              company={x.data.company}
-              placeholder={x.data.placeholder}
-            />
-          ))
-        }
-      </div>
-
-      <div class="mt-10">
-        <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
-          {t("home.testimonials.viewAll")}
-        </a>
-      </div>
+    </div>
+    <div class="mt-12 pb-6">
+      <TestimonialsCarousel locale={locale} items={testimonials} />
+    </div>
+    <div class="container-x pb-20 md:pb-28">
+      <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
+        {t("testimonialsHome.viewAll")}
+      </a>
     </div>
   </section>
 
-  <hr class="rule container-x" />
+  <!-- 8. EMPANELLED EXPERTS (teaser) -->
+  {
+    experts.length > 0 && (
+      <section class="scroll-mt-24 border-t border-ink/10">
+        <div class="container-x py-20 md:py-24">
+          <div class="max-w-2xl">
+            <p class="eyebrow">{t("home.experts.label")}</p>
+            <h2 class="mt-4 text-3xl md:text-4xl">{t("home.experts.title")}</h2>
+          </div>
+          <ul class="mt-10 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+            {experts.map((e) => (
+              <li class="border-t border-ink/12 pt-4">
+                <p class="font-semibold">{e.data.name}</p>
+                <p class="mt-1 text-sm text-muted">{e.data.domain[locale]}</p>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-10">
+            <a href={localizePath(locale, "experts")} class="link text-sm">
+              {t("home.experts.viewAll")} &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
-  <!-- 6. HOW WE ENGAGE (teaser) -->
-  <section id="how-we-engage" class="scroll-mt-24">
-    <div class="container-x grid gap-10 py-20 md:grid-cols-[1fr_2fr] md:py-28">
+  <!-- 9. HOW WE ENGAGE (teaser) -->
+  <section id="how-we-engage" class="scroll-mt-24 border-t border-ink/10">
+    <div class="container-x grid gap-10 py-20 md:grid-cols-[1fr_1.6fr] md:py-24">
       <div>
-        <p class="eyebrow">{t("home.engage.label")}</p>
-        <h2 class="mt-4 text-3xl md:text-4xl">{t("home.engage.title")}</h2>
+        <p class="eyebrow">{t("engageHome.label")}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl">{t("engageHome.title")}</h2>
       </div>
       <div class="measure">
-        <p class="text-lg">{t("home.engage.body")}</p>
+        <p class="text-lg">{t("engageHome.body")}</p>
         <a href={localizePath(locale, "how-we-engage")} class="link mt-6 inline-block text-sm">
-          {t("home.engage.more")} &rarr;
+          {t("engageHome.more")} &rarr;
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 7. ENQUIRY CTA BAND -->
+  <!-- 10. ENQUIRY CTA BAND -->
   <section class="section-ink border-t border-gold/30">
-    <div class="container-x py-20 text-center md:py-24">
-      <h2 class="mx-auto max-w-3xl text-3xl md:text-4xl">{t("home.ctaBand.title")}</h2>
-      <p class="mx-auto mt-4 max-w-xl text-ivory/80">{t("home.ctaBand.subtitle")}</p>
+    <div class="container-x py-20 md:py-24">
+      <h2 class="max-w-3xl text-3xl md:text-4xl">{t("ctaBand.title")}</h2>
+      <p class="mt-4 max-w-xl text-ivory/80">{t("ctaBand.subtitle")}</p>
       <div class="mt-8">
         <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
-          {t("home.ctaBand.button")}
+          {t("ctaBand.button")}
         </a>
       </div>
     </div>

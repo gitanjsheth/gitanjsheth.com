@@ -1,9 +1,9 @@
 {
   "name": "gitanjsheth-com",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Bilingual (en/hi) marketing website for Gitanj Sheth & Co.",
+  "description": "Bilingual (en/hi) marketing website for Gitanj Sheth / G A Sheth & Associates.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,10 +15,10 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^6.0.2",
-    "@fontsource/cormorant-garamond": "^5.1.0",
+    "@fontsource-variable/anek-devanagari": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
-    "@fontsource/noto-sans-devanagari": "^5.1.0",
-    "@fontsource/noto-serif-devanagari": "^5.1.0",
+    "@fontsource/space-grotesk": "^5.1.0",
+    "@fontsource/space-mono": "^5.1.0",
     "astro": "^5.6.1",
     "tailwindcss": "^3.4.17"
   }

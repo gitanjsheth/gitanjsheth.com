@@ -1,13 +1,15 @@
 ---
 /**
- * Wordmark lockup: the GS mark + firm name. Until a dedicated horizontal
- * wordmark asset is supplied, this composes one from the mark SVG and type.
- *   variant="ink"      -> ink mark, for LIGHT (ivory) backgrounds
+ * Masthead lockup: the GS mark + the PERSON's name ("Gitanj Sheth"). The site
+ * leads with the person; the firm entity (G A Sheth & Associates) lives in the
+ * footer. Until a dedicated horizontal wordmark asset is supplied, this
+ * composes one from the mark SVG and type.
+ *   variant="ink"      -> ink mark, for LIGHT backgrounds
  *   variant="reversed" -> ivory/white mark, for DARK (ink) sections
  */
 interface Props {
   variant?: "ink" | "reversed";
-  /** Show the "Gitanj Sheth & Co." wordmark text beside the mark. */
+  /** Show the "Gitanj Sheth" wordmark text beside the mark. */
   showText?: boolean;
   class?: string;
 }
@@ -17,15 +19,15 @@ const src = variant === "reversed" ? "/logo/gs-nocorners-white.svg" : "/logo/gs-
 const textColor = variant === "reversed" ? "text-ivory" : "text-ink";
 ---
 
-<span class={`inline-flex items-center gap-3 ${className}`}>
-  <img src={src} alt="" aria-hidden="true" class="h-9 w-auto" width="36" height="36" />
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+  <img src={src} alt="" aria-hidden="true" class="h-8 w-auto" width="32" height="32" />
   {
     showText && (
       <span
-        class={`font-display leading-none ${textColor}`}
-        style="font-size:1.15rem;letter-spacing:0.01em;"
+        class={`font-display font-semibold leading-none ${textColor}`}
+        style="font-size:1.15rem;letter-spacing:-0.01em;"
       >
-        Gitanj Sheth <span style="color:var(--gold)">&amp;</span> Co.
+        Gitanj Sheth
       </span>
     )
   }

@@ -18,7 +18,7 @@ const experts = (await getCollection("experts")).sort(
 <BaseLayout locale={locale} pagePath="experts" title={t("experts.title")} description={t("experts.intro")}>
   <section>
     <div class="container-x py-16 md:py-24">
-      <p class="eyebrow">{t("nav.experts")}</p>
+      <p class="eyebrow">{t("home.experts.label")}</p>
       <h1 class="mt-4 text-4xl md:text-5xl">{t("experts.title")}</h1>
       <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("experts.intro")}</p>
     </div>

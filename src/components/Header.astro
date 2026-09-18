@@ -1,8 +1,14 @@
 ---
 /**
- * Sticky, minimal header: wordmark left; nav; language switcher; Enquire button.
- * Collapses to a clean toggle menu on mobile. All interactivity is client JS
- * (works fine on static GitHub Pages).
+ * Sticky, slim header with grouped navigation:
+ *   About ▾   (Our Story · Gitanj Sheth · Empanelled Experts)
+ *   Work ▾    (Case Studies · Testimonials)
+ *   How We Engage
+ *   Contact
+ *   [ Language switcher ]  [ Enquire ]
+ *
+ * Dropdowns open on hover AND click, are keyboard-accessible (focus-within),
+ * and close on outside-click / Escape. Collapses to a hamburger on mobile.
  */
 import Logo from "./Logo.astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
@@ -15,45 +21,78 @@ interface Props {
 const { locale, pagePath } = Astro.props;
 const t = useTranslations(locale);
 
-const nav = [
-  { key: "story", href: localizePath(locale, "home") + "#story", match: "" },
-  { key: "services", href: localizePath(locale, "services"), match: "services" },
-  { key: "caseStudies", href: localizePath(locale, "case-studies"), match: "case-studies" },
-  { key: "testimonials", href: localizePath(locale, "testimonials"), match: "testimonials" },
-  { key: "experts", href: localizePath(locale, "experts"), match: "experts" },
-  { key: "howWeEngage", href: localizePath(locale, "how-we-engage"), match: "how-we-engage" },
-  { key: "contact", href: localizePath(locale, "contact"), match: "contact" },
+type Item = { key: string; href: string };
+type Group = { key: string; items: Item[] };
+
+const groups: Group[] = [
+  {
+    key: "about",
+    items: [
+      { key: "ourStory", href: localizePath(locale, "home") + "#story" },
+      { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
+      { key: "experts", href: localizePath(locale, "experts") },
+    ],
+  },
+  {
+    key: "work",
+    items: [
+      { key: "caseStudies", href: localizePath(locale, "case-studies") },
+      { key: "testimonials", href: localizePath(locale, "testimonials") },
+    ],
+  },
 ];
 
-const isActive = (match: string) =>
-  match !== "" && (pagePath === match || pagePath.startsWith(match + "/"));
+const singles: Item[] = [
+  { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
+  { key: "contact", href: localizePath(locale, "contact") },
+];
 ---
 
-<header class="sticky top-0 z-40 border-b border-ink/10 bg-ivory/90 backdrop-blur">
-  <div class="container-x flex items-center justify-between gap-4 py-3">
-    <a href={localizePath(locale, "home")} class="shrink-0" aria-label={t("site.name")}>
+<header class="sticky top-0 z-40 border-b border-ink/10 bg-ivory/90 backdrop-blur" data-header>
+  <div class="container-x flex items-center justify-between gap-8 py-4">
+    <a href={localizePath(locale, "home")} class="shrink-0" aria-label={t("site.person")}>
       <Logo variant="ink" />
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-6" aria-label="Primary">
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Primary">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              "link text-sm",
-              isActive(item.match) ? "font-semibold" : "",
-            ]}
-            aria-current={isActive(item.match) ? "page" : undefined}
-          >
+        groups.map((group) => (
+          <div class="nav-group relative" data-nav-group>
+            <button
+              type="button"
+              class="nav-trigger inline-flex items-center gap-1.5 text-sm"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-nav-trigger
+            >
+              {t(`nav.${group.key}`)}
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" class="nav-caret">
+                <path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="nav-dropdown" role="menu" data-nav-dropdown>
+              <div class="nav-dropdown__panel">
+                {group.items.map((item) => (
+                  <a href={item.href} role="menuitem" class="nav-dropdown__link">
+                    {t(`nav.${item.key}`)}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+      {
+        singles.map((item) => (
+          <a href={item.href} class="link text-sm">
             {t(`nav.${item.key}`)}
           </a>
         ))
       }
     </nav>
 
-    <div class="hidden lg:flex items-center gap-4">
+    <div class="hidden lg:flex items-center gap-5">
       <LanguageSwitcher locale={locale} pagePath={pagePath} />
       <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-primary">
         {t("nav.enquire")}
@@ -80,13 +119,25 @@ const isActive = (match: string) =>
   <div id="mobile-menu" class="lg:hidden hidden border-t border-ink/10 bg-ivory" data-menu-panel>
     <nav class="container-x flex flex-col py-4" aria-label="Mobile">
       {
-        nav.map((item) => (
+        groups.map((group) => (
+          <div class="py-2">
+            <p class="eyebrow py-2">{t(`nav.${group.key}`)}</p>
+            {group.items.map((item) => (
+              <a href={item.href} class="block py-2.5 pl-6 text-base border-b border-ink/5" data-menu-link>
+                {t(`nav.${item.key}`)}
+              </a>
+            ))}
+          </div>
+        ))
+      }
+      {
+        singles.map((item) => (
           <a href={item.href} class="py-3 border-b border-ink/5 text-base" data-menu-link>
             {t(`nav.${item.key}`)}
           </a>
         ))
       }
-      <div class="flex items-center justify-between pt-4">
+      <div class="flex items-center justify-between pt-5">
         <LanguageSwitcher locale={locale} pagePath={pagePath} />
         <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-primary" data-menu-link>
           {t("nav.enquire")}
@@ -96,7 +147,100 @@ const isActive = (match: string) =>
   </div>
 </header>
 
+<style>
+  .nav-trigger {
+    color: var(--ink);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0.25rem 0;
+  }
+  .nav-caret {
+    transition: transform 250ms ease;
+    color: var(--gold);
+  }
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 6px);
+    padding-top: 0.75rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+    z-index: 50;
+  }
+  .nav-dropdown__panel {
+    min-width: 15rem;
+    background: var(--paper);
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    border-radius: 4px;
+    box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--ink) 30%, transparent);
+    padding: 0.4rem;
+  }
+  .nav-dropdown__link {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background-color 200ms ease;
+  }
+  .nav-dropdown__link:hover,
+  .nav-dropdown__link:focus-visible {
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+  }
+  /* Open on hover, keyboard focus, or explicit click (data-open). */
+  .nav-group:hover .nav-dropdown,
+  .nav-group:focus-within .nav-dropdown,
+  .nav-group[data-open="true"] .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+  .nav-group:hover .nav-caret,
+  .nav-group:focus-within .nav-caret,
+  .nav-group[data-open="true"] .nav-caret {
+    transform: rotate(180deg);
+  }
+</style>
+
 <script>
+  // --- Dropdowns: click toggle + outside-click / Escape close ---------------
+  const groups = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-group]"));
+
+  function closeAll(except?: HTMLElement) {
+    groups.forEach((g) => {
+      if (g !== except) {
+        g.removeAttribute("data-open");
+        g.querySelector("[data-nav-trigger]")?.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  groups.forEach((group) => {
+    const trigger = group.querySelector<HTMLButtonElement>("[data-nav-trigger]");
+    trigger?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const open = group.getAttribute("data-open") === "true";
+      closeAll(group);
+      group.setAttribute("data-open", String(!open));
+      trigger.setAttribute("aria-expanded", String(!open));
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    const target = e.target as Node;
+    if (!groups.some((g) => g.contains(target))) closeAll();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeAll();
+  });
+
+  // --- Mobile menu ----------------------------------------------------------
   const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const panel = document.querySelector<HTMLElement>("[data-menu-panel]");
   const iconOpen = document.querySelector<SVGElement>("[data-icon-open]");
@@ -114,8 +258,6 @@ const isActive = (match: string) =>
     const open = toggle.getAttribute("aria-expanded") === "true";
     setOpen(!open);
   });
-
-  // Close after tapping a link.
   document.querySelectorAll("[data-menu-link]").forEach((link) =>
     link.addEventListener("click", () => setOpen(false))
   );

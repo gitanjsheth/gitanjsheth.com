@@ -1,0 +1,337 @@
+---
+/**
+ * Peeking, swipeable testimonials carousel.
+ *  - One center card in focus; previous/next peek at the edges.
+ *  - Narrows responsively until only the center card shows on phones.
+ *  - Touch swipe (native scroll-snap) + hover-revealed arrow controls + dots.
+ * Each card, top → bottom: pulled quote · square photo + name/company/field ·
+ * a faded letter-glimpse with a "View testimonial letter" button → lightbox.
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { useTranslations, type Locale } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+  items: CollectionEntry<"testimonials">[];
+}
+const { locale, items } = Astro.props;
+const t = useTranslations(locale);
+
+const peopleImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/people/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
+  { eager: true }
+);
+function resolvePhoto(photo?: string) {
+  if (!photo) return undefined;
+  const key = `/src/assets/${photo}`;
+  return peopleImages[key]?.default;
+}
+function initialsOf(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+}
+---
+
+<div class="tcar" data-carousel>
+  <div class="tcar__viewport" data-carousel-track role="group" aria-roledescription="carousel">
+    {
+      items.map((x, i) => {
+        const d = x.data;
+        const quote = locale === "hi" ? d.quote_hi : d.quote_en;
+        const photoImg = resolvePhoto(d.photo);
+        const hasLetter = Boolean(d.letterImage);
+        const dialogId = `tcar-letter-${x.id}`;
+        return (
+          <figure class="tcar__card" data-carousel-card aria-label={`${i + 1} / ${items.length}`} lang={locale}>
+            <blockquote class="tcar__quote">
+              <span class="tcar__mark" aria-hidden="true">&ldquo;</span>
+              {quote}
+            </blockquote>
+
+            <figcaption class="tcar__meta">
+              {photoImg ? (
+                <Image src={photoImg} alt={d.name} width={112} height={112} class="tcar__photo" />
+              ) : (
+                <span class="tcar__photo tcar__photo--ph" aria-hidden="true">{initialsOf(d.name)}</span>
+              )}
+              <span class="tcar__who">
+                <span class="tcar__name">{d.name}</span>
+                <span class="tcar__company">{d.company}</span>
+                <span class="tcar__field">{d.field}</span>
+              </span>
+            </figcaption>
+
+            <div class="tcar__letter">
+              {hasLetter ? (
+                <button type="button" class="tcar__glimpse" data-open-dialog={dialogId} aria-label={t("testimonials.viewLetter")}>
+                  <span class="tcar__glimpse-img" style={`background-image:url('${d.letterThumb ?? d.letterImage}')`}></span>
+                  <span class="tcar__glimpse-label">{t("testimonials.viewLetter")} &rarr;</span>
+                </button>
+              ) : (
+                <div class="tcar__glimpse tcar__glimpse--ph" aria-hidden="true">
+                  <span class="tcar__glimpse-img tcar__glimpse-img--ph"></span>
+                  <span class="tcar__glimpse-label tcar__glimpse-label--muted">{t("testimonials.letterPlaceholder")}</span>
+                </div>
+              )}
+            </div>
+
+            {hasLetter && (
+              <dialog id={dialogId} class="letter-dialog" aria-label={`${t("testimonials.letterPlaceholder")} — ${d.name}`}>
+                <div class="letter-dialog__inner">
+                  <button type="button" class="letter-dialog__close" data-close-dialog aria-label={t("testimonials.closeLetter")}>&times;</button>
+                  <img src={d.letterImage} alt={`Testimonial letter — ${d.name}, ${d.company}`} class="letter-dialog__img" />
+                </div>
+              </dialog>
+            )}
+          </figure>
+        );
+      })
+    }
+  </div>
+
+  <!-- Controls (hover-revealed on desktop) -->
+  <button type="button" class="tcar__arrow tcar__arrow--prev" data-carousel-prev aria-label={t("testimonials.prev")}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button type="button" class="tcar__arrow tcar__arrow--next" data-carousel-next aria-label={t("testimonials.next")}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <div class="tcar__dots" data-carousel-dots role="tablist" aria-label="Slides">
+    {items.map((_, i) => (
+      <button type="button" class="tcar__dot" data-carousel-dot={i} aria-label={`${i + 1}`}></button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .tcar {
+    position: relative;
+  }
+  .tcar__viewport {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Centre the first/last card so neighbours peek symmetrically. */
+    padding: 0.5rem max(1.25rem, calc((100% - 34rem) / 2)) 1.5rem;
+    scrollbar-width: none;
+  }
+  .tcar__viewport::-webkit-scrollbar { display: none; }
+
+  .tcar__card {
+    flex: 0 0 min(34rem, 84vw);
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    border-radius: 4px;
+    padding: 1.75rem;
+    margin: 0;
+    opacity: 0.55;
+    transition: opacity 300ms ease, border-color 300ms ease;
+  }
+  .tcar__card.is-active {
+    opacity: 1;
+    border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  }
+
+  .tcar__quote {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 0 0 1.25rem;
+  }
+  .tcar__mark {
+    color: var(--gold);
+    font-family: theme("fontFamily.display");
+    font-size: 1.4rem;
+    margin-right: 0.15rem;
+  }
+
+  .tcar__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  }
+  .tcar__photo {
+    width: 3.25rem;
+    height: 3.25rem;
+    flex: none;
+    border-radius: 4px; /* SQUARE crop, never circular */
+    object-fit: cover;
+  }
+  .tcar__photo--ph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+    color: color-mix(in srgb, var(--ink) 55%, transparent);
+    font-family: theme("fontFamily.display");
+    font-size: 1.05rem;
+  }
+  .tcar__who { display: flex; flex-direction: column; line-height: 1.3; }
+  .tcar__name { font-weight: 600; }
+  .tcar__company { font-size: 0.9rem; color: var(--muted); }
+  .tcar__field {
+    font-family: theme("fontFamily.mono");
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.62rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* Letter-glimpse: the letter fades out toward the bottom. */
+  .tcar__letter { margin-top: 1.25rem; }
+  .tcar__glimpse {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  .tcar__glimpse--ph { cursor: default; }
+  .tcar__glimpse-img {
+    display: block;
+    height: 6.5rem;
+    background-size: cover;
+    background-position: top center;
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  }
+  .tcar__glimpse-img--ph {
+    background: repeating-linear-gradient(
+      color-mix(in srgb, var(--ink) 4%, transparent) 0 0.55rem,
+      transparent 0.55rem 1.1rem
+    );
+  }
+  .tcar__glimpse-label {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+  .tcar__glimpse-label--muted { color: var(--muted); }
+  .tcar__glimpse:hover .tcar__glimpse-label { color: var(--gold); }
+
+  /* Arrows */
+  .tcar__arrow {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    width: 2.6rem;
+    height: 2.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--ink) 40%, transparent);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 200ms ease, background-color 200ms ease;
+    z-index: 3;
+  }
+  .tcar:hover .tcar__arrow { opacity: 1; }
+  .tcar__arrow:focus-visible { opacity: 1; }
+  .tcar__arrow:hover { background: var(--ivory); }
+  .tcar__arrow--prev { left: 0.25rem; }
+  .tcar__arrow--next { right: 0.25rem; }
+  @media (hover: none) {
+    .tcar__arrow { display: none; } /* touch devices swipe instead */
+  }
+
+  /* Dots */
+  .tcar__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .tcar__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    border: 0;
+    background: color-mix(in srgb, var(--ink) 20%, transparent);
+    cursor: pointer;
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+  .tcar__dot.is-active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+    const track = root.querySelector<HTMLElement>("[data-carousel-track]");
+    const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-carousel-card]"));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"));
+    if (!track || cards.length === 0) return;
+
+    let active = 0;
+    function setActive(i: number) {
+      active = i;
+      cards.forEach((c, n) => c.classList.toggle("is-active", n === i));
+      dots.forEach((d, n) => d.classList.toggle("is-active", n === i));
+    }
+    function scrollToCard(i: number) {
+      const clamped = Math.max(0, Math.min(cards.length - 1, i));
+      cards[clamped].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      setActive(clamped);
+    }
+
+    // Track which card is centered as the user swipes.
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.intersectionRatio > 0.6) {
+            setActive(cards.indexOf(e.target as HTMLElement));
+          }
+        });
+      },
+      { root: track, threshold: [0.6, 0.9] }
+    );
+    cards.forEach((c) => io.observe(c));
+
+    root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => scrollToCard(active - 1));
+    root.querySelector("[data-carousel-next]")?.addEventListener("click", () => scrollToCard(active + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => scrollToCard(i)));
+
+    setActive(0);
+
+    // Letter lightboxes.
+    root.querySelectorAll<HTMLButtonElement>("[data-open-dialog]").forEach((btn) => {
+      const id = btn.getAttribute("data-open-dialog");
+      const dialog = id ? document.getElementById(id) : null;
+      if (dialog instanceof HTMLDialogElement) {
+        btn.addEventListener("click", () => dialog.showModal());
+      }
+    });
+    root.querySelectorAll<HTMLDialogElement>("dialog.letter-dialog").forEach((dialog) => {
+      dialog.querySelector("[data-close-dialog]")?.addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (e) => {
+        if (e.target === dialog) dialog.close();
+      });
+    });
+  });
+</script>

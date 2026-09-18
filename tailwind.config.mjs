@@ -10,27 +10,33 @@ export default {
           DEFAULT: "#16233B", // primary dark — text, dark sections
           2: "#2C3A55", // secondary ink
         },
-        gold: "#B08A54", // accent only
-        ivory: "#F6F1E7", // light background
+        gold: "#B08A54", // accent only — surgical use
+        ivory: "#F7F5F1", // clean warm-white background
         paper: "#FFFFFF", // cards / contrast
         muted: "#6B7280", // secondary text
       },
 
       // --- Typography -----------------------------------------------------
-      // Devanagari faces are appended so the /hi/ locale renders cleanly
-      // using the same family names.
+      // Modern grotesque display + humanist sans body. Anek Devanagari is
+      // appended so the /hi/ locale renders cleanly using the same families.
       fontFamily: {
         display: [
-          '"Cormorant Garamond"',
-          '"Noto Serif Devanagari"',
-          "Georgia",
-          "serif",
+          '"Space Grotesk"',
+          '"Anek Devanagari Variable"',
+          "system-ui",
+          "sans-serif",
         ],
         body: [
           '"Inter"',
-          '"Noto Sans Devanagari"',
+          '"Anek Devanagari Variable"',
           "system-ui",
           "sans-serif",
+        ],
+        mono: [
+          '"Space Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
         ],
       },
 

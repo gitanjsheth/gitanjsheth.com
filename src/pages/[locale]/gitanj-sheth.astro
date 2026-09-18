@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FounderPortrait from "../../components/FounderPortrait.astro";
+import {
+  localeStaticPaths,
+  localizePath,
+  useTranslations,
+  type Locale,
+} from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = Astro.params.locale as Locale;
+const t = useTranslations(locale);
+const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
+---
+
+<BaseLayout
+  locale={locale}
+  pagePath="gitanj-sheth"
+  title={t("person.name")}
+  description={t("person.lead")}
+>
+  <!-- Header: portrait + lead -->
+  <section class="section-ink">
+    <div class="container-x grid items-center gap-10 py-16 md:grid-cols-[1.4fr_1fr] md:py-24 lg:gap-16">
+      <div>
+        <p class="eyebrow">{t("person.eyebrow")}</p>
+        <h1 class="mt-5 text-4xl md:text-6xl">{t("person.name")}</h1>
+        <p class="mt-6 max-w-2xl text-xl leading-relaxed text-ivory/85 measure">{t("person.lead")}</p>
+        <p class="mt-4 max-w-2xl text-ivory/70 measure">{t("person.combination")}</p>
+      </div>
+      <div class="mx-auto w-full max-w-xs md:max-w-sm">
+        <FounderPortrait alt={t("home.hero.portraitAlt")} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Track record -->
+  <section>
+    <div class="container-x py-16 md:py-24">
+      <p class="eyebrow">{t("person.trackRecordLabel")}</p>
+      <dl class="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          trackRecord.map((tr) => (
+            <div class="border-t border-ink/12 pt-4">
+              <dt class="font-display text-3xl leading-none">{tr.value}</dt>
+              <dd class="mt-2 text-sm text-muted">{tr.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Why + selectivity + background -->
+  <section class="border-t border-ink/10">
+    <div class="container-x grid gap-12 py-16 md:grid-cols-2 md:py-24">
+      <div class="space-y-6">
+        <p class="text-xl leading-relaxed measure">{t("person.why")}</p>
+        <p class="text-lg text-muted measure">{t("person.selectivity")}</p>
+      </div>
+      <div class="space-y-8">
+        <div>
+          <p class="eyebrow">{t("person.educationLabel")}</p>
+          <p class="mt-3">{t("person.education")}</p>
+        </div>
+        <div>
+          <p class="eyebrow">{t("person.rolesLabel")}</p>
+          <p class="mt-3">{t("person.roles")}</p>
+        </div>
+        <div>
+          <p class="eyebrow">{t("person.pedigreeLabel")}</p>
+          <p class="mt-3 text-muted">{t("person.pedigree")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-ink">
+    <div class="container-x py-16 md:py-20">
+      <h2 class="max-w-2xl text-2xl md:text-3xl">{t("ctaBand.title")}</h2>
+      <div class="mt-8">
+        <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
+          {t("person.cta")}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

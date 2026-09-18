@@ -1,9 +1,11 @@
 {
   "site": {
-    "name": "Gitanj Sheth & Co.",
-    "shortName": "Gitanj Sheth & Co.",
+    "person": "Gitanj Sheth",
+    "firm": "G A Sheth & Associates",
+    "name": "Gitanj Sheth",
+    "shortName": "Gitanj Sheth",
     "tagline": "Independent expert advisory.",
-    "description": "An independent expert advisory firm for the problem that belongs to no one — a bench spanning strategy, technology, operations and finance, pointed together at what no single specialist would own."
+    "description": "Independent expert advisory led by Gitanj Sheth — an operator and builder who brings an owner's eye to the problem that belongs to no one. For the problem, not the fee."
   },
   "gate": {
     "heading": "Choose your language",
@@ -14,11 +16,15 @@
     "hint": "You can change this any time from the header."
   },
   "nav": {
+    "about": "About",
+    "work": "Work",
+    "ourStory": "Our Story",
+    "gitanj": "Gitanj Sheth",
     "story": "Our Story",
     "services": "Services",
     "caseStudies": "Case Studies",
     "testimonials": "Testimonials",
-    "experts": "Experts",
+    "experts": "Empanelled Experts",
     "howWeEngage": "How We Engage",
     "contact": "Contact",
     "enquire": "Enquire",
@@ -35,61 +41,88 @@
       "eyebrow": "Independent Expert Advisory",
       "title": "The problem that belongs to no one.",
       "subtitle": "When a problem sits between disciplines and every specialist calls it someone else's, we are the bench built to own it.",
-      "cta": "Request an intro call"
+      "cta": "Request an intro call",
+      "portraitAlt": "Portrait of Gitanj Sheth"
     },
     "story": {
-      "label": "Our Story",
-      "title": "Built for the problem no single expert would own.",
+      "label": "The Firm",
+      "title": "A bench, not a solo act.",
       "body": [
-        "Gitanj Sheth & Co. is an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
-        "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own.",
-        "The result is judgement you can trust: unhedged, unsentimental, and accountable to your outcome rather than our billing."
+        "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
+        "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own."
       ],
-      "more": "Read more"
-    },
-    "services": {
-      "label": "What We Do",
-      "title": "Advisory, named by the symptom you feel.",
-      "intro": "Not service lines — problems. Find the one that sounds like your week.",
-      "viewAll": "View all services"
-    },
-    "featuredCase": {
-      "label": "Selected Work",
-      "viewAll": "View all case studies"
-    },
-    "testimonials": {
-      "label": "In Their Words",
-      "title": "The people we've stood behind.",
-      "viewAll": "View all testimonials"
-    },
-    "engage": {
-      "label": "How We Engage",
-      "title": "A first conversation costs you nothing.",
-      "body": "The first call is free. There is no upfront charge and no commitment to continue. If a visit is needed, only travel and stay at actuals. Scope and consideration are decided together, once value is on the table.",
       "more": "How we engage"
     },
-    "ctaBand": {
-      "title": "Tell us the problem no one will own.",
-      "subtitle": "One free call. One honest read on whether we can help.",
-      "button": "Request an intro call"
+    "experts": {
+      "label": "The Bench",
+      "title": "Senior practitioners, chosen for the problem.",
+      "viewAll": "Meet the empanelled experts"
     }
   },
-  "services": {
-    "title": "Services",
-    "intro": "Advisory named by the symptom you feel, not the discipline we happen to sit in. Find the one that sounds like your week.",
-    "detailCta": "Talk to us about this",
-    "backToAll": "All services"
+  "person": {
+    "eyebrow": "The Principal",
+    "name": "Gitanj Sheth",
+    "lead": "An operator and builder — not a career consultant. Gitanj has run and fixed real businesses rather than produced slide decks, bringing an owner's eye from inside a business family together with an engineer's and a strategist's mind.",
+    "combination": "A rare combination: engineering, management and computer science, backed by a real operating track record — not a corporate lifer.",
+    "trackRecordLabel": "Track record",
+    "trackRecord": [
+      { "value": "State Rank 1", "label": "CAT 2018 — Gujarat" },
+      { "value": "50 lakh+ sq m", "label": "GSRTC DGPS survey mapped to centimetre accuracy in 7 weeks" },
+      { "value": "22,000+ subsidies", "label": "GAIC digitisation across 5 lakh+ acres on custom, tamper-proof software" },
+      { "value": "Hundreds of models", "label": "A live quantitative ML trading platform, deployed in production" },
+      { "value": "18,000+ orders", "label": "E-commerce operations, plus a cross-border remittance backend" },
+      { "value": "Microsoft & AWS", "label": "Grants from Microsoft Founders Hub and AWS" }
+    ],
+    "educationLabel": "Education",
+    "education": "B.Tech, Nirma University · MBA, XLRI Jamshedpur · M.S., Computer Science",
+    "rolesLabel": "Also",
+    "roles": "Guest Lecturer, Nirma University (since 2021) · Mentor, IGNITE startup incubator",
+    "pedigreeLabel": "Background",
+    "pedigree": "From an established, multi-company business family; a director across several of its companies.",
+    "why": "Having solved hard problems across his own family's businesses — and for the people around him — he now brings that same outside, first-principles eye to other people's toughest problems. For the problem, not the fee.",
+    "selectivity": "A limited number of engagements, chosen for the problem worth solving. The first conversation is free.",
+    "cta": "Request an intro call",
+    "more": "More about Gitanj",
+    "backHome": "Back to home"
   },
-  "serviceCategories": {
-    "flagship": "Flagship",
-    "strategy": "Strategy & Growth",
-    "technology": "Technology & Product",
-    "operations": "Operations",
-    "finance": "Finance"
+  "solutions": {
+    "eyebrow": "What We Do",
+    "title": "Two ways we're brought in.",
+    "intro": "We don't sell service lines. Tell us the shape of the problem — the diagnosis is ours to make.",
+    "repair": {
+      "label": "Repair",
+      "body": "Something in the business is broken — it's leaking money, time, or quality, and what you've tried hasn't fixed it."
+    },
+    "boost": {
+      "label": "Boost",
+      "body": "The business runs fine, but it isn't growing the way it should — or you want growth and don't yet know how."
+    },
+    "casesLink": "See a few problems we've untangled",
+    "note": "If you already know exactly what's wrong and how to fix it, you don't need us."
+  },
+  "featuredCase": {
+    "label": "Selected Work",
+    "viewAll": "View all case studies"
+  },
+  "testimonialsHome": {
+    "label": "In Their Words",
+    "title": "The people we've stood behind.",
+    "viewAll": "View all testimonials"
+  },
+  "engageHome": {
+    "label": "How We Engage",
+    "title": "A first conversation costs you nothing.",
+    "body": "The first call is free. There is no upfront charge and no commitment to continue. If a visit is needed, only travel and stay at actuals. Scope and consideration are decided together, once value is on the table.",
+    "more": "How we engage"
+  },
+  "ctaBand": {
+    "title": "Tell us the problem no one will own.",
+    "subtitle": "One free call. One honest read on whether we can help.",
+    "button": "Request an intro call"
   },
   "caseStudies": {
     "title": "Case Studies",
-    "intro": "Selected engagements. Some clients are named; others prefer to stay confidential. The work speaks either way.",
+    "intro": "A few problems we've untangled — a deliberate spread of situations. The range is the point.",
     "confidential": "Confidential",
     "sectorLabel": "Sector",
     "problem": "The problem",
@@ -104,7 +137,9 @@
     "viewLetter": "View testimonial letter",
     "letterPlaceholder": "Testimonial letter",
     "closeLetter": "Close",
-    "fieldLabel": "Field"
+    "fieldLabel": "Field",
+    "prev": "Previous",
+    "next": "Next"
   },
   "experts": {
     "title": "Empanelled Experts",
@@ -113,7 +148,7 @@
   },
   "engage": {
     "title": "How We Engage",
-    "intro": "No price list. Just a plain account of how working with us begins and how consideration is decided.",
+    "intro": "No price list. Just a plain account of how working with G A Sheth & Associates begins and how consideration is decided.",
     "points": [
       {
         "heading": "The first call is free.",
@@ -139,6 +174,7 @@
     "detailsLabel": "Direct",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
+    "entityLabel": "Entity",
     "email": "hello@gitanjsheth.com",
     "phone": ""
   },
@@ -156,7 +192,7 @@
     "requiredNote": "Fields marked * are required."
   },
   "footer": {
-    "tagline": "Independent expert advisory.",
+    "tagline": "Independent expert advisory. For the problem, not the fee.",
     "navLabel": "Navigate",
     "contactLabel": "Contact",
     "rights": "All rights reserved."

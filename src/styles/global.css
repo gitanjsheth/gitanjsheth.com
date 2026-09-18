@@ -12,7 +12,7 @@
   --ink: #16233b;
   --ink-2: #2c3a55;
   --gold: #b08a54;
-  --ivory: #f6f1e7;
+  --ivory: #f7f5f1;
   --paper: #ffffff;
   --muted: #6b7280;
 
@@ -56,8 +56,9 @@
   h4 {
     font-family: theme("fontFamily.display");
     color: var(--ink);
-    line-height: 1.15;
-    font-weight: 500;
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.02em; /* grotesque reads tighter and more confident */
     text-wrap: balance;
   }
 
@@ -96,14 +97,29 @@
     max-width: var(--measure);
   }
 
-  /* Small all-caps eyebrow label with a leading gold hairline. */
+  /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.
+     A small gold tick precedes it for a surgical accent. */
   .eyebrow {
-    font-family: theme("fontFamily.body");
+    font-family: theme("fontFamily.mono");
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--gold);
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.4rem;
+    height: 1px;
+    background: var(--gold);
+    flex: none;
+  }
+  /* Reversed eyebrow on dark sections. */
+  .section-ink .eyebrow {
+    color: color-mix(in srgb, var(--ivory) 78%, transparent);
   }
 
   /* Thin 1px separators, never heavy boxes. */
@@ -157,14 +173,14 @@
   .btn-primary:focus-visible {
     background-color: var(--ink-2);
   }
+  /* Secondary — a SOLID tinted fill (confident chip), never a thin outline. */
   .btn-ghost {
-    background-color: transparent;
+    background-color: color-mix(in srgb, var(--ink) 8%, transparent);
     color: var(--ink);
-    border-color: color-mix(in srgb, var(--ink) 30%, transparent);
   }
   .btn-ghost:hover,
   .btn-ghost:focus-visible {
-    border-color: var(--gold);
+    background-color: color-mix(in srgb, var(--ink) 14%, transparent);
   }
   /* Reversed button for dark (ink) sections. */
   .btn-reversed {

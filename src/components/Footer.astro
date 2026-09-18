@@ -11,10 +11,10 @@ const t = useTranslations(locale);
 const year = new Date().getFullYear();
 
 const nav = [
-  { key: "services", href: localizePath(locale, "services") },
+  { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
+  { key: "experts", href: localizePath(locale, "experts") },
   { key: "caseStudies", href: localizePath(locale, "case-studies") },
   { key: "testimonials", href: localizePath(locale, "testimonials") },
-  { key: "experts", href: localizePath(locale, "experts") },
   { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
   { key: "contact", href: localizePath(locale, "contact") },
 ];
@@ -23,9 +23,14 @@ const nav = [
 <footer class="section-ink">
   <div class="container-x py-14">
     <div class="grid gap-10 md:grid-cols-3">
-      <!-- Brand -->
+      <!-- Brand / firm entity -->
       <div>
-        <Logo variant="reversed" />
+        <span class="inline-flex items-center gap-2.5">
+          <Logo variant="reversed" showText={false} />
+          <span class="font-display font-semibold text-ivory" style="font-size:1.05rem;letter-spacing:-0.01em;">
+            {t("site.firm")}
+          </span>
+        </span>
         <p class="mt-4 text-sm text-ivory/70 measure">{t("footer.tagline")}</p>
       </div>
 
@@ -56,7 +61,7 @@ const nav = [
 
     <hr class="rule rule-gold mt-12 mb-6 opacity-40" />
     <p class="text-xs text-ivory/50">
-      &copy; {year} {t("site.name")} &middot; {t("footer.rights")}
+      &copy; {year} {t("site.firm")} &middot; {t("footer.rights")}
     </p>
   </div>
 </footer>

@@ -31,7 +31,7 @@ const phone = t("contact.phone");
 
       <!-- Direct details -->
       <aside class="order-1 md:order-2">
-        <h2 class="eyebrow text-gold">{t("contact.detailsLabel")}</h2>
+        <h2 class="eyebrow">{t("contact.detailsLabel")}</h2>
         <dl class="mt-5 space-y-4 text-sm">
           <div>
             <dt class="text-muted">{t("contact.emailLabel")}</dt>
@@ -49,6 +49,10 @@ const phone = t("contact.phone");
               </div>
             )
           }
+          <div>
+            <dt class="text-muted">{t("contact.entityLabel")}</dt>
+            <dd class="mt-1">{t("site.firm")}</dd>
+          </div>
         </dl>
       </aside>
     </div>

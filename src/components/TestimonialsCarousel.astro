@@ -146,13 +146,28 @@ function initialsOf(name: string) {
     border-radius: 4px;
     padding: 1.75rem;
     margin: 0;
-    opacity: 0.5;
-    transition: opacity 300ms ease, border-color 300ms ease;
+    transition: border-color 300ms ease;
     will-change: transform;
   }
+  /* Inactive cards fade toward LIGHT (an ivory veil), not toward transparent,
+     so a peeking card reads as a clean faded card on ANY section colour —
+     the same look the experts carousel gets for free on its light section —
+     instead of letting a dark section bleed through and turn muddy. */
+  .tcar__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--ivory);
+    opacity: 0.5;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
   .tcar__card.is-active {
-    opacity: 1;
     border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  }
+  .tcar__card.is-active::after {
+    opacity: 0;
   }
 
   .tcar__quote {

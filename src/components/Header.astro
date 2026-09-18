@@ -28,7 +28,7 @@ const groups: Group[] = [
   {
     key: "about",
     items: [
-      { key: "ourStory", href: localizePath(locale, "home") + "#story" },
+      { key: "ourStory", href: localizePath(locale, "our-story") },
       { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
       { key: "experts", href: localizePath(locale, "experts") },
     ],
@@ -138,7 +138,7 @@ const singles: Item[] = [
         ))
       }
       <div class="flex items-center justify-between pt-5">
-        <LanguageSwitcher locale={locale} pagePath={pagePath} />
+        <LanguageSwitcher locale={locale} pagePath={pagePath} class="lang-switch--left" />
         <a href={localizePath(locale, "contact")} class="btn btn-primary" data-menu-link>
           {t("nav.enquire")}
         </a>

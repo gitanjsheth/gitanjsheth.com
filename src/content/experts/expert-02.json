@@ -5,6 +5,10 @@
     "en": "Builds the models and unit economics that turn messy books into decisions. Has taken fundraises through programs that reject most applicants.",
     "hi": "वे मॉडल और इकाई-अर्थशास्त्र बनाते हैं जो बिखरे बहीखातों को निर्णयों में बदल देते हैं। ऐसे कार्यक्रमों से वित्त-संग्रह कराया है जो अधिकांश आवेदकों को लौटा देते हैं।"
   },
+  "description": {
+    "en": "Builds the financial models and unit economics that turn messy books into decisions a promoter can act on. Sits between the founder and the numbers — pricing, margins, cash runway, the real cost of the next hire — and says plainly what the business can and cannot afford. Has taken fundraises through programs that reject most applicants, and is as comfortable tightening a struggling P&L as structuring a growth round.",
+    "hi": "वे वित्तीय मॉडल और इकाई-अर्थशास्त्र बनाते हैं जो बिखरे बहीखातों को ऐसे निर्णयों में बदल देते हैं जिन पर प्रवर्तक अमल कर सके। संस्थापक और आँकड़ों के बीच बैठते हैं — मूल्य-निर्धारण, मार्जिन, नकदी, अगली भर्ती की असली लागत — और साफ़ कहते हैं कि व्यवसाय क्या वहन कर सकता है और क्या नहीं। ऐसे कार्यक्रमों से वित्त-संग्रह कराया है जो अधिकांश आवेदकों को लौटा देते हैं।"
+  },
   "order": 2,
   "placeholder": true
 }

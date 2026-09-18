@@ -47,17 +47,25 @@
     "story": {
       "label": "The Firm",
       "title": "A bench, not a solo act.",
-      "body": [
-        "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
-        "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own."
-      ],
-      "more": "How we engage"
+      "teaser": "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy — for the problems that fall between the seams.",
+      "more": "Our story"
     },
     "experts": {
-      "label": "The Bench",
+      "label": "The Experts",
       "title": "Senior practitioners, chosen for the problem.",
-      "viewAll": "Meet the empanelled experts"
+      "readMore": "Read more",
+      "viewAll": "Meet our experts"
     }
+  },
+  "ourStory": {
+    "eyebrow": "Our Story",
+    "title": "A bench, not a solo act.",
+    "intro": "Independent expert advisory, built as a bench — not a solo act, and not a big-firm pyramid.",
+    "body": [
+      "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
+      "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own."
+    ],
+    "more": "How we engage"
   },
   "person": {
     "eyebrow": "The Principal",
@@ -97,7 +105,7 @@
       "label": "Boost",
       "body": "The business runs fine, but it isn't growing the way it should — or you want growth and don't yet know how."
     },
-    "casesLink": "See a few problems we've untangled",
+    "casesLink": "See some of the problems we've untangled",
     "note": "If you already know exactly what's wrong and how to fix it, you don't need us."
   },
   "featuredCase": {

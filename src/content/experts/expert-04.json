@@ -5,6 +5,10 @@
     "en": "Turns years of untouched data into models, dashboards and forecasts that tell a business what to do next — not just what already happened.",
     "hi": "वर्षों के अछूते डेटा को ऐसे मॉडल, डैशबोर्ड और पूर्वानुमानों में बदलते हैं जो व्यवसाय को बताते हैं कि आगे क्या करना है — न कि सिर्फ़ जो हो चुका।"
   },
+  "description": {
+    "en": "Turns years of untouched data sitting in spreadsheets and ERPs into models, dashboards and forecasts that tell a business what to do next — not just what already happened. Builds the one view a leadership team can run the week on, and the quiet ML underneath that flags a problem before it shows up in the P&L. Starts from the decision that needs making and works backward to the data, never the other way around.",
+    "hi": "स्प्रेडशीट और ईआरपी में पड़े वर्षों के अछूते डेटा को ऐसे मॉडल, डैशबोर्ड और पूर्वानुमानों में बदलते हैं जो व्यवसाय को बताते हैं कि आगे क्या करना है — न कि सिर्फ़ जो हो चुका। वह एक दृश्य बनाते हैं जिस पर नेतृत्व-टीम पूरा सप्ताह चला सके, और नीचे वह शांत एमएल जो किसी समस्या को लाभ-हानि में दिखने से पहले ही संकेत दे दे। हमेशा उस निर्णय से शुरू करते हैं जो लेना है, और वहाँ से पीछे डेटा तक जाते हैं।"
+  },
   "order": 4,
   "placeholder": true
 }

@@ -44,7 +44,7 @@ const t = useTranslations(locale);
 const siteName = t("site.name");
 const firmName = t("site.firm");
 const metaDescription = description ?? t("site.description");
-const fullTitle = title ? `${title} — ${siteName}` : siteName;
+const fullTitle = title && title !== siteName ? `${title} — ${siteName}` : siteName;
 
 // Absolute URLs for canonical, hreflang and OG (Astro.site = https://gitanjsheth.com).
 const site = Astro.site ?? new URL("https://gitanjsheth.com");

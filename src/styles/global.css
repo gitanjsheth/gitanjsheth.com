@@ -231,16 +231,19 @@
   }
 }
 
-/* Letter lightbox (native <dialog>) — full untranslated letter scan. */
+/* Letter lightbox (native <dialog>) — view-only full letter scan.
+   Centred with deliberate space above/below (click that space to close). */
 .letter-dialog {
   border: 0;
   padding: 0;
+  margin: auto; /* centre, leaving the max-height gap as clickable space */
   background: transparent;
-  max-width: min(92vw, 900px);
-  max-height: 92vh;
+  max-width: min(92vw, 820px);
+  max-height: 86vh;
+  overflow: visible;
 }
 .letter-dialog::backdrop {
-  background: color-mix(in srgb, var(--ink) 82%, transparent);
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
   backdrop-filter: blur(2px);
 }
 .letter-dialog__inner {
@@ -248,31 +251,50 @@
   background: var(--paper);
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--ink) 80%, transparent);
 }
 .letter-dialog__img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 92vh;
+  max-height: 86vh;
   object-fit: contain;
+  /* View-only: not selectable, draggable, or long-press-saveable, and clicks
+     pass through so the image itself can't be targeted for save/zoom. */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
 }
 .letter-dialog__close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  position: fixed; /* pinned to the viewport corner — always clearly reachable */
+  top: 1rem;
+  right: 1rem;
   z-index: 2;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 1;
   color: var(--ink);
   background: var(--ivory);
   border: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
-  border-radius: 4px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--ink) 60%, transparent);
   cursor: pointer;
+}
+.letter-dialog__close:hover {
+  background: var(--paper);
+}
+/* Discourage printing the letter to PDF/paper. */
+@media print {
+  .letter-dialog,
+  .letter-dialog::backdrop {
+    display: none !important;
+  }
 }
 
 /* Dark (ink) sections: reverse text colour and heading colour. */

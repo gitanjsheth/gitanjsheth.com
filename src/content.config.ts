@@ -77,8 +77,10 @@ const experts = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/experts" }),
   schema: z.object({
     name: z.string(),
-    domain: localized,
-    blurb: localized,
+    domain: localized, // the role / discipline
+    blurb: localized, // short line (home carousel card)
+    description: localized.optional(), // fuller bio (experts page section); falls back to blurb
+    photo: z.string().optional(), // e.g. "people/apurva-sheth.jpg" (3:2 landscape crop)
     order: z.number().default(0),
     placeholder: z.boolean().default(false),
   }),

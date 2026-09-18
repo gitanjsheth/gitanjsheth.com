@@ -44,7 +44,7 @@ const sections = [
         <a href={localizePath(locale, "case-studies")} class="link text-sm text-ivory/70">
           &larr; {t("caseStudies.backToAll")}
         </a>
-        <p class="eyebrow mt-8">
+        <p class="mt-8 font-mono text-xs uppercase tracking-caps text-ivory/60">
           {d.confidential ? t("caseStudies.confidential") : d.client}
           <span class="mx-2">·</span>
           {d.sector[locale]}
@@ -59,7 +59,7 @@ const sections = [
           {
             sections.map((s) => (
               <div class="grid gap-4 md:grid-cols-[1fr_2fr]">
-                <h2 class="eyebrow text-gold">{s.label}</h2>
+                <h2 class="font-mono text-xs uppercase tracking-caps text-gold">{s.label}</h2>
                 <p class="text-lg leading-relaxed measure">{s.body}</p>
               </div>
             ))
@@ -67,7 +67,7 @@ const sections = [
         </div>
 
         <hr class="rule mt-16" />
-        <div class="mt-10">
+        <div class="mt-10 flex justify-center">
           <a href={localizePath(locale, "contact")} class="btn btn-primary">
             {t("ctaBand.button")}
           </a>

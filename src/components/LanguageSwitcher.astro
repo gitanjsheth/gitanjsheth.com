@@ -82,6 +82,12 @@ const { locale, pagePath, class: className = "" } = Astro.props;
     transition: opacity 200ms ease, transform 200ms ease;
     z-index: 50;
   }
+  /* On narrow layouts the switcher sits at the LEFT edge, so a right-anchored
+     panel would overflow off-screen; this variant opens rightward instead. */
+  .lang-switch--left .lang-switch__dropdown {
+    right: auto;
+    left: 0;
+  }
   .lang-switch__panel {
     min-width: 9rem;
     background: var(--paper);

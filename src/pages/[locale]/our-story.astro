@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { localizePath, useTranslations, type Locale } from "../../i18n/utils";
+import { localeStaticPaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return localeStaticPaths();
+}
+
+const locale = Astro.params.locale as Locale;
+const t = useTranslations(locale);
+const body: string[] = t("ourStory.body");
+---
+
+<BaseLayout locale={locale} pagePath="our-story" title={t("ourStory.eyebrow")} description={t("ourStory.intro")}>
+  <section>
+    <div class="container-x py-14 md:py-24">
+      <h1 class="text-4xl md:text-5xl">{t("ourStory.title")}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("ourStory.intro")}</p>
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10">
+    <div class="container-x py-12 md:py-20">
+      <div class="measure space-y-6 text-lg leading-relaxed">
+        {body.map((para) => <p>{para}</p>)}
+      </div>
+      <div class="mt-10 flex justify-center">
+        <a href={localizePath(locale, "how-we-engage")} class="btn btn-ghost">
+          {t("ourStory.more")}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-ink">
+    <div class="container-x py-14 text-center md:py-20">
+      <h2 class="mx-auto max-w-2xl text-2xl md:text-3xl">{t("ctaBand.title")}</h2>
+      <div class="mt-8 flex justify-center">
+        <a href={localizePath(locale, "contact")} class="btn btn-reversed">
+          {t("ctaBand.button")}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -5,6 +5,10 @@
     "en": "Two decades building and rescuing production systems across fintech and marketplaces. Reviews every build for what will still stand in five years.",
     "hi": "फिनटेक और मार्केटप्लेस में उत्पादन-व्यवस्थाओं के निर्माण और बचाव में दो दशक। हर निर्माण की समीक्षा इस दृष्टि से कि पाँच साल बाद क्या टिकेगा।"
   },
+  "description": {
+    "en": "Two decades spent building — and rescuing — production systems across fintech and marketplaces, from first commit to platforms carrying millions in daily volume. Comes in on stalled or fragile builds, separates what is worth keeping from what has to be rewritten, and leaves behind an architecture the in-house team can actually maintain. Reviews every design for what will still stand in five years, not just what ships this quarter.",
+    "hi": "फिनटेक और मार्केटप्लेस में उत्पादन-व्यवस्थाओं के निर्माण और बचाव में दो दशक — पहले कमिट से लेकर रोज़ाना करोड़ों का लेन-देन सँभालने वाले प्लेटफ़ॉर्म तक। रुके हुए या कमज़ोर निर्माणों पर आते हैं, तय करते हैं कि क्या रखने योग्य है और क्या दोबारा लिखना होगा, और पीछे ऐसी आर्किटेक्चर छोड़ते हैं जिसे भीतरी टीम वाकई सँभाल सके। हर डिज़ाइन की समीक्षा इस दृष्टि से कि पाँच साल बाद क्या टिकेगा।"
+  },
   "order": 1,
   "placeholder": true
 }

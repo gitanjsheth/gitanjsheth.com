@@ -77,21 +77,21 @@ function initialsOf(name: string) {
               {hasLetter ? (
                 <button type="button" class="tcar__glimpse" data-open-dialog={dialogId} aria-label={t("testimonials.viewLetter")}>
                   <span class="tcar__glimpse-img" style={`background-image:url('${d.letterThumb ?? d.letterImage}')`}></span>
-                  <span class="tcar__glimpse-label">{t("testimonials.viewLetter")} &rarr;</span>
+                  <span class="tcar__glimpse-label">{t("testimonials.viewLetter")}</span>
                 </button>
               ) : (
                 <div class="tcar__glimpse tcar__glimpse--ph" aria-hidden="true">
                   <span class="tcar__glimpse-img tcar__glimpse-img--ph"></span>
-                  <span class="tcar__glimpse-label tcar__glimpse-label--muted">{t("testimonials.letterPlaceholder")}</span>
+                  <span class="tcar__glimpse-label tcar__glimpse-label--muted">{t("testimonials.viewLetter")}</span>
                 </div>
               )}
             </div>
 
             {hasLetter && (
-              <dialog id={dialogId} class="letter-dialog" aria-label={`${t("testimonials.letterPlaceholder")} — ${d.name}`}>
+              <dialog id={dialogId} class="letter-dialog" data-letter-dialog aria-label={`${t("testimonials.letterPlaceholder")} — ${d.name}`}>
+                <button type="button" class="letter-dialog__close" data-close-dialog aria-label={t("testimonials.closeLetter")}>&times;</button>
                 <div class="letter-dialog__inner">
-                  <button type="button" class="letter-dialog__close" data-close-dialog aria-label={t("testimonials.closeLetter")}>&times;</button>
-                  <img src={d.letterImage} alt={`Testimonial letter — ${d.name}, ${d.company}`} class="letter-dialog__img" />
+                  <img src={d.letterImage} alt={`Testimonial letter — ${d.name}, ${d.company}`} class="letter-dialog__img" draggable="false" />
                 </div>
               </dialog>
             )}
@@ -141,6 +141,7 @@ function initialsOf(name: string) {
     display: flex;
     flex-direction: column;
     background: var(--paper);
+    color: var(--ink); /* explicit, so card text never inherits a dark section's ivory */
     border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
     border-radius: 4px;
     padding: 1.75rem;
@@ -207,7 +208,7 @@ function initialsOf(name: string) {
     position: relative;
     display: block;
     width: 100%;
-    text-align: left;
+    text-align: center;
     background: none;
     border: 0;
     padding: 0;
@@ -387,9 +388,15 @@ function initialsOf(name: string) {
     });
     root.querySelectorAll<HTMLDialogElement>("dialog.letter-dialog").forEach((dialog) => {
       dialog.querySelector("[data-close-dialog]")?.addEventListener("click", () => dialog.close());
+      // Click on the empty space above/below the letter (the dialog/backdrop) closes.
       dialog.addEventListener("click", (e) => {
         if (e.target === dialog) dialog.close();
       });
+      // View-only: block the right-click / long-press context menu so the letter
+      // can't be saved, and swallow drag attempts. (Zoom/print are further
+      // discouraged via CSS; nothing can be fully prevented in a browser.)
+      dialog.addEventListener("contextmenu", (e) => e.preventDefault());
+      dialog.addEventListener("dragstart", (e) => e.preventDefault());
     });
 
     // --- Init synchronously so the first paint is already centred (no flicker).

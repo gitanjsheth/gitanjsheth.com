@@ -48,14 +48,17 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   <!-- 2. THE PRINCIPAL (blue) — Gitanj, shown with his name. -->
   <section id="person" class="scroll-mt-24 section-ink">
     <div class="container-x py-14 md:py-28">
-      <div class="grid items-center gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
-        <div class="mx-auto w-full max-w-xs sm:max-w-sm">
-          <FounderPortrait alt={t("home.hero.portraitAlt")} />
-        </div>
-        <div>
+      <!-- Mobile: portrait first (face-first hook). Desktop: text left,
+           portrait right, so the "Gitanj Sheth" heading lines up with every
+           other left-aligned section heading. -->
+      <div class="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-14">
+        <div class="order-2 md:order-1">
           <h2 class="text-3xl md:text-5xl">{t("person.name")}</h2>
           <p class="mt-6 text-xl leading-relaxed measure">{t("person.lead")}</p>
           <p class="mt-4 measure text-ivory/70">{t("person.combination")}</p>
+        </div>
+        <div class="order-1 mx-auto w-full max-w-xs sm:max-w-sm md:order-2">
+          <FounderPortrait alt={t("home.hero.portraitAlt")} />
         </div>
       </div>
 

@@ -1,10 +1,14 @@
 ---
 /**
  * Editorial portrait of Gitanj. Uses the real photo when it exists at
- * `src/assets/people/gitanj.png` (any common extension); otherwise renders a
- * clean labelled placeholder so layouts look intentional until it's supplied.
+ * `src/assets/people/gitanj.{png,jpg,...}`; otherwise a labelled placeholder.
+ *
+ * IMPORTANT: we deliberately do NOT use <Image>/astro:assets here. That
+ * pipeline re-encodes to WebP and downscales/compresses, which flattens the
+ * look and discards transparency. Instead we import the asset and render it as
+ * a plain <img> using its `.src` — Astro then just fingerprints and copies the
+ * ORIGINAL file byte-for-byte (transparency + full resolution intact).
  */
-import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Props {
@@ -14,16 +18,24 @@ interface Props {
 const { alt, class: className = "" } = Astro.props;
 
 const candidates = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/people/gitanj.{jpg,jpeg,png,JPG,JPEG,PNG}",
+  "/src/assets/people/gitanj.{png,jpg,jpeg,webp,avif,PNG,JPG,JPEG,WEBP,AVIF}",
   { eager: true }
 );
 const found = Object.values(candidates)[0]?.default;
 ---
 
-<div class={`founder-portrait ${className}`}>
+<div class={`founder-portrait ${found ? "" : "founder-portrait--empty"} ${className}`}>
   {
     found ? (
-      <Image src={found} alt={alt} width={720} height={900} class="founder-portrait__img" />
+      <img
+        src={found.src}
+        alt={alt}
+        width={found.width}
+        height={found.height}
+        loading="eager"
+        decoding="async"
+        class="founder-portrait__img"
+      />
     ) : (
       <div class="founder-portrait__placeholder" role="img" aria-label={alt}>
         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
@@ -31,7 +43,7 @@ const found = Object.values(candidates)[0]?.default;
           <path d="M4.5 19.5a7.5 7.5 0 0115 0" stroke-linecap="round" />
         </svg>
         <span class="founder-portrait__label">Portrait — Gitanj Sheth</span>
-        <span class="founder-portrait__hint">src/assets/people/gitanj.jpg</span>
+        <span class="founder-portrait__hint">src/assets/people/gitanj.png</span>
       </div>
     )
   }
@@ -42,6 +54,10 @@ const found = Object.values(candidates)[0]?.default;
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 5;
+  }
+  /* Only the empty state gets a framed panel; a real (often transparent)
+     portrait is shown as a clean cut-out with no background behind it. */
+  .founder-portrait--empty {
     border-radius: 4px;
     overflow: hidden;
     background: color-mix(in srgb, var(--ink) 6%, var(--paper));
@@ -49,7 +65,8 @@ const found = Object.values(candidates)[0]?.default;
   .founder-portrait__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* never crop the figure */
+    object-position: center bottom;
     display: block;
   }
   .founder-portrait__placeholder {

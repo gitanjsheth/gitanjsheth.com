@@ -1,9 +1,15 @@
 ---
 /**
- * Peeking, swipeable testimonials carousel.
- *  - One center card in focus; previous/next peek at the edges.
- *  - Narrows responsively until only the center card shows on phones.
- *  - Touch swipe (native scroll-snap) + hover-revealed arrow controls + dots.
+ * Infinite, swipeable, peeking testimonials carousel.
+ *
+ * Approach (deliberately simple + robust):
+ *  - Cards are absolutely positioned and placed around the centre using modulo
+ *    maths, so there are NO clones and NO native scrolling to fight.
+ *  - One continuous `pos` chases an unbounded integer `target`. Arrows just do
+ *    `target += ±1`, so any click rate (10/s+) stays smooth and never gets
+ *    stuck at an end. It centres instantly on load, so there's no flicker.
+ *  - Touch/pointer drag is handled directly; the nearest card snaps on release.
+ *
  * Each card, top → bottom: pulled quote · square photo + name/company/field ·
  * a faded letter-glimpse with a "View testimonial letter" button → lightbox.
  */
@@ -39,7 +45,7 @@ function initialsOf(name: string) {
 ---
 
 <div class="tcar" data-carousel>
-  <div class="tcar__viewport" data-carousel-track role="group" aria-roledescription="carousel">
+  <div class="tcar__stage" data-carousel-track role="group" aria-roledescription="carousel">
     {
       items.map((x, i) => {
         const d = x.data;
@@ -108,22 +114,30 @@ function initialsOf(name: string) {
   .tcar {
     position: relative;
   }
-  .tcar__viewport {
-    position: relative; /* make cards' offsetParent the track (coord math) */
-    display: flex;
-    gap: 1.25rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    /* No CSS smooth-scroll: the seamless infinite wrap sets scrollLeft directly. */
-    /* Centre the first/last card so neighbours peek symmetrically. */
-    padding: 0.5rem max(1.25rem, calc((100% - 34rem) / 2)) 1.5rem;
-    scrollbar-width: none;
+
+  /* Stage: a fixed-height clipping window; cards are absolutely placed inside. */
+  .tcar__stage {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y; /* vertical page scroll passes through; we own horizontal */
+    opacity: 0;
+    transition: opacity 0.25s ease;
   }
-  .tcar__viewport::-webkit-scrollbar { display: none; }
+  .tcar__stage.is-ready {
+    opacity: 1;
+  }
+  .tcar__stage.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
 
   .tcar__card {
-    flex: 0 0 min(34rem, 84vw);
-    scroll-snap-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(34rem, 84vw);
+    /* transform is set per-frame by JS: translateX(calc(-50% + Npx)) */
     display: flex;
     flex-direction: column;
     background: var(--paper);
@@ -131,8 +145,9 @@ function initialsOf(name: string) {
     border-radius: 4px;
     padding: 1.75rem;
     margin: 0;
-    opacity: 0.55;
+    opacity: 0.5;
     transition: opacity 300ms ease, border-color 300ms ease;
+    will-change: transform;
   }
   .tcar__card.is-active {
     opacity: 1;
@@ -228,7 +243,7 @@ function initialsOf(name: string) {
   /* Arrows */
   .tcar__arrow {
     position: absolute;
-    top: 42%;
+    top: 50%;
     transform: translateY(-50%);
     width: 2.6rem;
     height: 2.6rem;
@@ -243,13 +258,13 @@ function initialsOf(name: string) {
     cursor: pointer;
     opacity: 0;
     transition: opacity 200ms ease, background-color 200ms ease;
-    z-index: 3;
+    z-index: 20;
   }
   .tcar:hover .tcar__arrow { opacity: 1; }
   .tcar__arrow:focus-visible { opacity: 1; }
   .tcar__arrow:hover { background: var(--ivory); }
-  .tcar__arrow--prev { left: 0.25rem; }
-  .tcar__arrow--next { right: 0.25rem; }
+  .tcar__arrow--prev { left: 0.5rem; }
+  .tcar__arrow--next { right: 0.5rem; }
   @media (hover: none) {
     .tcar__arrow { display: none; } /* touch devices swipe instead */
   }
@@ -257,136 +272,142 @@ function initialsOf(name: string) {
 
 <script>
   document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
-    const track = root.querySelector<HTMLElement>("[data-carousel-track]");
-    const originals = Array.from(root.querySelectorAll<HTMLElement>("[data-carousel-card]"));
-    if (!track || originals.length === 0) return;
-    const n = originals.length;
-    const loop = n > 1;
+    const stage = root.querySelector<HTMLElement>("[data-carousel-track]");
+    const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-carousel-card]"));
+    const N = cards.length;
+    if (!stage || N === 0) return;
 
-    // --- Build a seamless infinite loop by cloning the whole set on both
-    //     sides. Clones drop their <dialog> to avoid duplicate element ids. ---
-    function stripClone(card: HTMLElement) {
-      const c = card.cloneNode(true) as HTMLElement;
-      c.setAttribute("data-clone", "");
-      c.querySelectorAll("dialog").forEach((d) => d.remove());
-      return c;
-    }
-
-    let allCards = originals;
-    if (loop) {
-      const beforeFrag = document.createDocumentFragment();
-      const afterFrag = document.createDocumentFragment();
-      originals.forEach((c) => afterFrag.appendChild(stripClone(c)));
-      originals.forEach((c) => beforeFrag.appendChild(stripClone(c)));
-      track.appendChild(afterFrag);
-      track.insertBefore(beforeFrag, originals[0]);
-      allCards = Array.from(track.querySelectorAll<HTMLElement>("[data-carousel-card]"));
-    }
-
-    let oneCopyWidth = 0;
-    const measure = () => {
-      if (loop) oneCopyWidth = allCards[n].offsetLeft - allCards[0].offsetLeft;
-    };
-
-    // Geometry helpers, all in the track's own content coordinates.
-    const viewportCenter = () => track.scrollLeft + track.clientWidth / 2;
-    const cardCenter = (c: HTMLElement) => c.offsetLeft + c.offsetWidth / 2;
-
-    // The card whose centre is closest to the viewport centre = the focused one.
-    function nearestIndex() {
-      const vc = viewportCenter();
-      let best = 0;
-      let bestDist = Infinity;
-      for (let i = 0; i < allCards.length; i++) {
-        const d = Math.abs(cardCenter(allCards[i]) - vc);
-        if (d < bestDist) {
-          bestDist = d;
-          best = i;
-        }
-      }
-      return best;
-    }
-    const setActive = (i: number) =>
-      allCards.forEach((c, k) => c.classList.toggle("is-active", k === i));
-
-    // True while an arrow-initiated smooth scroll is in flight, so `settle`
-    // trusts the arrow's target index instead of a mid-animation position.
-    let animating = false;
-    function centerTo(i: number, smooth: boolean) {
-      const c = allCards[i];
-      if (smooth) animating = true;
-      track.scrollTo({
-        left: cardCenter(c) - track.clientWidth / 2,
-        behavior: smooth ? "smooth" : "auto",
-      });
-    }
-
-    // The index we're logically parked on (in allCards coords). Arrows advance
-    // from THIS, not from a mid-flight scroll position, so every click counts.
-    let current = loop ? n : 0;
-
-    // Once scrolling has settled: for a user SWIPE, adopt whatever is centred;
-    // for an ARROW, keep its intended target. Then re-park inside the MIDDLE
-    // copy — a jump of exactly one identical copy wide, so it's invisible.
-    function settle() {
-      if (!animating) current = nearestIndex();
-      animating = false;
-      if (loop) {
-        if (current < n) {
-          current += n;
-          track.scrollLeft += oneCopyWidth;
-        } else if (current >= 2 * n) {
-          current -= n;
-          track.scrollLeft -= oneCopyWidth;
-        }
-      }
-      setActive(current);
-    }
-
+    const GAP = 20; // px, visual gap between cards
+    let step = 0; // card width + gap
+    let pos = 0; // continuous position; the card equal to `pos` is centred
+    let target = 0; // desired integer position (unbounded — rapid clicks are fine)
     let raf = 0;
-    let idle: ReturnType<typeof setTimeout>;
-    track.addEventListener("scroll", () => {
-      if (!raf) {
-        raf = requestAnimationFrame(() => {
-          setActive(nearestIndex());
-          raf = 0;
-        });
-      }
-      clearTimeout(idle);
-      idle = setTimeout(settle, 120);
-    });
 
-    function step(dir: number) {
-      current += dir;
-      centerTo(current, true);
-      setActive(current);
+    const mod = (a: number, m: number) => ((a % m) + m) % m;
+
+    function measure() {
+      step = cards[0].getBoundingClientRect().width + GAP;
+      // Equalise heights so the stage never jumps between cards.
+      let maxH = 0;
+      cards.forEach((c) => (c.style.height = "auto"));
+      cards.forEach((c) => (maxH = Math.max(maxH, c.getBoundingClientRect().height)));
+      cards.forEach((c) => (c.style.height = `${maxH}px`));
+      stage.style.height = `${maxH}px`;
     }
-    root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => step(-1));
-    root.querySelector("[data-carousel-next]")?.addEventListener("click", () => step(1));
 
-    // Init: centre the first testimonial, so the LAST one peeks on its left.
-    requestAnimationFrame(() => {
-      measure();
-      current = loop ? n : 0;
-      centerTo(current, false);
-      setActive(current);
-    });
-    window.addEventListener("resize", () => {
-      measure();
-      centerTo(current, false);
-    });
+    function render() {
+      for (let i = 0; i < N; i++) {
+        // Nearest signed distance from centre, wrapped into (-N/2, N/2].
+        let d = mod(i - pos, N);
+        if (d > N / 2) d -= N;
+        const card = cards[i];
+        card.style.transform = `translateX(calc(-50% + ${d * step}px))`;
+        const ad = Math.abs(d);
+        card.classList.toggle("is-active", ad < 0.5);
+        card.style.zIndex = String(N - Math.round(ad));
+        // The single opposite-most card is off-stage; hide it from paint + tab order.
+        card.style.visibility = ad > N / 2 - 0.001 ? "hidden" : "visible";
+      }
+    }
 
-    // Letter lightboxes (originals keep their dialogs; clones had them removed).
+    function tick() {
+      const diff = target - pos;
+      if (Math.abs(diff) < 0.001) {
+        // Settled — fold the counters back into [0, N) so numbers stay small.
+        pos = target = mod(target, N);
+        render();
+        raf = 0;
+        return;
+      }
+      pos += diff * 0.2; // smooth exponential approach; robust at any click rate
+      render();
+      raf = requestAnimationFrame(tick);
+    }
+    const animate = () => {
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    const go = (dir: number) => {
+      target += dir;
+      animate();
+    };
+    root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => go(-1));
+    root.querySelector("[data-carousel-next]")?.addEventListener("click", () => go(1));
+
+    // --- Pointer / touch drag ------------------------------------------------
+    let dragging = false;
+    let moved = false;
+    let startX = 0;
+    let startPos = 0;
+    let pid = -1;
+    stage.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startPos = pos;
+      pid = e.pointerId;
+      if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    });
+    stage.addEventListener("pointermove", (e) => {
+      if (!dragging || !step) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 6) {
+        moved = true;
+        stage.setPointerCapture(pid);
+        stage.classList.add("is-dragging");
+      }
+      if (moved) {
+        pos = startPos - dx / step;
+        render();
+      }
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove("is-dragging");
+      if (moved) {
+        target = Math.round(pos);
+        animate();
+      }
+    };
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
+
+    // --- Letter lightboxes (suppressed if the press was a drag) --------------
     root.querySelectorAll<HTMLButtonElement>("[data-open-dialog]").forEach((btn) => {
       const id = btn.getAttribute("data-open-dialog");
       const dialog = id ? document.getElementById(id) : null;
-      if (dialog instanceof HTMLDialogElement) btn.addEventListener("click", () => dialog.showModal());
+      if (dialog instanceof HTMLDialogElement) {
+        btn.addEventListener("click", () => {
+          if (!moved) dialog.showModal();
+        });
+      }
     });
     root.querySelectorAll<HTMLDialogElement>("dialog.letter-dialog").forEach((dialog) => {
       dialog.querySelector("[data-close-dialog]")?.addEventListener("click", () => dialog.close());
       dialog.addEventListener("click", (e) => {
         if (e.target === dialog) dialog.close();
       });
+    });
+
+    // --- Init synchronously so the first paint is already centred (no flicker).
+    measure();
+    render();
+    stage.classList.add("is-ready");
+    // Fonts/images can change heights after load; re-measure then.
+    window.addEventListener("load", () => {
+      measure();
+      render();
+    });
+    let rt: ReturnType<typeof setTimeout>;
+    window.addEventListener("resize", () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        measure();
+        render();
+      }, 100);
     });
   });
 </script>

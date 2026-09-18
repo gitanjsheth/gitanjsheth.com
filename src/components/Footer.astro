@@ -1,7 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 import { localizePath, useTranslations, type Locale } from "../i18n/utils";
-import { CONTACT_EMAIL } from "../config";
 
 interface Props {
   locale: Locale;
@@ -22,7 +21,7 @@ const nav = [
 
 <footer class="section-ink">
   <div class="container-x py-14">
-    <div class="grid gap-10 md:grid-cols-3">
+    <div class="grid gap-10 md:grid-cols-2">
       <!-- Brand / firm entity -->
       <div>
         <span class="inline-flex items-center gap-2.5">
@@ -49,14 +48,6 @@ const nav = [
           }
         </ul>
       </nav>
-
-      <!-- Contact -->
-      <div>
-        <h2 class="eyebrow mb-4">{t("footer.contactLabel")}</h2>
-        <a href={`mailto:${CONTACT_EMAIL}`} class="text-sm text-ivory/80 hover:text-ivory transition-colors duration-250">
-          {CONTACT_EMAIL}
-        </a>
-      </div>
     </div>
 
     <hr class="rule rule-gold mt-12 mb-6 opacity-40" />

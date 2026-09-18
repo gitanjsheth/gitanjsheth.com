@@ -10,7 +10,9 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
-const phone = t("contact.phone");
+const website = t("contact.website");
+const websiteUrl = t("contact.websiteUrl");
+const address = t("contact.address");
 ---
 
 <BaseLayout locale={locale} pagePath="contact" title={t("contact.title")} description={t("contact.intro")}>
@@ -18,43 +20,28 @@ const phone = t("contact.phone");
     <div class="container-x py-16 md:py-24">
       <p class="eyebrow">{t("nav.contact")}</p>
       <h1 class="mt-4 text-4xl md:text-5xl">{t("contact.title")}</h1>
-      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("contact.intro")}</p>
-    </div>
-  </section>
+      <p class="mt-5 max-w-2xl whitespace-pre-line text-lg text-muted measure">{t("contact.intro")}</p>
 
-  <section class="border-t border-ink/10">
-    <div class="container-x grid gap-12 py-14 md:grid-cols-[2fr_1fr] md:py-20">
-      <!-- Enquiry form -->
-      <div id="enquire" class="scroll-mt-24 order-2 md:order-1">
-        <EnquiryForm locale={locale} />
-      </div>
+      <div class="mt-10 grid gap-12 md:mt-12 md:grid-cols-[2fr_1fr]">
+        <!-- Enquiry form (first on mobile) -->
+        <div id="enquire" class="scroll-mt-24">
+          <EnquiryForm locale={locale} />
+        </div>
 
-      <!-- Direct details -->
-      <aside class="order-1 md:order-2">
-        <h2 class="eyebrow">{t("contact.detailsLabel")}</h2>
-        <dl class="mt-5 space-y-4 text-sm">
-          <div>
-            <dt class="text-muted">{t("contact.emailLabel")}</dt>
-            <dd class="mt-1">
+        <!-- Direct details (after the form on mobile) -->
+        <aside>
+          <h2 class="eyebrow">{t("contact.detailsLabel")}</h2>
+          <div class="mt-5 space-y-3 text-sm">
+            <p>
               <a href={`mailto:${CONTACT_EMAIL}`} class="link">{CONTACT_EMAIL}</a>
-            </dd>
+            </p>
+            <p>
+              <a href={websiteUrl} class="link">{website}</a>
+            </p>
+            <p class="text-muted measure">{address}</p>
           </div>
-          {
-            phone && (
-              <div>
-                <dt class="text-muted">{t("contact.phoneLabel")}</dt>
-                <dd class="mt-1">
-                  <a href={`tel:${phone}`} class="link">{phone}</a>
-                </dd>
-              </div>
-            )
-          }
-          <div>
-            <dt class="text-muted">{t("contact.entityLabel")}</dt>
-            <dd class="mt-1">{t("site.firm")}</dd>
-          </div>
-        </dl>
-      </aside>
+        </aside>
+      </div>
     </div>
   </section>
 </BaseLayout>

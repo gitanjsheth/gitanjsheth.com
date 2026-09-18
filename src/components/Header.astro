@@ -50,7 +50,7 @@ const singles: Item[] = [
 
 <header class="sticky top-0 z-40 border-b border-ink/10 bg-ivory/90 backdrop-blur" data-header>
   <div class="container-x flex items-center justify-between gap-8 py-4">
-    <a href={localizePath(locale, "home")} class="shrink-0" aria-label={t("site.person")}>
+    <a href={localizePath(locale, "home")} class="shrink-0" aria-label={t("site.firm")}>
       <Logo variant="ink" />
     </a>
 
@@ -94,7 +94,7 @@ const singles: Item[] = [
 
     <div class="hidden lg:flex items-center gap-5">
       <LanguageSwitcher locale={locale} pagePath={pagePath} />
-      <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-primary">
+      <a href={localizePath(locale, "contact")} class="btn btn-primary">
         {t("nav.enquire")}
       </a>
     </div>
@@ -120,14 +120,14 @@ const singles: Item[] = [
     <nav class="container-x flex flex-col py-4" aria-label="Mobile">
       {
         groups.map((group) => (
-          <div class="py-2">
-            <p class="eyebrow py-2">{t(`nav.${group.key}`)}</p>
+          <>
+            <p class="py-3 border-b border-ink/5 text-base">{t(`nav.${group.key}`)}</p>
             {group.items.map((item) => (
-              <a href={item.href} class="block py-2.5 pl-6 text-base border-b border-ink/5" data-menu-link>
+              <a href={item.href} class="block py-2.5 pl-5 text-base text-muted border-b border-ink/5" data-menu-link>
                 {t(`nav.${item.key}`)}
               </a>
             ))}
-          </div>
+          </>
         ))
       }
       {
@@ -139,7 +139,7 @@ const singles: Item[] = [
       }
       <div class="flex items-center justify-between pt-5">
         <LanguageSwitcher locale={locale} pagePath={pagePath} />
-        <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-primary" data-menu-link>
+        <a href={localizePath(locale, "contact")} class="btn btn-primary" data-menu-link>
           {t("nav.enquire")}
         </a>
       </div>

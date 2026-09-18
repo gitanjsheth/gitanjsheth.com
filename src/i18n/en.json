@@ -27,7 +27,7 @@
     "experts": "Empanelled Experts",
     "howWeEngage": "How We Engage",
     "contact": "Contact",
-    "enquire": "Enquire",
+    "enquire": "Get in touch",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
@@ -170,22 +170,25 @@
   },
   "contact": {
     "title": "Contact",
-    "intro": "Tell us the problem in a few lines. If it's the kind of thing that belongs to no one, it's ours.",
+    "intro": "Tell us the problem in a few lines.\nIf it's the kind of thing that belongs to no one, it's ours.",
     "detailsLabel": "Direct",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "entityLabel": "Entity",
     "email": "hello@gitanjsheth.com",
-    "phone": ""
+    "phone": "",
+    "website": "gitanjsheth.com",
+    "websiteUrl": "https://gitanjsheth.com",
+    "address": "B 302, Shapath Hexa, Sola, SG Highway, Ahmedabad, Gujarat. 380060"
   },
   "form": {
     "name": "Name",
     "company": "Company",
     "email": "Email",
     "phone": "Phone",
-    "message": "What's the problem / hunch?",
+    "message": "What's the problem / matter?",
     "messagePlaceholder": "A few lines on what's going wrong, or the hunch you can't shake.",
-    "submit": "Send enquiry",
+    "submit": "Submit",
     "sending": "Sending…",
     "success": "Thank you — your message is on its way. We'll be in touch shortly.",
     "error": "Something went wrong. Please email us directly at hello@gitanjsheth.com.",

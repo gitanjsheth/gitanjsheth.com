@@ -28,7 +28,7 @@
     "experts": "सूचीबद्ध विशेषज्ञ",
     "howWeEngage": "हम कैसे काम करते हैं",
     "contact": "संपर्क",
-    "enquire": "पूछताछ",
+    "enquire": "संपर्क करें",
     "openMenu": "मेन्यू खोलें",
     "closeMenu": "मेन्यू बंद करें"
   },
@@ -171,22 +171,25 @@
   },
   "contact": {
     "title": "संपर्क",
-    "intro": "कुछ पंक्तियों में समस्या बताइए। यदि यह उस तरह की बात है जो किसी की नहीं, तो वह हमारी है।",
+    "intro": "कुछ पंक्तियों में समस्या बताइए।\nयदि यह उस तरह की बात है जो किसी की नहीं, तो वह हमारी है।",
     "detailsLabel": "सीधे",
     "emailLabel": "ईमेल",
     "phoneLabel": "फ़ोन",
     "entityLabel": "संस्था",
     "email": "hello@gitanjsheth.com",
-    "phone": ""
+    "phone": "",
+    "website": "gitanjsheth.com",
+    "websiteUrl": "https://gitanjsheth.com",
+    "address": "B 302, Shapath Hexa, Sola, SG Highway, Ahmedabad, Gujarat. 380060"
   },
   "form": {
     "name": "नाम",
     "company": "कंपनी",
     "email": "ईमेल",
     "phone": "फ़ोन",
-    "message": "समस्या / अंदेशा क्या है?",
+    "message": "समस्या / मामला क्या है?",
     "messagePlaceholder": "कुछ पंक्तियों में कि क्या गड़बड़ है, या वह अंदेशा जो पीछा नहीं छोड़ता।",
-    "submit": "पूछताछ भेजें",
+    "submit": "सबमिट करें",
     "sending": "भेजा जा रहा है…",
     "success": "धन्यवाद — आपका संदेश भेज दिया गया है। हम शीघ्र ही संपर्क करेंगे।",
     "error": "कुछ गड़बड़ हो गई। कृपया हमें सीधे hello@gitanjsheth.com पर ईमेल करें।",

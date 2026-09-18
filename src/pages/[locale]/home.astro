@@ -45,7 +45,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         </h1>
         <p class="mt-6 max-w-xl text-lg text-ivory/80 measure">{t("home.hero.subtitle")}</p>
         <div class="mt-9">
-          <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
+          <a href={localizePath(locale, "contact")} class="btn btn-reversed">
             {t("home.hero.cta")}
           </a>
         </div>
@@ -140,11 +140,10 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         }
       </div>
 
-      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <div class="mt-10">
         <a href={localizePath(locale, "case-studies")} class="link text-base">
           {t("solutions.casesLink")} &rarr;
         </a>
-        <p class="text-sm text-muted">{t("solutions.note")}</p>
       </div>
     </div>
   </section>
@@ -243,7 +242,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
       <h2 class="max-w-3xl text-3xl md:text-4xl">{t("ctaBand.title")}</h2>
       <p class="mt-4 max-w-xl text-ivory/80">{t("ctaBand.subtitle")}</p>
       <div class="mt-8">
-        <a href={localizePath(locale, "contact") + "#enquire"} class="btn btn-reversed">
+        <a href={localizePath(locale, "contact")} class="btn btn-reversed">
           {t("ctaBand.button")}
         </a>
       </div>

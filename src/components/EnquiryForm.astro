@@ -27,16 +27,16 @@ const t = useTranslations(locale);
       <input type="text" name="name" required autocomplete="name" class="field" />
     </label>
     <label class="block">
-      <span class="mb-1.5 block text-sm font-medium">{t("form.company")}</span>
-      <input type="text" name="company" autocomplete="organization" class="field" />
+      <span class="mb-1.5 block text-sm font-medium">{t("form.company")} *</span>
+      <input type="text" name="company" required autocomplete="organization" class="field" />
     </label>
     <label class="block">
       <span class="mb-1.5 block text-sm font-medium">{t("form.email")} *</span>
       <input type="email" name="email" required autocomplete="email" class="field" />
     </label>
     <label class="block">
-      <span class="mb-1.5 block text-sm font-medium">{t("form.phone")}</span>
-      <input type="tel" name="phone" autocomplete="tel" class="field" />
+      <span class="mb-1.5 block text-sm font-medium">{t("form.phone")} *</span>
+      <input type="tel" name="phone" required autocomplete="tel" class="field" />
     </label>
   </div>
 

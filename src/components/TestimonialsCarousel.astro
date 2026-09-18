@@ -109,6 +109,7 @@ function initialsOf(name: string) {
     position: relative;
   }
   .tcar__viewport {
+    position: relative; /* make cards' offsetParent the track (coord math) */
     display: flex;
     gap: 1.25rem;
     overflow-x: auto;
@@ -286,49 +287,79 @@ function initialsOf(name: string) {
     const measure = () => {
       if (loop) oneCopyWidth = allCards[n].offsetLeft - allCards[0].offsetLeft;
     };
-    const centerOf = (card: HTMLElement) =>
-      card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
-    const setActive = (card: HTMLElement) =>
-      allCards.forEach((c) => c.classList.toggle("is-active", c === card));
 
-    // Centre a given ORIGINAL index (rendered in the middle copy when looping).
-    function goTo(originalIndex: number, smooth: boolean) {
-      const idx = loop
-        ? n + (((originalIndex % n) + n) % n)
-        : Math.max(0, Math.min(n - 1, originalIndex));
-      const card = allCards[idx];
-      track.scrollTo({ left: centerOf(card), behavior: smooth ? "smooth" : "auto" });
-      setActive(card);
+    // Geometry helpers, all in the track's own content coordinates.
+    const viewportCenter = () => track.scrollLeft + track.clientWidth / 2;
+    const cardCenter = (c: HTMLElement) => c.offsetLeft + c.offsetWidth / 2;
+
+    // The card whose centre is closest to the viewport centre = the focused one.
+    function nearestIndex() {
+      const vc = viewportCenter();
+      let best = 0;
+      let bestDist = Infinity;
+      for (let i = 0; i < allCards.length; i++) {
+        const d = Math.abs(cardCenter(allCards[i]) - vc);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      }
+      return best;
+    }
+    const setActive = (i: number) =>
+      allCards.forEach((c, k) => c.classList.toggle("is-active", k === i));
+
+    // True while an arrow-initiated smooth scroll is in flight, so `settle`
+    // trusts the arrow's target index instead of a mid-animation position.
+    let animating = false;
+    function centerTo(i: number, smooth: boolean) {
+      const c = allCards[i];
+      if (smooth) animating = true;
+      track.scrollTo({
+        left: cardCenter(c) - track.clientWidth / 2,
+        behavior: smooth ? "smooth" : "auto",
+      });
     }
 
-    // Track the centred card (drives the focus/opacity styling).
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio > 0.6) setActive(e.target as HTMLElement);
-        });
-      },
-      { root: track, threshold: [0.6, 0.9] }
-    );
-    allCards.forEach((c) => io.observe(c));
+    // The index we're logically parked on (in allCards coords). Arrows advance
+    // from THIS, not from a mid-flight scroll position, so every click counts.
+    let current = loop ? n : 0;
 
-    // Seamless wrap: keep scrollLeft inside the middle copy band. Direct
-    // assignment (no CSS smooth) makes the jump invisible across identical copies.
-    let ticking = false;
+    // Once scrolling has settled: for a user SWIPE, adopt whatever is centred;
+    // for an ARROW, keep its intended target. Then re-park inside the MIDDLE
+    // copy — a jump of exactly one identical copy wide, so it's invisible.
+    function settle() {
+      if (!animating) current = nearestIndex();
+      animating = false;
+      if (loop) {
+        if (current < n) {
+          current += n;
+          track.scrollLeft += oneCopyWidth;
+        } else if (current >= 2 * n) {
+          current -= n;
+          track.scrollLeft -= oneCopyWidth;
+        }
+      }
+      setActive(current);
+    }
+
+    let raf = 0;
+    let idle: ReturnType<typeof setTimeout>;
     track.addEventListener("scroll", () => {
-      if (!loop || ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const x = track.scrollLeft;
-        if (x < oneCopyWidth * 0.5) track.scrollLeft = x + oneCopyWidth;
-        else if (x > oneCopyWidth * 1.5) track.scrollLeft = x - oneCopyWidth;
-        ticking = false;
-      });
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          setActive(nearestIndex());
+          raf = 0;
+        });
+      }
+      clearTimeout(idle);
+      idle = setTimeout(settle, 120);
     });
 
     function step(dir: number) {
-      const gap = 20; // matches CSS gap (1.25rem)
-      track.scrollBy({ left: dir * (allCards[0].offsetWidth + gap), behavior: "smooth" });
+      current += dir;
+      centerTo(current, true);
+      setActive(current);
     }
     root.querySelector("[data-carousel-prev]")?.addEventListener("click", () => step(-1));
     root.querySelector("[data-carousel-next]")?.addEventListener("click", () => step(1));
@@ -336,9 +367,14 @@ function initialsOf(name: string) {
     // Init: centre the first testimonial, so the LAST one peeks on its left.
     requestAnimationFrame(() => {
       measure();
-      goTo(0, false);
+      current = loop ? n : 0;
+      centerTo(current, false);
+      setActive(current);
     });
-    window.addEventListener("resize", measure);
+    window.addEventListener("resize", () => {
+      measure();
+      centerTo(current, false);
+    });
 
     // Letter lightboxes (originals keep their dialogs; clones had them removed).
     root.querySelectorAll<HTMLButtonElement>("[data-open-dialog]").forEach((btn) => {

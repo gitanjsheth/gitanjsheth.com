@@ -308,3 +308,14 @@
 .section-ink h4 {
   color: var(--ivory);
 }
+/* A .card has its own light background, so its text must stay dark even when
+   the card sits inside a dark (.section-ink) section. */
+.card {
+  color: var(--ink);
+}
+.section-ink .card h1,
+.section-ink .card h2,
+.section-ink .card h3,
+.section-ink .card h4 {
+  color: var(--ink);
+}

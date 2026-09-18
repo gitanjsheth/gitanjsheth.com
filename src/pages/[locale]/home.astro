@@ -30,23 +30,23 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
 ---
 
 <BaseLayout locale={locale} pagePath="home" title="" description={t("site.description")}>
-  <!-- HERO — a clean typographic statement (no stock-feeling portrait). -->
-  <section class="section-ink">
+  <!-- 1. HERO (ivory) — a clean typographic statement. -->
+  <section>
     <div class="container-x py-20 text-center md:py-32">
       <h1 class="mx-auto max-w-4xl font-display" style="font-size:clamp(2.5rem,6vw,4.75rem);line-height:1.05;">
         {t("home.hero.title")}
       </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-ivory/80">{t("home.hero.subtitle")}</p>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-muted">{t("home.hero.subtitle")}</p>
       <div class="mt-9 flex justify-center">
-        <a href={localizePath(locale, "contact")} class="btn btn-reversed">
+        <a href={localizePath(locale, "contact")} class="btn btn-primary">
           {t("home.hero.cta")}
         </a>
       </div>
     </div>
   </section>
 
-  <!-- THE PRINCIPAL — Gitanj, now shown WITH his name so the portrait reads as him. -->
-  <section id="person" class="scroll-mt-24">
+  <!-- 2. THE PRINCIPAL (blue) — Gitanj, shown with his name. -->
+  <section id="person" class="scroll-mt-24 section-ink">
     <div class="container-x py-14 md:py-28">
       <div class="grid items-center gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
         <div class="mx-auto w-full max-w-xs sm:max-w-sm">
@@ -55,29 +55,28 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         <div>
           <h2 class="text-3xl md:text-5xl">{t("person.name")}</h2>
           <p class="mt-6 text-xl leading-relaxed measure">{t("person.lead")}</p>
-          <p class="mt-4 text-muted measure">{t("person.combination")}</p>
+          <p class="mt-4 measure text-ivory/70">{t("person.combination")}</p>
         </div>
       </div>
 
-      <!-- Proof-of-calibre: numbers + institutions, scannable. -->
       <dl class="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           trackRecord.map((tr) => (
-            <div class="border-t border-ink/12 pt-4">
+            <div class="border-t border-ivory/15 pt-4">
               <dt class="font-display text-2xl leading-none">{tr.value}</dt>
-              <dd class="mt-2 text-sm text-muted">{tr.label}</dd>
+              <dd class="mt-2 text-sm text-ivory/70">{tr.label}</dd>
             </div>
           ))
         }
       </dl>
 
-      <div class="mt-12 border-t border-ink/12 pt-8">
+      <div class="mt-12 border-t border-ivory/15 pt-8">
         <div class="measure">
           <p class="text-sm">{t("person.education")}</p>
           <p class="mt-4 text-sm">{t("person.roles")}</p>
         </div>
         <div class="mt-8 flex justify-center">
-          <a href={localizePath(locale, "gitanj-sheth")} class="btn btn-ghost">
+          <a href={localizePath(locale, "gitanj-sheth")} class="btn btn-reversed">
             {t("person.more")}
           </a>
         </div>
@@ -85,31 +84,31 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- THE FIRM (teaser → dedicated /our-story page) -->
-  <section id="story" class="scroll-mt-24 section-ink">
+  <!-- 3. THE FIRM (ivory) — teaser → /our-story -->
+  <section id="story" class="scroll-mt-24">
     <div class="container-x py-14 md:py-24">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
           <h2 class="text-3xl md:text-4xl">{t("home.story.title")}</h2>
         </div>
-        <div class="measure text-lg text-ivory/85">
+        <div class="measure text-lg text-muted">
           <p>{t("home.story.teaser")}</p>
         </div>
       </div>
       <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "our-story")} class="btn btn-reversed">
+        <a href={localizePath(locale, "our-story")} class="btn btn-ghost">
           {t("home.story.more")}
         </a>
       </div>
     </div>
   </section>
 
-  <!-- REPAIR / BOOST — two open boxes -->
-  <section id="solutions" class="scroll-mt-24">
+  <!-- 4. SERVICES / REPAIR + BOOST (blue) -->
+  <section id="solutions" class="scroll-mt-24 section-ink">
     <div class="container-x py-14 md:py-28">
       <div class="max-w-2xl">
         <h2 class="text-3xl md:text-4xl">{t("solutions.title")}</h2>
-        <p class="mt-4 text-muted measure">{t("solutions.intro")}</p>
+        <p class="mt-4 measure text-ivory/70">{t("solutions.intro")}</p>
       </div>
 
       <div class="mt-12 grid gap-6 md:grid-cols-2">
@@ -130,31 +129,14 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
       </div>
 
       <div class="mt-10 flex justify-center">
-        <a href={localizePath(locale, "case-studies")} class="btn btn-ghost">
+        <a href={localizePath(locale, "case-studies")} class="btn btn-reversed">
           {t("solutions.casesLink")}
         </a>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS CAROUSEL (dark, so white cards pop and the rhythm alternates) -->
-  <section id="testimonials" class="scroll-mt-24 section-ink">
-    <div class="container-x pt-14 md:pt-28">
-      <div class="max-w-2xl">
-        <h2 class="text-3xl md:text-4xl">{t("testimonialsHome.title")}</h2>
-      </div>
-    </div>
-    <div class="mt-10 pb-6 md:mt-12">
-      <TestimonialsCarousel locale={locale} items={testimonials} />
-    </div>
-    <div class="container-x flex justify-center pb-14 md:pb-28">
-      <a href={localizePath(locale, "testimonials")} class="btn btn-reversed">
-        {t("testimonialsHome.viewAll")}
-      </a>
-    </div>
-  </section>
-
-  <!-- THE EXPERTS (carousel teaser → /experts) -->
+  <!-- 5. THE EXPERTS (ivory) -->
   {
     experts.length > 0 && (
       <section class="scroll-mt-24">
@@ -175,8 +157,8 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     )
   }
 
-  <!-- HOW WE ENGAGE (teaser) -->
-  <section id="how-we-engage" class="scroll-mt-24 border-t border-ink/10">
+  <!-- 6. HOW WE ENGAGE (blue) -->
+  <section id="how-we-engage" class="scroll-mt-24 section-ink">
     <div class="container-x py-14 md:py-24">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
@@ -187,14 +169,31 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         </div>
       </div>
       <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "how-we-engage")} class="btn btn-ghost">
+        <a href={localizePath(locale, "how-we-engage")} class="btn btn-reversed">
           {t("engageHome.more")}
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ENQUIRY CTA BAND -->
+  <!-- 7. TESTIMONIALS CAROUSEL (ivory) -->
+  <section id="testimonials" class="scroll-mt-24">
+    <div class="container-x pt-14 md:pt-28">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-4xl">{t("testimonialsHome.title")}</h2>
+      </div>
+    </div>
+    <div class="mt-10 pb-6 md:mt-12">
+      <TestimonialsCarousel locale={locale} items={testimonials} />
+    </div>
+    <div class="container-x flex justify-center pb-14 md:pb-28">
+      <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
+        {t("testimonialsHome.viewAll")}
+      </a>
+    </div>
+  </section>
+
+  <!-- 8. ENQUIRY CTA BAND (blue) -->
   <section class="section-ink border-t border-gold/30">
     <div class="container-x py-14 text-center md:py-24">
       <h2 class="mx-auto max-w-3xl text-3xl md:text-4xl">{t("ctaBand.title")}</h2>

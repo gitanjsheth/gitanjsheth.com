@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import FounderPortrait from "../../components/FounderPortrait.astro";
 import TestimonialsCarousel from "../../components/TestimonialsCarousel.astro";
 import ExpertsCarousel from "../../components/ExpertsCarousel.astro";
+import CtaBand from "../../components/CtaBand.astro";
 import {
   localeStaticPaths,
   localizePath,
@@ -30,14 +31,14 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
 ---
 
 <BaseLayout locale={locale} pagePath="home" title="" description={t("site.description")}>
-  <!-- 1. HERO (ivory) — a clean typographic statement. -->
+  <!-- 1. HERO (ivory) -->
   <section>
-    <div class="container-x py-20 text-center md:py-32">
+    <div class="container-x py-16 text-center md:py-24">
       <h1 class="mx-auto max-w-4xl font-display" style="font-size:clamp(2.5rem,6vw,4.75rem);line-height:1.05;">
         {t("home.hero.title")}
       </h1>
       <p class="mx-auto mt-6 max-w-2xl text-lg text-muted">{t("home.hero.subtitle")}</p>
-      <div class="mt-9 flex justify-center">
+      <div class="mt-8 flex justify-center">
         <a href={localizePath(locale, "contact")} class="btn btn-primary">
           {t("home.hero.cta")}
         </a>
@@ -45,24 +46,23 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- 2. THE PRINCIPAL (blue) — Gitanj, shown with his name. -->
+  <!-- 2. THE PRINCIPAL (blue) -->
   <section id="person" class="scroll-mt-24 section-ink">
-    <div class="container-x py-14 md:py-28">
-      <!-- Mobile: portrait first (face-first hook). Desktop: text left,
-           portrait right, so the "Gitanj Sheth" heading lines up with every
-           other left-aligned section heading. -->
+    <div class="container-x py-12 md:py-20">
+      <!-- Mobile: portrait first (face-first). Desktop: text left, portrait
+           right-aligned to the content edge. -->
       <div class="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-14">
         <div class="order-2 md:order-1">
           <h2 class="text-3xl md:text-5xl">{t("person.name")}</h2>
           <p class="mt-6 text-xl leading-relaxed measure">{t("person.lead")}</p>
           <p class="mt-4 measure text-ivory/70">{t("person.combination")}</p>
         </div>
-        <div class="order-1 mx-auto w-full max-w-xs sm:max-w-sm md:order-2">
+        <div class="order-1 mx-auto w-full max-w-xs sm:max-w-sm md:order-2 md:mx-0 md:ml-auto">
           <FounderPortrait alt={t("home.hero.portraitAlt")} />
         </div>
       </div>
 
-      <dl class="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      <dl class="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           trackRecord.map((tr) => (
             <div class="border-t border-ivory/15 pt-4">
@@ -73,7 +73,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         }
       </dl>
 
-      <div class="mt-12 border-t border-ivory/15 pt-8">
+      <div class="mt-10 border-t border-ivory/15 pt-8">
         <div class="measure">
           <p class="text-sm">{t("person.education")}</p>
           <p class="mt-4 text-sm">{t("person.roles")}</p>
@@ -87,9 +87,9 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- 3. THE FIRM (ivory) — teaser → /our-story -->
+  <!-- 3. THE FIRM (ivory) -->
   <section id="story" class="scroll-mt-24">
-    <div class="container-x py-14 md:py-24">
+    <div class="container-x py-12 md:py-20">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
           <h2 class="text-3xl md:text-4xl">{t("home.story.title")}</h2>
@@ -106,15 +106,15 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- 4. SERVICES / REPAIR + BOOST (blue) -->
+  <!-- 4. SERVICES (blue) -->
   <section id="solutions" class="scroll-mt-24 section-ink">
-    <div class="container-x py-14 md:py-28">
+    <div class="container-x py-12 md:py-20">
       <div class="max-w-2xl">
         <h2 class="text-3xl md:text-4xl">{t("solutions.title")}</h2>
         <p class="mt-4 measure text-ivory/70">{t("solutions.intro")}</p>
       </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
         {
           [
             { k: "repair", n: "01" },
@@ -131,7 +131,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
         }
       </div>
 
-      <div class="mt-10 flex justify-center">
+      <div class="mt-8 flex justify-center">
         <a href={localizePath(locale, "case-studies")} class="btn btn-reversed">
           {t("solutions.casesLink")}
         </a>
@@ -143,15 +143,15 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   {
     experts.length > 0 && (
       <section class="scroll-mt-24">
-        <div class="container-x pt-14 md:pt-24">
+        <div class="container-x pt-12 md:pt-20">
           <div class="max-w-2xl">
             <h2 class="text-3xl md:text-4xl">{t("home.experts.title")}</h2>
           </div>
         </div>
-        <div class="mt-10 md:mt-12">
+        <div class="mt-8 md:mt-10">
           <ExpertsCarousel locale={locale} items={experts} />
         </div>
-        <div class="container-x flex justify-center pt-10 pb-14 md:pb-24">
+        <div class="container-x flex justify-center pt-8 pb-12 md:pb-20">
           <a href={localizePath(locale, "experts")} class="btn btn-ghost">
             {t("home.experts.viewAll")}
           </a>
@@ -162,7 +162,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
 
   <!-- 6. HOW WE ENGAGE (blue) -->
   <section id="how-we-engage" class="scroll-mt-24 section-ink">
-    <div class="container-x py-14 md:py-24">
+    <div class="container-x py-12 md:py-20">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
           <h2 class="text-3xl md:text-4xl">{t("engageHome.title")}</h2>
@@ -179,17 +179,17 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- 7. TESTIMONIALS CAROUSEL (ivory) -->
+  <!-- 7. TESTIMONIALS (ivory) -->
   <section id="testimonials" class="scroll-mt-24">
-    <div class="container-x pt-14 md:pt-28">
+    <div class="container-x pt-12 md:pt-20">
       <div class="max-w-2xl">
         <h2 class="text-3xl md:text-4xl">{t("testimonialsHome.title")}</h2>
       </div>
     </div>
-    <div class="mt-10 pb-6 md:mt-12">
+    <div class="mt-8 pb-6 md:mt-10">
       <TestimonialsCarousel locale={locale} items={testimonials} />
     </div>
-    <div class="container-x flex justify-center pb-14 md:pb-28">
+    <div class="container-x flex justify-center pb-12 md:pb-20">
       <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
         {t("testimonialsHome.viewAll")}
       </a>
@@ -197,15 +197,5 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   </section>
 
   <!-- 8. ENQUIRY CTA BAND (blue) -->
-  <section class="section-ink border-t border-gold/30">
-    <div class="container-x py-14 text-center md:py-24">
-      <h2 class="mx-auto max-w-3xl text-3xl md:text-4xl">{t("ctaBand.title")}</h2>
-      <p class="mx-auto mt-4 max-w-xl text-ivory/80">{t("ctaBand.subtitle")}</p>
-      <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "contact")} class="btn btn-reversed">
-          {t("ctaBand.button")}
-        </a>
-      </div>
-    </div>
-  </section>
+  <CtaBand locale={locale} />
 </BaseLayout>

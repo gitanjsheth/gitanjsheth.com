@@ -10,8 +10,6 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
-const website = t("contact.website");
-const websiteUrl = t("contact.websiteUrl");
 const address = t("contact.address");
 ---
 
@@ -32,9 +30,6 @@ const address = t("contact.address");
           <div class="space-y-3 text-sm">
             <p>
               <a href={`mailto:${CONTACT_EMAIL}`} class="link">{CONTACT_EMAIL}</a>
-            </p>
-            <p>
-              <a href={websiteUrl} class="link">{website}</a>
             </p>
             <p class="text-muted measure">{address}</p>
           </div>

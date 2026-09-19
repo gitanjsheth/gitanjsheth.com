@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import CtaBand from "../../../components/CtaBand.astro";
 import {
   locales,
   localizePath,
@@ -65,14 +66,9 @@ const sections = [
             ))
           }
         </div>
-
-        <hr class="rule mt-16" />
-        <div class="mt-10 flex justify-center">
-          <a href={localizePath(locale, "contact")} class="btn btn-primary">
-            {t("ctaBand.button")}
-          </a>
-        </div>
       </div>
     </section>
   </article>
+
+  <CtaBand locale={locale} />
 </BaseLayout>

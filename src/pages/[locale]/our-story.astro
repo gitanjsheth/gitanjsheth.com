@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
 import { localizePath, useTranslations, type Locale } from "../../i18n/utils";
 import { localeStaticPaths } from "../../i18n/utils";
 
@@ -33,14 +34,5 @@ const body: string[] = t("ourStory.body");
     </div>
   </section>
 
-  <section class="section-ink">
-    <div class="container-x py-14 text-center md:py-20">
-      <h2 class="mx-auto max-w-2xl text-2xl md:text-3xl">{t("ctaBand.title")}</h2>
-      <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "contact")} class="btn btn-reversed">
-          {t("ctaBand.button")}
-        </a>
-      </div>
-    </div>
-  </section>
+  <CtaBand locale={locale} />
 </BaseLayout>

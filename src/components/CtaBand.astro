@@ -1,0 +1,25 @@
+---
+/**
+ * The closing "Tell us the problem no one will own" enquiry band. Shared so
+ * every page ends the same way, right above the footer.
+ */
+import { localizePath, useTranslations, type Locale } from "../i18n/utils";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="section-ink border-t border-gold/30">
+  <div class="container-x py-12 text-center md:py-20">
+    <h2 class="mx-auto max-w-3xl text-3xl md:text-4xl">{t("ctaBand.title")}</h2>
+    <p class="mx-auto mt-4 max-w-xl text-ivory/80">{t("ctaBand.subtitle")}</p>
+    <div class="mt-8 flex justify-center">
+      <a href={localizePath(locale, "contact")} class="btn btn-reversed">
+        {t("ctaBand.button")}
+      </a>
+    </div>
+  </div>
+</section>

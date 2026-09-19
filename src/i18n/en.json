@@ -4,8 +4,8 @@
     "firm": "G A Sheth & Associates",
     "name": "Gitanj Sheth",
     "shortName": "Gitanj Sheth",
-    "tagline": "Independent expert advisory.",
-    "description": "Independent advisory led by Gitanj Sheth — an operator and builder brought in to fix what's stuck and build what's next, for founders and owners across startups and SMEs."
+    "tagline": "Fix what's stuck. Build what's next.",
+    "description": "Gitanj Sheth, an independent operator and builder brought in by owners and founders to fix what's stuck and build what's next."
   },
   "gate": {
     "heading": "Choose your language",
@@ -38,7 +38,7 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Independent Expert Advisory",
+      "eyebrow": "For owners and founders",
       "title": "Fix what's stuck. Build what's next.",
       "subtitle": "An independent expert for owners and founders — brought in on the problems that don't fit any single specialist.",
       "cta": "Request an intro call",
@@ -203,7 +203,7 @@
     "requiredNote": "Fields marked * are required."
   },
   "footer": {
-    "tagline": "Independent advisory for owners and founders. We fix what's stuck and build what's next.",
+    "tagline": "For owners and founders. We fix what's stuck and build what's next.",
     "navLabel": "Navigate",
     "contactLabel": "Contact",
     "rights": "All rights reserved."

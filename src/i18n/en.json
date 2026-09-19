@@ -5,7 +5,7 @@
     "name": "Gitanj Sheth",
     "shortName": "Gitanj Sheth",
     "tagline": "Independent expert advisory.",
-    "description": "Independent expert advisory led by Gitanj Sheth — an operator and builder who brings an owner's eye to the problem that belongs to no one. For the problem, not the fee."
+    "description": "Independent advisory led by Gitanj Sheth — an operator and builder brought in to fix what's stuck and build what's next, for founders and owners across startups and SMEs."
   },
   "gate": {
     "heading": "Choose your language",
@@ -39,20 +39,20 @@
   "home": {
     "hero": {
       "eyebrow": "Independent Expert Advisory",
-      "title": "The problem that belongs to no one.",
-      "subtitle": "When a problem sits between disciplines and every specialist calls it someone else's, we are the bench built to own it.",
+      "title": "Fix what's stuck. Build what's next.",
+      "subtitle": "An independent operator for founders and owners — brought in on the problems that don't fit any single specialist. Engineer, MBA, and someone who has run real businesses, not just advised them.",
       "cta": "Request an intro call",
       "portraitAlt": "Portrait of Gitanj Sheth"
     },
     "story": {
       "label": "The Firm",
-      "title": "A bench, not a solo act.",
-      "teaser": "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy — for the problems that fall between the seams.",
+      "title": "You get Gitanj — and the bench behind him.",
+      "teaser": "Most problems need more than one kind of expert. When yours does, Gitanj brings in specialists he trusts across technology, finance, operations and strategy — under one firm, G A Sheth & Associates — so you deal with one person, never a committee.",
       "more": "Our story"
     },
     "experts": {
       "label": "The Experts",
-      "title": "Senior practitioners, chosen for the problem.",
+      "title": "Senior specialists, matched to the problem — not an org chart.",
       "readMore": "Read more",
       "viewAll": "Meet our experts"
     }
@@ -70,8 +70,8 @@
   "person": {
     "eyebrow": "The Principal",
     "name": "Gitanj Sheth",
-    "lead": "An operator and builder — not a career consultant. Gitanj has run and fixed real businesses rather than produced slide decks, bringing an owner's eye from inside a business family together with an engineer's and a strategist's mind.",
-    "combination": "A rare combination: engineering, management and computer science, backed by a real operating track record — not a corporate lifer.",
+    "lead": "An operator and builder, not a career consultant. Gitanj has run and fixed real businesses from inside a business family — pairing an owner's instinct for what actually moves a company with an engineer's rigour and a strategist's read of where it's headed.",
+    "combination": "A rare mix — engineering, management and computer science — backed by a real operating record, not a corporate career spent watching from a desk.",
     "trackRecordLabel": "Track record",
     "trackRecord": [
       { "value": "State Rank 1", "label": "CAT 2018 — Gujarat" },
@@ -95,18 +95,18 @@
   },
   "solutions": {
     "eyebrow": "What We Do",
-    "title": "Two ways we're brought in.",
-    "intro": "We don't sell service lines. Tell us the shape of the problem — the diagnosis is ours to make.",
+    "title": "Two reasons people bring him in.",
+    "intro": "There's no service menu. It usually comes down to one of two things — and often the real issue turns out to be somewhere neither of you first looked.",
     "repair": {
       "label": "Repair",
-      "body": "Something in the business is broken — it's leaking money, time, or quality, and what you've tried hasn't fixed it."
+      "body": "Something's leaking — money, time, or quality — and what you've already tried hasn't held. You need the real fault found, not the obvious one patched again."
     },
     "boost": {
       "label": "Boost",
-      "body": "The business runs fine, but it isn't growing the way it should — or you want growth and don't yet know how."
+      "body": "The business works, but it isn't compounding the way it should. You want the next level, and a clear, honest route to reach it."
     },
-    "casesLink": "See some of the problems we've untangled",
-    "note": "If you already know exactly what's wrong and how to fix it, you don't need us."
+    "casesLink": "See the kind of problems he's untangled",
+    "note": "If you already know exactly what's broken and how to fix it, you don't need him."
   },
   "featuredCase": {
     "label": "Selected Work",
@@ -114,18 +114,18 @@
   },
   "testimonialsHome": {
     "label": "In Their Words",
-    "title": "The people we've stood behind.",
-    "viewAll": "View all testimonials"
+    "title": "Owners and founders who've worked with him.",
+    "viewAll": "Read all fourteen letters"
   },
   "engageHome": {
     "label": "How we engage",
-    "title": "A first conversation costs you nothing.",
-    "body": "The first call is free. There is no upfront charge and no commitment to continue. If a visit is needed, only travel and stay at actuals. Scope and consideration are decided together, once value is on the table.",
-    "more": "How we engage"
+    "title": "Start with a conversation, not an invoice.",
+    "body": "The first call is on us — a straight read on whether the problem is worth pursuing and whether Gitanj is the right person for it. No retainer, no lock-in. Scope and fee come later, and only when there's real value on the table.",
+    "more": "Know more about how we engage"
   },
   "ctaBand": {
-    "title": "Tell us the problem no one will own.",
-    "subtitle": "One free call. One honest read on whether we can help.",
+    "title": "Tell us what's actually going wrong.",
+    "subtitle": "One free call, and an honest answer on whether he can help.",
     "button": "Request an intro call"
   },
   "caseStudies": {

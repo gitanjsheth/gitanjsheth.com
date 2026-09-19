@@ -40,19 +40,19 @@
     "hero": {
       "eyebrow": "Independent Expert Advisory",
       "title": "Fix what's stuck. Build what's next.",
-      "subtitle": "An independent operator for founders and owners — brought in on the problems that don't fit any single specialist. Engineer, MBA, and someone who has run real businesses, not just advised them.",
+      "subtitle": "An independent operator for owners and founders — brought in on the problems that don't fit any single expert.",
       "cta": "Request an intro call",
       "portraitAlt": "Portrait of Gitanj Sheth"
     },
     "story": {
       "label": "The Firm",
-      "title": "You get Gitanj — and the bench behind him.",
-      "teaser": "Most problems need more than one kind of expert. When yours does, Gitanj brings in specialists he trusts across technology, finance, operations and strategy — under one firm, G A Sheth & Associates — so you deal with one person, never a committee.",
+      "title": "We didn't set out to start a firm.",
+      "teaser": "It began inside our own businesses — the messy, cross-cutting problems no single expert would own. We kept solving them, kept getting asked to do the same for others, and eventually said yes. That's all this is: a few people who are good at finding the problem everyone else walked past.",
       "more": "Our story"
     },
     "experts": {
       "label": "The Experts",
-      "title": "Senior specialists, matched to the problem — not an org chart.",
+      "title": "A circle of experts we bring in when it helps.",
       "readMore": "Read more",
       "viewAll": "Meet our experts"
     }
@@ -95,8 +95,8 @@
   },
   "solutions": {
     "eyebrow": "What We Do",
-    "title": "Two reasons people bring him in.",
-    "intro": "There's no service menu. It usually comes down to one of two things — and often the real issue turns out to be somewhere neither of you first looked.",
+    "title": "Two reasons people bring us in.",
+    "intro": "There's no fixed menu of services. It usually comes down to one of two things — and the real problem is often deeper than the symptom that made you call.",
     "repair": {
       "label": "Repair",
       "body": "Something's leaking — money, time, or quality — and what you've already tried hasn't held. You need the real fault found, not the obvious one patched again."
@@ -105,8 +105,8 @@
       "label": "Boost",
       "body": "The business works, but it isn't compounding the way it should. You want the next level, and a clear, honest route to reach it."
     },
-    "casesLink": "See the kind of problems he's untangled",
-    "note": "If you already know exactly what's broken and how to fix it, you don't need him."
+    "casesLink": "See the kind of problems we've untangled",
+    "note": "If you already know exactly what's broken and how to fix it, you don't need us."
   },
   "featuredCase": {
     "label": "Selected Work",
@@ -114,18 +114,18 @@
   },
   "testimonialsHome": {
     "label": "In Their Words",
-    "title": "Owners and founders who've worked with him.",
-    "viewAll": "Read all fourteen letters"
+    "title": "Owners and founders who've worked with us.",
+    "viewAll": "View all testimonials"
   },
   "engageHome": {
     "label": "How we engage",
     "title": "Start with a conversation, not an invoice.",
-    "body": "The first call is on us — a straight read on whether the problem is worth pursuing and whether Gitanj is the right person for it. No retainer, no lock-in. Scope and fee come later, and only when there's real value on the table.",
+    "body": "The first call is on us — a straight read on whether the problem is worth pursuing and whether we're the right people for it. No retainer, no lock-in. Scope and fee come later, and only when there's real value on the table.",
     "more": "Know more about how we engage"
   },
   "ctaBand": {
-    "title": "Tell us what's actually going wrong.",
-    "subtitle": "One free call, and an honest answer on whether he can help.",
+    "title": "Bring us the problem you can't pin down.",
+    "subtitle": "One free call, and an honest answer on whether we can help.",
     "button": "Request an intro call"
   },
   "caseStudies": {
@@ -203,7 +203,7 @@
     "requiredNote": "Fields marked * are required."
   },
   "footer": {
-    "tagline": "Independent expert advisory. For the problem, not the fee.",
+    "tagline": "Independent advisory for owners and founders. We fix what's stuck and build what's next.",
     "navLabel": "Navigate",
     "contactLabel": "Contact",
     "rights": "All rights reserved."

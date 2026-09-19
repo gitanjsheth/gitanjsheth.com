@@ -1,0 +1,14 @@
+{
+  "name": "Vishesh Darji",
+  "company": "Safal Vidyalaya",
+  "city": "Gandhinagar",
+  "industry": "Education",
+  "date": "2026-03-12",
+  "quote_en": "We spoke with Gitanj about operations and processes inside our school. Instead of chasing one activity, he helped us see how people, systems, and steps fit together. A few of his questions alone made the real issue clearer.",
+  "quote_hi": "हमने स्कूल के संचालन और प्रक्रियाओं पर गितंज से बात की। एक गतिविधि के पीछे भागने के बजाय, उन्होंने दिखाया कि लोग, सिस्टम और कदम कैसे जुड़ते हैं। उनके कुछ सवालों से ही असली मुद्दा साफ हो गया।",
+  "photo": "people/vishesh-darji.jpg",
+  "letterImage": "/letters/vishesh-darji.png",
+  "letterThumb": "/letters/thumbs/vishesh-darji.png",
+  "featured": true,
+  "order": 4
+}

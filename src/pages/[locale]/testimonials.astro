@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import TestimonialsCarousel from "../../components/TestimonialsCarousel.astro";
+import TestimonialsGrid from "../../components/TestimonialsGrid.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import { localeStaticPaths, useTranslations, type Locale } from "../../i18n/utils";
 
@@ -19,15 +19,15 @@ const testimonials = (await getCollection("testimonials")).sort(
 
 <BaseLayout locale={locale} pagePath="testimonials" title={t("testimonials.title")} description={t("testimonials.intro")}>
   <section>
-    <div class="container-x py-10 md:py-16">
+    <div class="container-x pt-10 md:pt-16 pb-8 md:pb-10">
       <h1 class="h1">{t("testimonials.title")}</h1>
-      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("testimonials.intro")}</p>
+      <p class="mt-5 max-w-2xl text-lg text-muted">{t("testimonials.intro")}</p>
     </div>
   </section>
 
-  <section class="border-t border-ink/10 pb-10 md:pb-16">
-    <div class="pt-10">
-      <TestimonialsCarousel locale={locale} items={testimonials} />
+  <section class="border-t border-ink/10">
+    <div class="container-x pt-8 md:pt-10 pb-10 md:pb-16">
+      <TestimonialsGrid locale={locale} items={testimonials} />
     </div>
   </section>
 

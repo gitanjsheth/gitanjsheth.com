@@ -80,7 +80,8 @@ Create `src/content/testimonials/<slug>.json`:
 {
   "name": "Dilip Bhatt",
   "company": "Srushti Industries",
-  "field": "Manufacturing",
+  "city": "Bhavnagar",
+  "industry": "Real Estate",
   "quote_en": "Short pulled quote shown on /en/.",
   "quote_hi": "वही उद्धरण, /hi/ पर दिखाया गया।",
   "photo": "people/dilip-bhatt.jpg",
@@ -92,11 +93,10 @@ Create `src/content/testimonials/<slug>.json`:
 ```
 
 - `photo` is a **square-cropped** signatory face in `src/assets/people/`.
+- Display under the name: **`Company, City`** then **`INDUSTRY`** on the next line.
 - `letterImage` / `letterThumb` come from the PDF conversion step below. Omit
-  them (or drop `placeholder: true`) and the card shows a clean labelled
+  them and the card shows a clean labelled
   placeholder box until the real letter exists.
-- Remove `"placeholder": true` once an entry is real (it drives the small
-  "placeholder" badge).
 
 ### Add / edit a case study or expert
 

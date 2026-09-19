@@ -2,12 +2,12 @@
 /**
  * Bare-root language gate ("/").
  *
- * Holds NO content — it only routes the visitor into a locale:
- *  - Return visits: an inline <head> script reads the stored locale and
- *    redirects to /{locale}/home BEFORE paint, so the gate never flashes.
- *  - First visit: a full-screen blocking interstitial, English pre-selected.
- *    On choice we persist the locale (cookie + localStorage) and route on.
- *  - No-JS: plain links to both locales are always present.
+ * Return visits: an inline <head> script reads the stored locale and redirects
+ * to /{locale}/home BEFORE paint, so the gate never flashes.
+ *
+ * First visit: a limited modal card over a blurred live preview of the English
+ * home. Choosing a language (or clicking the blurred backdrop) persists the
+ * locale and routes on — backdrop click defaults to English.
  */
 import "../styles/global.css";
 import "@fontsource/space-grotesk/500.css";
@@ -23,6 +23,7 @@ const en = getStrings("en");
 const hi = getStrings("hi");
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const knownLocales = ["en", "hi"];
+const homePreview = `${base}/en/home`;
 ---
 
 <!doctype html>
@@ -35,10 +36,8 @@ const knownLocales = ["en", "hi"];
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
     <meta name="theme-color" content="#16233B" />
-    <!-- Point crawlers at the canonical English home; both locales are in the sitemap. -->
     <link rel="canonical" href="https://gitanjsheth.com/en/home" />
 
-    <!-- Instant redirect for return visitors, before anything renders. -->
     <script is:inline define:vars={{ key: LOCALE_STORAGE_KEY, base, knownLocales }}>
       (function () {
         try {
@@ -54,57 +53,74 @@ const knownLocales = ["en", "hi"];
       })();
     </script>
   </head>
-  <body>
-    <main class="gate" id="gate">
-      <div class="gate__card">
-        <Logo variant="ink" showText={true} class="gate__logo" />
+  <body class="gate-body">
+    <!-- Live home preview (blurred, non-interactive). Clicking the backdrop = English. -->
+    <div class="gate-backdrop" id="gate-backdrop" role="presentation" aria-hidden="true">
+      <iframe
+        class="gate-preview"
+        src={homePreview}
+        title=""
+        tabindex="-1"
+        loading="eager"
+      ></iframe>
+      <div class="gate-scrim"></div>
+    </div>
 
-        <h1 class="gate__heading">
-          <span lang="en">{en.gate.heading}</span>
-          <span class="gate__heading-sep" aria-hidden="true"> / </span>
-          <span lang="hi">{hi.gate.heading}</span>
-        </h1>
+    <div
+      class="gate-card"
+      id="gate-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="gate-heading"
+    >
+      <Logo variant="ink" showText={true} class="gate__logo" />
 
-        <form class="gate__form" id="gate-form">
-          <fieldset class="gate__options">
-            <legend class="sr-only-focusable">Choose your language / भाषा चुनें</legend>
+      <h1 class="gate__heading" id="gate-heading">
+        <span lang="en">{en.gate.heading}</span>
+        <span class="gate__heading-sep" aria-hidden="true"> / </span>
+        <span lang="hi">{hi.gate.heading}</span>
+      </h1>
 
-            <label class="gate__option" data-option>
-              <input type="radio" name="locale" value="en" checked />
-              <span class="gate__option-label" lang="en">{en.gate.english}</span>
-            </label>
+      <form class="gate__form" id="gate-form">
+        <fieldset class="gate__options">
+          <legend class="sr-only-focusable">Choose your language / भाषा चुनें</legend>
 
-            <label class="gate__option" data-option>
-              <input type="radio" name="locale" value="hi" />
-              <span class="gate__option-label" lang="hi">{hi.gate.hindi}</span>
-            </label>
-          </fieldset>
+          <label class="gate__option" data-option>
+            <input type="radio" name="locale" value="en" checked />
+            <span class="gate__option-label" lang="en">{en.gate.english}</span>
+          </label>
 
-          <button type="submit" class="btn btn-primary gate__continue">
-            <span lang="en">{en.gate.continue}</span>
-            <span aria-hidden="true"> · </span>
-            <span lang="hi">{hi.gate.continue}</span>
-          </button>
-        </form>
+          <label class="gate__option" data-option>
+            <input type="radio" name="locale" value="hi" />
+            <span class="gate__option-label" lang="hi">{hi.gate.hindi}</span>
+          </label>
+        </fieldset>
 
-        <p class="gate__hint">
-          <span lang="en">{en.gate.hint}</span>
-        </p>
+        <button type="submit" class="btn btn-primary gate__continue">
+          <span lang="en">{en.gate.continue}</span>
+          <span aria-hidden="true"> · </span>
+          <span lang="hi">{hi.gate.continue}</span>
+        </button>
+      </form>
 
-        <!-- No-JS fallback -->
-        <noscript>
-          <div class="gate__noscript">
-            <a href={`${base}/en/home`} class="link">English</a>
-            <span aria-hidden="true"> / </span>
-            <a href={`${base}/hi/home`} class="link" lang="hi">हिन्दी</a>
-          </div>
-        </noscript>
-      </div>
-    </main>
+      <p class="gate__hint">
+        <span lang="en">{en.gate.hint}</span>
+      </p>
+
+      <noscript>
+        <div class="gate__noscript">
+          <a href={`${base}/en/home`} class="link">English</a>
+          <span aria-hidden="true"> / </span>
+          <a href={`${base}/hi/home`} class="link" lang="hi">हिन्दी</a>
+        </div>
+      </noscript>
+    </div>
 
     <script is:inline define:vars={{ key: LOCALE_STORAGE_KEY, base, defaultLocale }}>
       (function () {
         var form = document.getElementById("gate-form");
+        var backdrop = document.getElementById("gate-backdrop");
+        var card = document.getElementById("gate-card");
         if (!form) return;
 
         function persistAndGo(loc) {
@@ -115,7 +131,6 @@ const knownLocales = ["en", "hi"];
           location.href = base + "/" + loc + "/home";
         }
 
-        // Visual selected state.
         var options = form.querySelectorAll("[data-option]");
         function refresh() {
           options.forEach(function (opt) {
@@ -131,49 +146,93 @@ const knownLocales = ["en", "hi"];
           var checked = form.querySelector('input[name="locale"]:checked');
           persistAndGo(checked ? checked.value : defaultLocale);
         });
+
+        // Clicking the blurred site (anywhere outside the card) → English.
+        if (backdrop) {
+          backdrop.addEventListener("click", function () {
+            persistAndGo("en");
+          });
+        }
+        // Stop clicks inside the card from hitting the backdrop (card sits above).
+        if (card) {
+          card.addEventListener("click", function (e) {
+            e.stopPropagation();
+          });
+        }
       })();
     </script>
 
     <style>
-      .gate {
+      .gate-body {
+        margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        padding: 2rem 1.5rem;
-        background: radial-gradient(
-          120% 120% at 50% 0%,
-          #f9f5ec 0%,
-          var(--ivory) 55%,
-          #efe7d6 100%
-        );
+        overflow: hidden;
+        background: var(--ivory);
       }
-      .gate__card {
+
+      .gate-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        cursor: pointer;
+      }
+      .gate-preview {
+        position: absolute;
+        inset: 0;
         width: 100%;
-        max-width: 30rem;
+        height: 100%;
+        border: 0;
+        pointer-events: none;
+        transform: scale(1.02);
+        transform-origin: top center;
+        filter: blur(10px);
+        opacity: 0.92;
+      }
+      .gate-scrim {
+        position: absolute;
+        inset: 0;
+        background: color-mix(in srgb, var(--ink) 28%, transparent);
+        pointer-events: none;
+      }
+
+      .gate-card {
+        position: fixed;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(calc(100% - 2rem), 26rem);
+        padding: 1.75rem 1.5rem 1.5rem;
         text-align: center;
+        background: var(--paper);
+        border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+        border-radius: 6px;
+        box-shadow:
+          0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent),
+          0 24px 48px color-mix(in srgb, var(--ink) 18%, transparent);
       }
       .gate__logo {
         justify-content: center;
       }
       .gate__heading {
-        margin-top: 2rem;
-        font-size: clamp(1.5rem, 4vw, 2.1rem);
+        margin-top: 1.25rem;
+        font-size: clamp(1.25rem, 3.5vw, 1.65rem);
         font-weight: 500;
-        line-height: 1.25;
+        line-height: 1.3;
       }
       .gate__heading-sep {
         color: var(--gold);
         font-weight: 400;
       }
       .gate__form {
-        margin-top: 2.25rem;
+        margin-top: 1.5rem;
       }
       .gate__options {
         border: 0;
         padding: 0;
         margin: 0;
         display: grid;
-        gap: 0.75rem;
+        gap: 0.65rem;
         grid-template-columns: 1fr 1fr;
       }
       .gate__option {
@@ -181,7 +240,7 @@ const knownLocales = ["en", "hi"];
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
+        padding: 0.85rem 0.75rem;
         border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
         border-radius: 4px;
         background: var(--paper);
@@ -199,19 +258,19 @@ const knownLocales = ["en", "hi"];
         box-shadow: inset 0 0 0 1px var(--gold);
       }
       .gate__option-label {
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
       .gate__continue {
-        margin-top: 1.25rem;
+        margin-top: 1rem;
         width: 100%;
       }
       .gate__hint {
-        margin-top: 1.25rem;
-        font-size: 0.8rem;
+        margin-top: 1rem;
+        font-size: 0.75rem;
         color: var(--muted);
       }
       .gate__noscript {
-        margin-top: 1.25rem;
+        margin-top: 1rem;
       }
     </style>
   </body>

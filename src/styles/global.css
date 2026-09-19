@@ -122,10 +122,47 @@
     font-size: clamp(1.0625rem, 0.959rem + 0.44vw, 1.3125rem);
     line-height: 1.5;
   }
-  /* Founder portrait: one continuous width (240px@375 -> 380px@1280), so it
-     never jumps between the stacked and side-by-side layouts. */
+  /* Founder portrait width — two bands:
+     <640: unchanged (280 floor, 220px+15.5vw)
+     ≥640: 320@640 → 400@1280 (max only at 1280) */
   .person-media {
-    width: clamp(280px, 220px + 15.5vw, 380px);
+    width: clamp(280px, 220px + 15.5vw, 400px);
+  }
+  @media (min-width: 640px) {
+    .person-media {
+      width: clamp(320px, 240px + 12.5vw, 400px);
+    }
+  }
+
+  /* --- Principal (home #person) type + pad — ≥640 band only --------------
+     Separate from the global .h1/.h2/.lead scale. Below 640 these match the
+     global tokens so mobile is unchanged. At ≥640 they fluid from the 640
+     targets up to the desktop caps (window 640→1280):
+       name 24→40   lead 15→21   combo 13→19   copy pb 2rem→3rem */
+  .person-name {
+    font-size: clamp(1.75rem, 1.44rem + 1.33vw, 2.5rem);
+    line-height: 1.1;
+  }
+  .person-lead {
+    font-size: clamp(1.0625rem, 0.959rem + 0.44vw, 1.3125rem);
+    line-height: 1.5;
+  }
+  .person-combo {
+    font-size: clamp(1rem, 0.922rem + 0.33vw, 1.1875rem);
+  }
+  @media (min-width: 640px) {
+    .person-name {
+      font-size: clamp(1.5rem, 0.5rem + 2.5vw, 2.5rem);
+    }
+    .person-lead {
+      font-size: clamp(0.9375rem, 0.5625rem + 0.9375vw, 1.3125rem);
+    }
+    .person-combo {
+      font-size: clamp(0.8125rem, 0.4375rem + 0.9375vw, 1.1875rem);
+    }
+    .person-copy {
+      padding-bottom: clamp(2rem, 1rem + 2.5vw, 3rem);
+    }
   }
 
   /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.

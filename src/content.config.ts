@@ -41,7 +41,8 @@ const testimonials = defineCollection({
   schema: z.object({
     name: z.string(),
     company: z.string(),
-    field: z.string(),
+    city: z.string(), // shown with company: "VRS Infrastructures, Mohali"
+    industry: z.string(), // next line, e.g. "Real Estate"
     date: z.string().optional(),
     quote_en: z.string(), // shown on /en/
     quote_hi: z.string(), // shown on /hi/

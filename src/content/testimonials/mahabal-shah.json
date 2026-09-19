@@ -1,0 +1,14 @@
+{
+  "name": "Mahabal Shah",
+  "company": "M. M. Brothers",
+  "city": "Bhavnagar",
+  "industry": "Trading",
+  "date": "2025-11-12",
+  "quote_en": "We involved Gitanj in conversations on business analysis and financial decisions. He looked at the numbers in context, not in isolation, and kept the discussion calm and clear. I would gladly work with him again on that kind of problem.",
+  "quote_hi": "हमने व्यावसाय विश्लेषण और वित्तीय निर्णयों की बातचीत में गितंज को शामिल किया। उन्होंने आँकड़ों को अलग-थलग नहीं, संदर्भ में देखा, और चर्चा को शांत व स्पष्ट रखा। ऐसे काम पर मैं फिर उनसे काम करूँगा।",
+  "photo": "people/mahabal-shah.jpg",
+  "letterImage": "/letters/mahabal-shah.png",
+  "letterThumb": "/letters/thumbs/mahabal-shah.png",
+  "featured": true,
+  "order": 2
+}

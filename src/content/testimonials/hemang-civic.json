@@ -1,0 +1,14 @@
+{
+  "name": "Hemang Shah",
+  "company": "Civic Infotech",
+  "city": "Ahmedabad",
+  "industry": "Technology",
+  "date": "2025-04",
+  "quote_en": "In April 2025 we sat with Gitanj on technology and data questions. He was comfortable with the detail, but he kept bringing us back to what the business actually needed. That mix of technical depth and practical focus is what we valued.",
+  "quote_hi": "अप्रैल 2025 में हमने प्रौद्योगिकी और डेटा के सवालों पर गितंज के साथ बैठक की। वह विस्तार में सहज थे, पर हमें बार-बार इस ओर लौटाते रहे कि व्यवसाय को सच में क्या चाहिए। तकनीकी गहराई और व्यावहारिक फोकस का यही मेल हमें भाया।",
+  "photo": "people/hemang.jpg",
+  "letterImage": "/letters/hemang-civic.png",
+  "letterThumb": "/letters/thumbs/hemang-civic.png",
+  "featured": true,
+  "order": 5
+}

@@ -15,18 +15,16 @@ const body: string[] = t("ourStory.body");
 
 <BaseLayout locale={locale} pagePath="our-story" title={t("ourStory.eyebrow")} description={t("ourStory.intro")}>
   <section>
-    <div class="container-x py-12 md:py-20">
+    <div class="container-x pt-10 md:pt-16 pb-8 md:pb-10">
       <h1 class="h1">{t("ourStory.title")}</h1>
-      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("ourStory.intro")}</p>
+      <p class="mt-5 text-lg text-muted">{t("ourStory.intro")}</p>
     </div>
   </section>
 
   <section class="border-t border-ink/10">
-    <div class="container-x py-10 md:py-16">
-      <div class="measure space-y-6 text-lg leading-relaxed">
-        {body.map((para) => <p>{para}</p>)}
-      </div>
-      <div class="mt-10 flex justify-center">
+    <div class="container-x space-y-6 pt-8 text-lg leading-relaxed md:pt-10 pb-10 md:pb-16">
+      {body.map((para) => <p>{para}</p>)}
+      <div class="pt-4">
         <a href={localizePath(locale, "how-we-engage")} class="btn btn-ghost">
           {t("ourStory.more")}
         </a>

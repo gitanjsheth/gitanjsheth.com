@@ -10,8 +10,8 @@
  *    stuck at an end. It centres instantly on load, so there's no flicker.
  *  - Touch/pointer drag is handled directly; the nearest card snaps on release.
  *
- * Each card, top → bottom: pulled quote · square photo + name/company/field ·
- * a faded letter-glimpse with a "View testimonial letter" button → lightbox.
+ * Each card, top → bottom: pulled quote · square photo + name / company, city /
+ * industry · faded letter-glimpse with "View testimonial letter" → lightbox.
  */
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -68,8 +68,8 @@ function initialsOf(name: string) {
               )}
               <span class="tcar__who">
                 <span class="tcar__name">{d.name}</span>
-                <span class="tcar__company">{d.company}</span>
-                <span class="tcar__field">{d.field}</span>
+                <span class="tcar__company">{d.company}, {d.city}</span>
+                <span class="tcar__industry">{d.industry}</span>
               </span>
             </figcaption>
 
@@ -136,7 +136,7 @@ function initialsOf(name: string) {
     position: absolute;
     top: 0;
     left: 50%;
-    width: min(34rem, 84vw);
+    width: min(34rem, 85%);
     /* transform is set per-frame by JS: translateX(calc(-50% + Npx)) */
     display: flex;
     flex-direction: column;
@@ -208,7 +208,7 @@ function initialsOf(name: string) {
   .tcar__who { display: flex; flex-direction: column; line-height: 1.3; }
   .tcar__name { font-weight: 600; }
   .tcar__company { font-size: 0.9rem; color: var(--muted); }
-  .tcar__field {
+  .tcar__industry {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.1em;

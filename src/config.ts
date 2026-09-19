@@ -17,3 +17,13 @@ export const CONTACT_EMAIL = "hello@gitanjsheth.com";
 
 /** Cookie/localStorage key the language gate reads & writes. */
 export const LOCALE_STORAGE_KEY = "gsco_locale";
+
+/**
+ * Section visibility — flip a flag to show/hide that block in chrome + home.
+ * Routes under /{locale}/… still exist; they just won't be linked when off.
+ */
+export const sections = {
+  experts: false, // set true when real expert content is ready
+  testimonials: true,
+  caseStudies: true,
+} as const;

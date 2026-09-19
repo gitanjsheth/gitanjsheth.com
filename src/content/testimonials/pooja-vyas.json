@@ -1,0 +1,14 @@
+{
+  "name": "Pooja Vyas",
+  "company": "Selan Project Consultant",
+  "city": "Bhavnagar",
+  "industry": "Project Consultancy",
+  "date": "2025-01-07",
+  "quote_en": "On project and business discussions, Gitanj had a way of breaking a messy problem into pieces we could actually work with. He kept connecting the technical side to what mattered commercially. The conversation left us clearer, not just impressed.",
+  "quote_hi": "परियोजना और व्यवसाय की चर्चाओं में गितंज उलझी समस्या को ऐसे टुकड़ों में तोड़ते थे जिन पर हम सच में काम कर सकें। वह तकनीकी पक्ष को व्यावसायिक ज़रूरत से जोड़ते रहे। बातचीत के बाद हम प्रभावित नहीं, स्पष्ट हुए।",
+  "photo": "people/pooja-vyas.jpg",
+  "letterImage": "/letters/pooja-vyas.png",
+  "letterThumb": "/letters/thumbs/pooja-vyas.png",
+  "featured": true,
+  "order": 3
+}

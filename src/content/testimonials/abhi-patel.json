@@ -1,0 +1,13 @@
+{
+  "name": "Abhi Patel",
+  "company": "Skylark Corporation",
+  "city": "Ahmedabad",
+  "industry": "Real Estate",
+  "date": "2026-09-14",
+  "quote_en": "We met Gitanj on market and commercial questions. He did not take information at face value — he asked what sat behind a conclusion, and how the pieces fitted commercially. Those are the instincts you want on strategy work.",
+  "quote_hi": "हम बाज़ार और व्यावसायिक सवालों पर गितंज से मिले। उन्होंने जानकारी को सीधे नहीं माना — पूछा कि निष्कर्ष के पीछे क्या है, और टुकड़े व्यावसायिक रूप से कैसे जुड़ते हैं। रणनीति के काम में यही समझ चाहिए।",
+  "letterImage": "/letters/abhi-patel.png",
+  "letterThumb": "/letters/thumbs/abhi-patel.png",
+  "featured": false,
+  "order": 17
+}

@@ -15,14 +15,14 @@ const points: { heading: string; body: string }[] = t("engage.points");
 
 <BaseLayout locale={locale} pagePath="how-we-engage" title={t("engage.title")} description={t("engage.intro")}>
   <section>
-    <div class="container-x py-12 md:py-20">
+    <div class="container-x pt-10 md:pt-16 pb-8 md:pb-10">
       <h1 class="h1">{t("engage.title")}</h1>
-      <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("engage.intro")}</p>
+      <p class="mt-5 max-w-3xl text-lg text-muted">{t("engage.intro")}</p>
     </div>
   </section>
 
   <section class="border-t border-ink/10">
-    <div class="container-x py-10 md:py-16">
+    <div class="container-x pt-8 md:pt-10 pb-10 md:pb-16">
       <ol class="grid gap-x-12 gap-y-12 md:grid-cols-2">
         {
           points.map((p, i) => (
@@ -32,7 +32,7 @@ const points: { heading: string; body: string }[] = t("engage.points");
               </span>
               <div>
                 <h2 class="text-xl">{p.heading}</h2>
-                <p class="mt-2 text-muted measure">{p.body}</p>
+                <p class="mt-2 text-muted">{p.body}</p>
               </div>
             </li>
           ))

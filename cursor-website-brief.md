@@ -128,7 +128,7 @@ Usage: reversed/ivory mark on dark (ink) sections; ink mark on light sections.
 - `/{locale}/case-studies` — grid from **caseStudies** collection; `/{locale}/case-studies/[slug]` detail.
 - `/{locale}/testimonials` — **all** testimonials from the **testimonials** collection. Each card:
   - the locale-appropriate pulled quote (quote_en / quote_hi);
-  - the signatory's **photo in a SQUARE crop** (keep it square — max 4px corner radius; NOT circular, which reads social/casual and cheapens the gravitas) with name / company / field beside it;
+  - the signatory's **photo in a SQUARE crop** (keep it square — max 4px corner radius; NOT circular, which reads social/casual and cheapens the gravitas) with name / company / city beside it;
   - a small **letter-thumbnail cutout** (the first-page preview) with the label **"View testimonial letter"** — the thumbnail signals it's a formal signed document before the click, since "testimonial letter" isn't a universally understood object;
   - clicking opens the **full letter PNG in a modal/lightbox** (the untranslated English artefact, shown identically in both locales; never all full letters stacked together).
 - `/{locale}/experts` — empanelled experts from the **experts** collection.
@@ -142,7 +142,7 @@ Usage: reversed/ivory mark on dark (ink) sections; ink mark on light sections.
 **testimonials** (one file per person; the displayed quote carries BOTH languages, the letter image is shared):
 
 ```
-name, company, field, date,
+name, company, city, industry, date,
 quote_en (SHORT, varied),   <- shown on /en/
 quote_hi (SHORT, varied),   <- shown on /hi/  (placeholder "TODO: Hindi" for now)
 photo (e.g. "people/dilip-bhatt.jpg")        <- signatory's face; SQUARE crop

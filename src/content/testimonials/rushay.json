@@ -1,0 +1,14 @@
+{
+  "name": "Rushay Trivedi",
+  "company": "Rushkar Technology",
+  "city": "Ahmedabad",
+  "industry": "Technology",
+  "date": "2026-09-14",
+  "quote_en": "Working through technology and business questions with Gitanj, I saw how quickly he tied systems and data back to outcomes. He is not interested in demos for their own sake. That makes him useful in a room full of engineers and commercial people.",
+  "quote_hi": "प्रौद्योगिकी और व्यवसाय के सवालों पर गितंज के साथ काम करते हुए देखा कि वह सिस्टम और डेटा को कितनी जल्दी परिणामों से जोड़ते हैं। उन्हें केवल डेमो में दिलचस्पी नहीं। इंजीनियरों और व्यावसायिक लोगों वाले कमरे में यही उन्हें उपयोगी बनाता है।",
+  "photo": "people/rushay.jpg",
+  "letterImage": "/letters/rushay.png",
+  "letterThumb": "/letters/thumbs/rushay.png",
+  "featured": false,
+  "order": 12
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Ketan Doshi",
+  "company": "K. R. Doshi Group of Colleges",
+  "city": "Bhavnagar",
+  "industry": "Education",
+  "date": "2025-12-12",
+  "quote_en": "Our trust spoke with Gitanj about institutional challenges in education. He wanted to understand the process and the people involved, not only the immediate problem. He explained his observations simply enough that we could act on them.",
+  "quote_hi": "हमारे ट्रस्ट ने शिक्षा क्षेत्र की संस्थागत चुनौतियों पर गितंज से बात की। वह केवल तात्कालिक समस्या नहीं, प्रक्रिया और जुड़े लोगों को समझना चाहते थे। उन्होंने अपनी बात इतनी सरलता से कही कि हम उस पर काम कर सकें।",
+  "photo": "people/ketanbhai-doshi.jpg",
+  "letterImage": "/letters/ketanbhai-kr-doshi.png",
+  "letterThumb": "/letters/thumbs/ketanbhai-kr-doshi.png",
+  "featured": false,
+  "order": 14
+}

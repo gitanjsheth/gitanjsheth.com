@@ -48,11 +48,11 @@ const experts = (await getCollection("experts")).sort(
        which STANDS at the section's bottom edge on ≥640px. Mobile: portrait
        leads (face-first), text below. The fuller bio lives on /gitanj-sheth. -->
   <section id="person" class="scroll-mt-24 section-ink overflow-hidden">
-    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-16 md:gap-16 md:pt-20">
-      <div class="order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1 sm:pb-14 md:pb-16">
-        <h2 class="h2">{t("person.name")}</h2>
-        <p class="mt-5 lead">{t("person.lead")}</p>
-        <p class="mt-4 text-ivory/80">{t("person.combination")}</p>
+    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
+      <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
+        <h2 class="person-name">{t("person.name")}</h2>
+        <p class="person-lead mt-5">{t("person.lead")}</p>
+        <p class="person-combo mt-4 text-ivory/80">{t("person.combination")}</p>
         <div class="mt-8 flex justify-center">
           <a href={localizePath(locale, "gitanj-sheth")} class="btn btn-reversed">
             {t("person.more")}
@@ -127,7 +127,9 @@ const experts = (await getCollection("experts")).sort(
           </div>
         </div>
         <div class="mt-8 md:mt-10">
-          <ExpertsCarousel locale={locale} items={experts} />
+          <div class="container-x">
+            <ExpertsCarousel locale={locale} items={experts} />
+          </div>
         </div>
         <div class="container-x flex justify-center pt-8 pb-10 md:pb-16">
           <a href={localizePath(locale, "experts")} class="btn btn-ghost">
@@ -165,7 +167,9 @@ const experts = (await getCollection("experts")).sort(
       </div>
     </div>
     <div class="mt-8 pb-6 md:mt-10">
-      <TestimonialsCarousel locale={locale} items={testimonials} />
+      <div class="container-x">
+        <TestimonialsCarousel locale={locale} items={testimonials} />
+      </div>
     </div>
     <div class="container-x flex justify-center pb-10 md:pb-16">
       <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">

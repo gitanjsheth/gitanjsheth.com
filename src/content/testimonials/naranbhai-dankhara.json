@@ -1,0 +1,14 @@
+{
+  "name": "Naranbhai Dankhara",
+  "company": "Gautap Developers",
+  "city": "Bhavnagar",
+  "industry": "Real Estate",
+  "date": "2026-05-21",
+  "quote_en": "When we spoke about technology and business, Gitanj started with the bigger picture — customers, economics, how things scale — before drilling into any one problem. His advice felt grounded, not abstract.",
+  "quote_hi": "जब हमने प्रौद्योगिकी और व्यवसाय पर बात की, गितंज ने किसी एक समस्या में जाने से पहले बड़ा चित्र देखा — ग्राहक, अर्थशास्त्र, विस्तार कैसे होता है। उनकी सलाह हवा में नहीं, ज़मीन पर खड़ी लगी।",
+  "photo": "people/naranbhai-dankhara.jpg",
+  "letterImage": "/letters/naranbhai-dankhara.png",
+  "letterThumb": "/letters/thumbs/naranbhai-dankhara.png",
+  "featured": false,
+  "order": 11
+}

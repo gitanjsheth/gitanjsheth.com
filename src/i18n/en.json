@@ -18,14 +18,14 @@
   "nav": {
     "about": "About",
     "work": "Work",
-    "ourStory": "Our Story",
+    "ourStory": "Our story",
     "gitanj": "Gitanj Sheth",
-    "story": "Our Story",
+    "story": "Our story",
     "services": "Services",
-    "caseStudies": "Case Studies",
+    "caseStudies": "Case studies",
     "testimonials": "Testimonials",
-    "experts": "Empanelled Experts",
-    "howWeEngage": "How We Engage",
+    "experts": "Our experts",
+    "howWeEngage": "How we engage",
     "contact": "Contact",
     "enquire": "Get in touch",
     "openMenu": "Open menu",
@@ -58,14 +58,14 @@
     }
   },
   "ourStory": {
-    "eyebrow": "Our Story",
+    "eyebrow": "Our story",
     "title": "A bench, not a solo act.",
     "intro": "Independent expert advisory, built as a bench — not a solo act, and not a big-firm pyramid.",
     "body": [
       "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
       "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own."
     ],
-    "more": "How we engage"
+    "more": "Learn how we engage"
   },
   "person": {
     "eyebrow": "The Principal",
@@ -118,7 +118,7 @@
     "viewAll": "View all testimonials"
   },
   "engageHome": {
-    "label": "How We Engage",
+    "label": "How we engage",
     "title": "A first conversation costs you nothing.",
     "body": "The first call is free. There is no upfront charge and no commitment to continue. If a visit is needed, only travel and stay at actuals. Scope and consideration are decided together, once value is on the table.",
     "more": "How we engage"
@@ -129,7 +129,7 @@
     "button": "Request an intro call"
   },
   "caseStudies": {
-    "title": "Case Studies",
+    "title": "Case studies",
     "intro": "A few problems we've untangled — a deliberate spread of situations. The range is the point.",
     "confidential": "Confidential",
     "sectorLabel": "Sector",
@@ -141,7 +141,7 @@
   },
   "testimonials": {
     "title": "Testimonials",
-    "intro": "Signed letters from the people we've worked for. Read the pulled quote, then open the letter itself.",
+    "intro": "Fourteen signed letters from people who sat with the work — not a highlight reel. Read each quote, then open the letter itself.",
     "viewLetter": "View testimonial letter",
     "letterPlaceholder": "Testimonial letter",
     "closeLetter": "Close",
@@ -150,12 +150,12 @@
     "next": "Next"
   },
   "experts": {
-    "title": "Empanelled Experts",
+    "title": "Our experts",
     "intro": "A standing bench of senior practitioners we bring to bear, chosen for the problem rather than the org chart.",
     "domainLabel": "Domain"
   },
   "engage": {
-    "title": "How We Engage",
+    "title": "How we engage",
     "intro": "No price list. Just a plain account of how working with G A Sheth & Associates begins and how consideration is decided.",
     "points": [
       {

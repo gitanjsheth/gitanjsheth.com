@@ -34,7 +34,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   <!-- 1. HERO (ivory) -->
   <section>
     <div class="container-x py-16 text-center md:py-24">
-      <h1 class="mx-auto max-w-4xl font-display" style="font-size:clamp(2.5rem,6vw,4.75rem);line-height:1.05;">
+      <h1 class="mx-auto max-w-4xl h1">
         {t("home.hero.title")}
       </h1>
       <p class="mx-auto mt-6 max-w-2xl text-lg text-muted">{t("home.hero.subtitle")}</p>
@@ -53,7 +53,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
            right-aligned to the content edge. -->
       <div class="grid items-center gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-14">
         <div class="order-2 md:order-1">
-          <h2 class="text-3xl md:text-5xl">{t("person.name")}</h2>
+          <h2 class="h2">{t("person.name")}</h2>
           <p class="mt-6 text-xl leading-relaxed measure">{t("person.lead")}</p>
           <p class="mt-4 measure text-ivory/70">{t("person.combination")}</p>
         </div>
@@ -92,7 +92,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     <div class="container-x py-12 md:py-20">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
-          <h2 class="text-3xl md:text-4xl">{t("home.story.title")}</h2>
+          <h2 class="h2">{t("home.story.title")}</h2>
         </div>
         <div class="measure text-lg text-muted">
           <p>{t("home.story.teaser")}</p>
@@ -110,7 +110,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   <section id="solutions" class="scroll-mt-24 section-ink">
     <div class="container-x py-12 md:py-20">
       <div class="max-w-2xl">
-        <h2 class="text-3xl md:text-4xl">{t("solutions.title")}</h2>
+        <h2 class="h2">{t("solutions.title")}</h2>
         <p class="mt-4 measure text-ivory/70">{t("solutions.intro")}</p>
       </div>
 
@@ -122,7 +122,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
           ].map(({ k, n }) => (
             <div class="card flex flex-col p-8 md:p-10">
               <div class="flex items-baseline justify-between">
-                <h3 class="text-2xl md:text-3xl">{t(`solutions.${k}.label`)}</h3>
+                <h3 class="h3">{t(`solutions.${k}.label`)}</h3>
                 <span class="font-mono text-sm text-gold">{n}</span>
               </div>
               <p class="mt-4 text-lg leading-relaxed text-muted">{t(`solutions.${k}.body`)}</p>
@@ -145,7 +145,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
       <section class="scroll-mt-24">
         <div class="container-x pt-12 md:pt-20">
           <div class="max-w-2xl">
-            <h2 class="text-3xl md:text-4xl">{t("home.experts.title")}</h2>
+            <h2 class="h2">{t("home.experts.title")}</h2>
           </div>
         </div>
         <div class="mt-8 md:mt-10">
@@ -165,7 +165,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     <div class="container-x py-12 md:py-20">
       <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
         <div>
-          <h2 class="text-3xl md:text-4xl">{t("engageHome.title")}</h2>
+          <h2 class="h2">{t("engageHome.title")}</h2>
         </div>
         <div class="measure">
           <p class="text-lg">{t("engageHome.body")}</p>
@@ -183,7 +183,7 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
   <section id="testimonials" class="scroll-mt-24">
     <div class="container-x pt-12 md:pt-20">
       <div class="max-w-2xl">
-        <h2 class="text-3xl md:text-4xl">{t("testimonialsHome.title")}</h2>
+        <h2 class="h2">{t("testimonialsHome.title")}</h2>
       </div>
     </div>
     <div class="mt-8 pb-6 md:mt-10">

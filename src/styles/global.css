@@ -97,6 +97,25 @@
     max-width: var(--measure);
   }
 
+  /* --- Fluid type scale --------------------------------------------------
+     One system for every display heading: each tier scales smoothly with the
+     viewport (clamp) instead of jumping once at a breakpoint, so proportions
+     hold at all widths. Apply .h1 to page titles / the hero, .h2 to section
+     headings, .h3 to card / item headings. The heading FONT (family, weight,
+     tracking) still comes from the base h1–h4 rules. */
+  .h1 {
+    font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+    line-height: 1.05;
+  }
+  .h2 {
+    font-size: clamp(1.75rem, 1.45rem + 1.6vw, 2.5rem);
+    line-height: 1.1;
+  }
+  .h3 {
+    font-size: clamp(1.35rem, 1.2rem + 0.9vw, 1.85rem);
+    line-height: 1.2;
+  }
+
   /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.
      A small gold tick precedes it for a surgical accent. */
   .eyebrow {

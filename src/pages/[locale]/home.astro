@@ -31,12 +31,12 @@ const experts = (await getCollection("experts")).sort(
 <BaseLayout locale={locale} pagePath="home" title="" description={t("site.description")}>
   <!-- 1. HERO (ivory) -->
   <section>
-    <div class="container-x py-12 text-center md:py-20">
+    <div class="container-x py-24 text-center sm:py-28 md:py-36 lg:py-44">
       <h1 class="mx-auto max-w-4xl h1">
         {t("home.hero.title")}
       </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-muted">{t("home.hero.subtitle")}</p>
-      <div class="mt-8 flex justify-center">
+      <p class="mx-auto mt-8 max-w-2xl lead text-muted">{t("home.hero.subtitle")}</p>
+      <div class="mt-10 flex justify-center">
         <a href={localizePath(locale, "contact")} class="btn btn-primary">
           {t("home.hero.cta")}
         </a>
@@ -72,7 +72,7 @@ const experts = (await getCollection("experts")).sort(
         <div>
           <h2 class="h2">{t("home.story.title")}</h2>
         </div>
-        <div class="measure text-lg text-muted">
+        <div class="measure lead text-muted">
           <p>{t("home.story.teaser")}</p>
         </div>
       </div>
@@ -148,7 +148,7 @@ const experts = (await getCollection("experts")).sort(
           <h2 class="h2">{t("engageHome.title")}</h2>
         </div>
         <div class="measure">
-          <p class="text-lg">{t("engageHome.body")}</p>
+          <p class="lead">{t("engageHome.body")}</p>
         </div>
       </div>
       <div class="mt-8 flex justify-center">

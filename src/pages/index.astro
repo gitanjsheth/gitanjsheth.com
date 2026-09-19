@@ -41,11 +41,11 @@ const homePreview = `${base}/en/home`;
     <script is:inline define:vars={{ key: LOCALE_STORAGE_KEY, base, knownLocales }}>
       (function () {
         try {
-          var stored = localStorage.getItem(key);
-          if (!stored) {
-            var m = document.cookie.match(new RegExp("(?:^|; )" + key + "=([^;]+)"));
-            if (m) stored = decodeURIComponent(m[1]);
-          }
+          // Cookie is the source of truth, so clearing cookies re-shows the
+          // gate (localStorage would otherwise survive a cookie wipe).
+          var stored = null;
+          var m = document.cookie.match(new RegExp("(?:^|; )" + key + "=([^;]+)"));
+          if (m) stored = decodeURIComponent(m[1]);
           if (stored && knownLocales.indexOf(stored) !== -1) {
             location.replace(base + "/" + stored + "/home");
           }

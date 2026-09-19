@@ -96,33 +96,33 @@ const expertsPath = localizePath(locale, "experts");
   .ecar__stage.is-ready { opacity: 1; }
   .ecar__stage.is-dragging { cursor: grabbing; user-select: none; }
 
-  /* GAP (JS) is 20px. Widths are solved so the row shows N full cards centred
+  /* GAP (JS) is 25px. Widths are solved so the row shows N full cards centred
      with a 20% peek of the next card on each side:
        visible span = (N + 0.4) cards + (N + 1) gaps = 100%
-       => card = (100% - (N+1)*20px) / (N + 0.4)
+       => card = (100% - (N+1)*25px) / (N + 0.4)
      <640: N=1 (one card, small peeks) · ≥640: N=2 · ≥1024: N=3. */
   .ecar__card {
     position: absolute;
     top: 0;
     left: 50%;
-    width: calc((100% - 40px) / 1.4);
+    width: calc((100% - 50px) / 1.4);
     display: flex;
     flex-direction: column;
     background: var(--paper);
     color: var(--ink); /* explicit, so card text never inherits a dark section's ivory */
     border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
     border-radius: 4px;
-    padding: 1rem 1rem 1.25rem;
+    padding: 1.2rem 1.2rem 1.4rem;
     margin: 0;
     opacity: 0.4;
     transition: opacity 300ms ease, border-color 300ms ease;
     will-change: transform;
   }
   @media (min-width: 640px) {
-    .ecar__card { width: calc((100% - 60px) / 2.4); } /* 2 full + 20% peeks */
+    .ecar__card { width: calc((100% - 75px) / 2.4); } /* 2 full + 20% peeks */
   }
   @media (min-width: 1024px) {
-    .ecar__card { width: calc((100% - 80px) / 3.4); } /* 3 full + 20% peeks */
+    .ecar__card { width: calc((100% - 100px) / 3.4); } /* 3 full + 20% peeks */
   }
   .ecar__card.is-active {
     border-color: color-mix(in srgb, var(--ink) 22%, transparent);
@@ -164,7 +164,7 @@ const expertsPath = localizePath(locale, "experts");
   }
   .ecar__more {
     margin-top: 1rem;
-    align-self: flex-start;
+    align-self: center;
     padding: 0.55rem 1rem;
     font-size: 0.85rem;
   }
@@ -205,7 +205,7 @@ const expertsPath = localizePath(locale, "experts");
     const N = cards.length;
     if (!stage || N === 0) return;
 
-    const GAP = 20;
+    const GAP = 25;
     let step = 0;
     let cardHalf = 0;
     let stageHalf = 0;

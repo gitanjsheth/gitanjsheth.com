@@ -118,13 +118,14 @@
     line-height: 1.2;
   }
   .lead {
-    font-size: clamp(1.125rem, 0.944rem + 0.77vw, 1.5625rem);
+    /* 17px @375 -> 21px @1280 */
+    font-size: clamp(1.0625rem, 0.959rem + 0.44vw, 1.3125rem);
     line-height: 1.5;
   }
   /* Founder portrait: one continuous width (240px@375 -> 380px@1280), so it
      never jumps between the stacked and side-by-side layouts. */
   .person-media {
-    width: clamp(240px, 182px + 15.5vw, 380px);
+    width: clamp(280px, 220px + 15.5vw, 380px);
   }
 
   /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.

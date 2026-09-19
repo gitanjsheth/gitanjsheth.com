@@ -26,8 +26,6 @@ const testimonials = (await getCollection("testimonials"))
 const experts = (await getCollection("experts")).sort(
   (a, b) => a.data.order - b.data.order
 );
-
-const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
 ---
 
 <BaseLayout locale={locale} pagePath="home" title="" description={t("site.description")}>
@@ -46,48 +44,23 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- 2. THE PRINCIPAL (blue) -->
-  <section id="person" class="scroll-mt-24 section-ink">
-    <div class="container-x py-10 md:py-16">
-      <!-- Mobile: portrait first (face-first). Desktop: text left, portrait
-           right-aligned to the content edge. -->
-      <!-- Text + portrait as a balanced, centred PAIR. The columns are capped
-           (not fr units) and the grid is centre-justified, so the text stays a
-           readable width and the portrait sits right beside it — no dead gap
-           opening between them on wide screens. Two-up from 640px; below that
-           the portrait leads (face-first) full width. -->
-      <div class="flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-12 md:gap-16">
-        <div class="order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
-          <h2 class="h2">{t("person.name")}</h2>
-          <p class="mt-6 lead">{t("person.lead")}</p>
-          <p class="mt-4 text-ivory/80">{t("person.combination")}</p>
-        </div>
-        <div class="person-media order-1 shrink-0 sm:order-2">
-          <FounderPortrait alt={t("home.hero.portraitAlt")} />
-        </div>
-      </div>
-
-      <dl class="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          trackRecord.map((tr) => (
-            <div class="border-t border-ivory/15 pt-4">
-              <dt class="font-display text-2xl leading-none">{tr.value}</dt>
-              <dd class="mt-2 text-sm text-ivory/70">{tr.label}</dd>
-            </div>
-          ))
-        }
-      </dl>
-
-      <div class="mt-10 border-t border-ivory/15 pt-8">
-        <div class="measure">
-          <p>{t("person.education")}</p>
-          <p class="mt-3">{t("person.roles")}</p>
-        </div>
+  <!-- 2. THE PRINCIPAL (blue). One text column (name → CTA) + the portrait,
+       which STANDS at the section's bottom edge on ≥640px. Mobile: portrait
+       leads (face-first), text below. The fuller bio lives on /gitanj-sheth. -->
+  <section id="person" class="scroll-mt-24 section-ink overflow-hidden">
+    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-16 md:gap-16 md:pt-20">
+      <div class="order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1 sm:pb-14 md:pb-16">
+        <h2 class="h2">{t("person.name")}</h2>
+        <p class="mt-5 lead">{t("person.lead")}</p>
+        <p class="mt-4 text-ivory/80">{t("person.combination")}</p>
         <div class="mt-8 flex justify-center">
           <a href={localizePath(locale, "gitanj-sheth")} class="btn btn-reversed">
             {t("person.more")}
           </a>
         </div>
+      </div>
+      <div class="person-media order-1 shrink-0 self-end sm:order-2">
+        <FounderPortrait alt={t("home.hero.portraitAlt")} />
       </div>
     </div>
   </section>

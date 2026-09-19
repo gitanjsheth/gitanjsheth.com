@@ -122,6 +122,12 @@
     font-size: clamp(1.0625rem, 0.959rem + 0.44vw, 1.3125rem);
     line-height: 1.5;
   }
+  /* Engage-section body ONLY — a larger fluid size proportionate to the h2.
+     Deliberately separate from .lead so it never touches other copy. */
+  .engage-lead {
+    font-size: clamp(1.125rem, 0.944rem + 0.77vw, 1.5625rem);
+    line-height: 1.5;
+  }
   /* Founder portrait width — two bands:
      <640: unchanged (280 floor, 220px+15.5vw)
      ≥640: 320@640 → 400@1280 (max only at 1280) */

@@ -96,16 +96,15 @@ const expertsPath = localizePath(locale, "experts");
   .ecar__stage.is-ready { opacity: 1; }
   .ecar__stage.is-dragging { cursor: grabbing; user-select: none; }
 
-  /* GAP (JS) is 25px. Widths are solved so the row shows N full cards centred
-     with a 20% peek of the next card on each side:
-       visible span = (N + 0.4) cards + (N + 1) gaps = 100%
-       => card = (100% - (N+1)*25px) / (N + 0.4)
-     <640: N=1 (one card, small peeks) · ≥640: N=2 · ≥1024: N=3. */
+  /* One continuous width instead of stepped breakpoints, so the card shrinks
+     smoothly and never "jumps" size near 640px. The clamp is tuned so that at
+     the ~1056px desktop stage it lands on 281px = 3 full cards + a 20% peek
+     each side; on smaller stages fewer cards fit, continuously. */
   .ecar__card {
     position: absolute;
     top: 0;
     left: 50%;
-    width: calc((100% - 50px) / 1.4);
+    width: clamp(220px, 26.6%, 281px);
     display: flex;
     flex-direction: column;
     background: var(--paper);
@@ -117,12 +116,6 @@ const expertsPath = localizePath(locale, "experts");
     opacity: 0.4;
     transition: opacity 300ms ease, border-color 300ms ease;
     will-change: transform;
-  }
-  @media (min-width: 640px) {
-    .ecar__card { width: calc((100% - 75px) / 2.4); } /* 2 full + 20% peeks */
-  }
-  @media (min-width: 1024px) {
-    .ecar__card { width: calc((100% - 100px) / 3.4); } /* 3 full + 20% peeks */
   }
   .ecar__card.is-active {
     border-color: color-mix(in srgb, var(--ink) 22%, transparent);

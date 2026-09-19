@@ -19,6 +19,15 @@ interface Props {
 const { locale, items } = Astro.props;
 const t = useTranslations(locale);
 
+// The peeking carousel shows 3 cards + a 20% sliver of the next on each side.
+// That needs 5 positions, so with a short bench (<5) we repeat it until there
+// are enough cards to peek into. With ≥5 experts the peeks are already native.
+let loop = items;
+if (items.length > 0 && items.length < 5) {
+  loop = [];
+  while (loop.length < 5) loop = loop.concat(items);
+}
+
 const peopleImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/people/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
   { eager: true }
@@ -41,11 +50,11 @@ const expertsPath = localizePath(locale, "experts");
 <div class="ecar" data-ecarousel>
   <div class="ecar__stage" data-ecar-track role="group" aria-roledescription="carousel">
     {
-      items.map((e, i) => {
+      loop.map((e, i) => {
         const d = e.data;
         const photoImg = resolvePhoto(d.photo);
         return (
-          <article class="ecar__card" data-ecar-card aria-label={`${i + 1} / ${items.length}`} lang={locale}>
+          <article class="ecar__card" data-ecar-card aria-label={`${i + 1} / ${loop.length}`} lang={locale}>
             <a class="ecar__media" href={`${expertsPath}#${e.id}`} aria-label={d.name}>
               {photoImg ? (
                 <Image src={photoImg} alt={d.name} width={600} height={800} class="ecar__img" />
@@ -87,11 +96,16 @@ const expertsPath = localizePath(locale, "experts");
   .ecar__stage.is-ready { opacity: 1; }
   .ecar__stage.is-dragging { cursor: grabbing; user-select: none; }
 
+  /* GAP (JS) is 20px. Widths are solved so the row shows N full cards centred
+     with a 20% peek of the next card on each side:
+       visible span = (N + 0.4) cards + (N + 1) gaps = 100%
+       => card = (100% - (N+1)*20px) / (N + 0.4)
+     <640: N=1 (one card, small peeks) · ≥640: N=2 · ≥1024: N=3. */
   .ecar__card {
     position: absolute;
     top: 0;
     left: 50%;
-    width: min(22rem, 85%);
+    width: calc((100% - 40px) / 1.4);
     display: flex;
     flex-direction: column;
     background: var(--paper);
@@ -100,12 +114,17 @@ const expertsPath = localizePath(locale, "experts");
     border-radius: 4px;
     padding: 1rem 1rem 1.25rem;
     margin: 0;
-    opacity: 0.5;
+    opacity: 0.4;
     transition: opacity 300ms ease, border-color 300ms ease;
     will-change: transform;
   }
+  @media (min-width: 640px) {
+    .ecar__card { width: calc((100% - 60px) / 2.4); } /* 2 full + 20% peeks */
+  }
+  @media (min-width: 1024px) {
+    .ecar__card { width: calc((100% - 80px) / 3.4); } /* 3 full + 20% peeks */
+  }
   .ecar__card.is-active {
-    opacity: 1;
     border-color: color-mix(in srgb, var(--ink) 22%, transparent);
   }
 
@@ -188,6 +207,8 @@ const expertsPath = localizePath(locale, "experts");
 
     const GAP = 20;
     let step = 0;
+    let cardHalf = 0;
+    let stageHalf = 0;
     let pos = 0;
     let target = 0;
     let raf = 0;
@@ -195,7 +216,10 @@ const expertsPath = localizePath(locale, "experts");
     const mod = (a: number, m: number) => ((a % m) + m) % m;
 
     function measure() {
-      step = cards[0].getBoundingClientRect().width + GAP;
+      const cw = cards[0].getBoundingClientRect().width;
+      step = cw + GAP;
+      cardHalf = cw / 2;
+      stageHalf = stage.getBoundingClientRect().width / 2;
       let maxH = 0;
       cards.forEach((c) => (c.style.height = "auto"));
       cards.forEach((c) => (maxH = Math.max(maxH, c.getBoundingClientRect().height)));
@@ -211,6 +235,9 @@ const expertsPath = localizePath(locale, "experts");
         card.style.transform = `translateX(calc(-50% + ${d * step}px))`;
         const ad = Math.abs(d);
         card.classList.toggle("is-active", ad < 0.5);
+        // Full opacity only while the whole card is inside the stage; the 20%
+        // peeks that spill past the edge are dimmed.
+        card.style.opacity = ad * step + cardHalf <= stageHalf + 1 ? "1" : "0.4";
         card.style.zIndex = String(N - Math.round(ad));
         card.style.visibility = ad > N / 2 - 0.001 ? "hidden" : "visible";
       }

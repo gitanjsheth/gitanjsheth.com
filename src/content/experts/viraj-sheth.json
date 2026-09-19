@@ -1,0 +1,15 @@
+{
+  "name": "Viraj Sheth",
+  "domain": { "en": "AI & Automation", "hi": "एआई और ऑटोमेशन" },
+  "blurb": {
+    "en": "Finds the repetitive, error-prone work inside a business and hands it to software — automation and AI that quietly does the job, not a demo that impresses once.",
+    "hi": "व्यवसाय के भीतर के दोहराव भरे, ग़लती-प्रवण काम को ढूँढकर उसे सॉफ़्टवेयर को सौंप देते हैं — ऐसा ऑटोमेशन और एआई जो चुपचाप काम करता रहे, न कि ऐसा डेमो जो एक बार प्रभावित करके रह जाए।"
+  },
+  "description": {
+    "en": "Looks for the repetitive, error-prone work that eats a team's week and hands it to software — practical automation and AI that does the job every day, not a demo that impresses once and gets abandoned. Starts from where the business actually loses time, and builds the smallest reliable system that removes it.",
+    "hi": "उस दोहराव भरे, ग़लती-प्रवण काम को ढूँढते हैं जो किसी टीम का पूरा हफ़्ता खा जाता है, और उसे सॉफ़्टवेयर को सौंप देते हैं — व्यावहारिक ऑटोमेशन और एआई जो रोज़ काम करे, न कि ऐसा डेमो जो एक बार प्रभावित करके छोड़ दिया जाए। वहाँ से शुरू करते हैं जहाँ व्यवसाय असल में समय गँवाता है, और उसे हटाने वाली सबसे छोटी भरोसेमंद व्यवस्था बनाते हैं।"
+  },
+  "photo": "people/viraj-sheth.jpg",
+  "order": 3,
+  "placeholder": false
+}

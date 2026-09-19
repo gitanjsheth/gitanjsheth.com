@@ -48,7 +48,7 @@ const expertsPath = localizePath(locale, "experts");
           <article class="ecar__card" data-ecar-card aria-label={`${i + 1} / ${items.length}`} lang={locale}>
             <a class="ecar__media" href={`${expertsPath}#${e.id}`} aria-label={d.name}>
               {photoImg ? (
-                <Image src={photoImg} alt={d.name} width={600} height={400} class="ecar__img" />
+                <Image src={photoImg} alt={d.name} width={600} height={800} class="ecar__img" />
               ) : (
                 <span class="ecar__img ecar__img--ph" aria-hidden="true">{initialsOf(d.name)}</span>
               )}
@@ -111,7 +111,7 @@ const expertsPath = localizePath(locale, "experts");
 
   .ecar__media {
     display: block;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 3 / 4;
     border-radius: 3px;
     overflow: hidden;
     background: color-mix(in srgb, var(--ink) 6%, var(--paper));

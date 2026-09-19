@@ -1,0 +1,15 @@
+{
+  "name": "Apurva Sheth",
+  "domain": { "en": "Strategy & Liaison", "hi": "रणनीति और संपर्क" },
+  "blurb": {
+    "en": "Shapes the strategy behind a decision and carries the relationships that get it done — the approvals, partners and conversations a plan needs to actually move.",
+    "hi": "किसी निर्णय के पीछे की रणनीति गढ़ते हैं और उन रिश्तों को सँभालते हैं जो उसे अमल में लाते हैं — वे मंज़ूरियाँ, साझेदार और बातचीत जिनके बिना कोई योजना आगे नहीं बढ़ती।"
+  },
+  "description": {
+    "en": "Works on the strategy behind a move and the relationships that turn it into action. Sits between the plan and the people who have to say yes — partners, institutions, stakeholders — and keeps a decision moving through the approvals and conversations that usually stall it. The value is a strategy that survives contact with the real world, and someone who can open the doors it depends on.",
+    "hi": "किसी कदम के पीछे की रणनीति और उन रिश्तों पर काम करते हैं जो उसे कार्य में बदलते हैं। योजना और उन लोगों के बीच बैठते हैं जिन्हें हाँ कहना है — साझेदार, संस्थान, हितधारक — और निर्णय को उन मंज़ूरियों और बातचीत के बीच से आगे बढ़ाते रहते हैं जहाँ वह अक्सर अटक जाता है। मूल्य है ऐसी रणनीति जो असल दुनिया में टिके, और कोई ऐसा जो उसके लिए ज़रूरी दरवाज़े खोल सके।"
+  },
+  "photo": "people/apurva-sheth.jpg",
+  "order": 1,
+  "placeholder": false
+}

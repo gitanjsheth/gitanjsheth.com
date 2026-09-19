@@ -1,0 +1,15 @@
+{
+  "name": "Vishakha Sheth",
+  "domain": { "en": "Software & Product", "hi": "सॉफ़्टवेयर और प्रोडक्ट" },
+  "blurb": {
+    "en": "Turns a rough idea into software people actually use — deciding what to build, what to cut, and how it should feel to the person on the other side.",
+    "hi": "किसी कच्चे विचार को ऐसे सॉफ़्टवेयर में बदलती हैं जिसे लोग सचमुच इस्तेमाल करें — यह तय करते हुए कि क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को यह कैसा लगे।"
+  },
+  "description": {
+    "en": "Owns the path from a rough idea to working software — what to build first, what to leave out, and how the whole thing should feel to the person using it. Keeps engineering honest about the product and the product honest about engineering, so what ships is something customers understand and the team can keep improving.",
+    "hi": "कच्चे विचार से चलते-फिरते सॉफ़्टवेयर तक का रास्ता सँभालती हैं — पहले क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को पूरी चीज़ कैसी लगे। इंजीनियरिंग को प्रोडक्ट के प्रति और प्रोडक्ट को इंजीनियरिंग के प्रति ईमानदार रखती हैं, ताकि जो बने उसे ग्राहक समझ सकें और टीम उसे लगातार बेहतर बना सके।"
+  },
+  "photo": "people/vishakha-sheth.jpg",
+  "order": 2,
+  "placeholder": false
+}

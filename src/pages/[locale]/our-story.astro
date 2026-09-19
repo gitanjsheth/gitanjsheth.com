@@ -15,14 +15,14 @@ const body: string[] = t("ourStory.body");
 
 <BaseLayout locale={locale} pagePath="our-story" title={t("ourStory.eyebrow")} description={t("ourStory.intro")}>
   <section>
-    <div class="container-x py-14 md:py-24">
+    <div class="container-x py-12 md:py-20">
       <h1 class="h1">{t("ourStory.title")}</h1>
       <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("ourStory.intro")}</p>
     </div>
   </section>
 
   <section class="border-t border-ink/10">
-    <div class="container-x py-12 md:py-20">
+    <div class="container-x py-10 md:py-16">
       <div class="measure space-y-6 text-lg leading-relaxed">
         {body.map((para) => <p>{para}</p>)}
       </div>

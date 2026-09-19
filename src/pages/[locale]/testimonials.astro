@@ -19,13 +19,13 @@ const testimonials = (await getCollection("testimonials")).sort(
 
 <BaseLayout locale={locale} pagePath="testimonials" title={t("testimonials.title")} description={t("testimonials.intro")}>
   <section>
-    <div class="container-x py-12 md:py-20">
+    <div class="container-x py-10 md:py-16">
       <h1 class="h1">{t("testimonials.title")}</h1>
       <p class="mt-5 max-w-2xl text-lg text-muted measure">{t("testimonials.intro")}</p>
     </div>
   </section>
 
-  <section class="border-t border-ink/10 pb-12 md:pb-20">
+  <section class="border-t border-ink/10 pb-10 md:pb-16">
     <div class="pt-10">
       <TestimonialsCarousel locale={locale} items={testimonials} />
     </div>

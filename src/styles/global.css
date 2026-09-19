@@ -43,6 +43,9 @@
     background-color: var(--ivory);
     color: var(--ink);
     font-family: theme("fontFamily.body");
+    /* Body copy itself is fluid, so paragraphs — not just headings — grow with
+       the viewport up to the content cap, then hold. */
+    font-size: clamp(1rem, 0.95rem + 0.33vw, 1.2rem);
     line-height: 1.6;
     font-feature-settings: "kern" 1;
     -webkit-font-smoothing: antialiased;
@@ -114,6 +117,11 @@
   .h3 {
     font-size: clamp(1.35rem, 1.2rem + 0.9vw, 1.85rem);
     line-height: 1.2;
+  }
+  /* Fluid lead paragraph (intro copy under a heading). */
+  .lead {
+    font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
+    line-height: 1.5;
   }
 
   /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.

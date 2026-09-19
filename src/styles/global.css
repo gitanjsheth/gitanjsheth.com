@@ -45,7 +45,7 @@
     font-family: theme("fontFamily.body");
     /* Body copy itself is fluid, so paragraphs — not just headings — grow with
        the viewport up to the content cap, then hold. */
-    font-size: clamp(1rem, 0.95rem + 0.33vw, 1.2rem);
+    font-size: clamp(1rem, 0.922rem + 0.33vw, 1.1875rem);
     line-height: 1.6;
     font-feature-settings: "kern" 1;
     -webkit-font-smoothing: antialiased;
@@ -101,27 +101,30 @@
   }
 
   /* --- Fluid type scale --------------------------------------------------
-     One system for every display heading: each tier scales smoothly with the
-     viewport (clamp) instead of jumping once at a breakpoint, so proportions
-     hold at all widths. Apply .h1 to page titles / the hero, .h2 to section
-     headings, .h3 to card / item headings. The heading FONT (family, weight,
-     tracking) still comes from the base h1–h4 rules. */
+     ONE window: every token scales linearly from its min at a 375px viewport
+     to its max at 1280px, then holds. min@375 / max@1280:
+       .h1  34 -> 52   .h2 28 -> 40   .h3 22 -> 30   .lead 18 -> 25   body 16 -> 19
+     The heading FONT (family, weight, tracking) still comes from base h1–h4. */
   .h1 {
-    font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+    font-size: clamp(2.125rem, 1.657rem + 1.99vw, 3.25rem);
     line-height: 1.05;
   }
   .h2 {
-    font-size: clamp(1.75rem, 1.45rem + 1.6vw, 2.5rem);
+    font-size: clamp(1.75rem, 1.44rem + 1.33vw, 2.5rem);
     line-height: 1.1;
   }
   .h3 {
-    font-size: clamp(1.35rem, 1.2rem + 0.9vw, 1.85rem);
+    font-size: clamp(1.375rem, 1.168rem + 0.88vw, 1.875rem);
     line-height: 1.2;
   }
-  /* Fluid lead paragraph (intro copy under a heading). */
   .lead {
-    font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
+    font-size: clamp(1.125rem, 0.944rem + 0.77vw, 1.5625rem);
     line-height: 1.5;
+  }
+  /* Founder portrait: one continuous width (240px@375 -> 380px@1280), so it
+     never jumps between the stacked and side-by-side layouts. */
+  .person-media {
+    width: clamp(240px, 182px + 15.5vw, 380px);
   }
 
   /* Eyebrow label — tight tracked MONO caps ("modern studio"), not gold serif.

@@ -46,6 +46,17 @@ const singles: Item[] = [
   { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
   { key: "contact", href: localizePath(locale, "contact") },
 ];
+
+// Mobile menu is a flat, reordered list (no About/Work group headers).
+const mobileLinks: Item[] = [
+  { key: "ourStory", href: localizePath(locale, "our-story") },
+  { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
+  { key: "caseStudies", href: localizePath(locale, "case-studies") },
+  { key: "testimonials", href: localizePath(locale, "testimonials") },
+  { key: "experts", href: localizePath(locale, "experts") },
+  { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
+  { key: "contact", href: localizePath(locale, "contact") },
+];
 ---
 
 <header class="sticky top-0 z-40 border-b border-ink/10 bg-ivory/90 backdrop-blur" data-header>
@@ -117,22 +128,17 @@ const singles: Item[] = [
 
   <!-- Mobile menu panel -->
   <div id="mobile-menu" class="lg:hidden hidden border-t border-ink/10 bg-ivory" data-menu-panel>
-    <nav class="container-x flex flex-col py-4" aria-label="Mobile">
+    <nav class="container-x flex flex-col py-4 text-left" aria-label="Mobile">
       {
-        groups.map((group) => (
-          <>
-            <p class="py-3 border-b border-ink/5 text-base">{t(`nav.${group.key}`)}</p>
-            {group.items.map((item) => (
-              <a href={item.href} class="block py-2.5 pl-5 text-base text-muted border-b border-ink/5" data-menu-link>
-                {t(`nav.${item.key}`)}
-              </a>
-            ))}
-          </>
-        ))
-      }
-      {
-        singles.map((item) => (
-          <a href={item.href} class="py-3 border-b border-ink/5 text-base" data-menu-link>
+        mobileLinks.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "block py-3 border-b border-ink/5 text-base text-ink",
+              item.key === "gitanj" && "font-semibold",
+            ]}
+            data-menu-link
+          >
             {t(`nav.${item.key}`)}
           </a>
         ))
@@ -261,4 +267,12 @@ const singles: Item[] = [
   document.querySelectorAll("[data-menu-link]").forEach((link) =>
     link.addEventListener("click", () => setOpen(false))
   );
+
+  // Tapping anywhere outside the open panel (and outside the toggle) closes it.
+  document.addEventListener("click", (e) => {
+    if (!toggle || !panel) return;
+    if (toggle.getAttribute("aria-expanded") !== "true") return;
+    const target = e.target as Node;
+    if (!panel.contains(target) && !toggle.contains(target)) setOpen(false);
+  });
 </script>

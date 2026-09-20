@@ -79,6 +79,7 @@ const experts = defineCollection({
   schema: z.object({
     name: z.string(),
     domain: localized, // the role / discipline
+    education: localized.optional(), // e.g. "B.E. · MBA" (shown under the name)
     blurb: localized, // short line (home carousel card)
     description: localized.optional(), // fuller bio (experts page section); falls back to blurb
     photo: z.string().optional(), // e.g. "people/apurva-sheth.jpg" (3:4 portrait crop)

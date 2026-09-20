@@ -105,6 +105,19 @@ html[lang="hi"] .person-name {
 html[lang="hi"] .h3 {
   line-height: 1.35;
 }
+/* Devanagari has a connecting top bar; letter-spacing on caps labels breaks it
+   and makes the text look smaller, so drop the tracking on /hi/ labels. */
+html[lang="hi"] .eyebrow,
+html[lang="hi"] .tracking-caps,
+html[lang="hi"] .ecar__role {
+  letter-spacing: normal;
+}
+
+/* Readability floor: never below 14px. Raises the smallest utility text
+   (Tailwind text-xs is 12px); unlayered so it wins over the utility. */
+.text-xs {
+  font-size: 0.875rem;
+}
 
 @layer components {
   /* Constrained page gutter used across sections. */
@@ -197,7 +210,7 @@ html[lang="hi"] .h3 {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     font-weight: 400;
     color: var(--ink-2);
     display: inline-flex;

@@ -63,7 +63,9 @@ const expertsPath = localizePath(locale, "experts");
               )}
             </a>
             <h3 class="ecar__name">{d.name}</h3>
+            {d.education && <p class="ecar__edu">{d.education[locale]}</p>}
             <p class="ecar__role">{d.domain[locale]}</p>
+            <p class="ecar__brief">{d.blurb[locale]}</p>
             <a class="ecar__more btn btn-ghost" href={`${expertsPath}#${e.id}`}>
               {t("home.experts.readMore")}
             </a>
@@ -145,21 +147,32 @@ const expertsPath = localizePath(locale, "experts");
   }
   .ecar__name {
     margin-top: 1rem;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
-  .ecar__role {
-    margin-top: 0.2rem;
-    font-family: theme("fontFamily.mono");
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.72rem;
+  .ecar__edu {
+    margin-top: 0.35rem;
+    font-size: 0.875rem;
     color: var(--muted);
   }
+  .ecar__role {
+    margin-top: 0.35rem;
+    font-family: theme("fontFamily.mono");
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    color: var(--gold);
+  }
+  .ecar__brief {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
   .ecar__more {
-    margin-top: 1rem;
+    margin-top: 1.1rem;
     align-self: center;
     padding: 0.55rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .ecar__arrow {

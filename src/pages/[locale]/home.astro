@@ -51,6 +51,7 @@ const experts = (await getCollection("experts")).sort(
     <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h2 class="person-name">{t("person.name")}</h2>
+        <p class="mt-3 font-mono text-sm text-ivory/60">{t("person.qualifications")}</p>
         <p class="person-lead mt-5">{t("person.lead")}</p>
         <p class="person-combo mt-4 text-ivory/80">{t("person.combination")}</p>
         <div class="mt-8 flex justify-center">
@@ -117,7 +118,45 @@ const experts = (await getCollection("experts")).sort(
     </div>
   </section>
 
-  <!-- 5. THE EXPERTS (ivory) -->
+  <!-- 5. TESTIMONIALS (ivory) -->
+  <section id="testimonials" class="scroll-mt-24">
+    <div class="container-x pt-10 md:pt-16">
+      <div class="max-w-2xl">
+        <h2 class="h2">{t("testimonialsHome.title")}</h2>
+      </div>
+    </div>
+    <div class="mt-8 pb-6 md:mt-10">
+      <div class="container-x">
+        <TestimonialsCarousel locale={locale} items={testimonials} />
+      </div>
+    </div>
+    <div class="container-x flex justify-center pb-10 md:pb-16">
+      <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
+        {t("testimonialsHome.viewAll")}
+      </a>
+    </div>
+  </section>
+
+  <!-- 6. HOW WE ENGAGE (blue) -->
+  <section id="how-we-engage" class="scroll-mt-24 section-ink">
+    <div class="container-x py-10 md:py-16">
+      <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
+        <div>
+          <h2 class="h2">{t("engageHome.title")}</h2>
+        </div>
+        <div class="measure">
+          <p class="engage-lead">{t("engageHome.body")}</p>
+        </div>
+      </div>
+      <div class="mt-8 flex justify-center">
+        <a href={localizePath(locale, "how-we-engage")} class="btn btn-reversed">
+          {t("engageHome.more")}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. THE EXPERTS (ivory) -->
   {
     experts.length > 0 && (
       <section class="scroll-mt-24">
@@ -139,44 +178,6 @@ const experts = (await getCollection("experts")).sort(
       </section>
     )
   }
-
-  <!-- 6. HOW WE ENGAGE (blue) -->
-  <section id="how-we-engage" class="scroll-mt-24 section-ink">
-    <div class="container-x py-10 md:py-16">
-      <div class="grid gap-6 md:grid-cols-[1fr_1.6fr] md:gap-10">
-        <div>
-          <h2 class="h2">{t("engageHome.title")}</h2>
-        </div>
-        <div class="measure">
-          <p class="engage-lead">{t("engageHome.body")}</p>
-        </div>
-      </div>
-      <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "how-we-engage")} class="btn btn-reversed">
-          {t("engageHome.more")}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. TESTIMONIALS (ivory) -->
-  <section id="testimonials" class="scroll-mt-24">
-    <div class="container-x pt-10 md:pt-16">
-      <div class="max-w-2xl">
-        <h2 class="h2">{t("testimonialsHome.title")}</h2>
-      </div>
-    </div>
-    <div class="mt-8 pb-6 md:mt-10">
-      <div class="container-x">
-        <TestimonialsCarousel locale={locale} items={testimonials} />
-      </div>
-    </div>
-    <div class="container-x flex justify-center pb-10 md:pb-16">
-      <a href={localizePath(locale, "testimonials")} class="btn btn-ghost">
-        {t("testimonialsHome.viewAll")}
-      </a>
-    </div>
-  </section>
 
   <!-- 8. ENQUIRY CTA BAND (blue) -->
   <CtaBand locale={locale} />

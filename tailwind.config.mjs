@@ -32,12 +32,14 @@ export default {
           "system-ui",
           "sans-serif",
         ],
+        // "mono" is used only for small UI labels (domain tags, section
+        // numbers, qualifications), never real code — so use the legible body
+        // sans instead of a quirky monospace.
         mono: [
-          '"Space Mono"',
+          '"Inter"',
           '"Noto Sans Devanagari Variable"',
-          "ui-monospace",
-          "SFMono-Regular",
-          "monospace",
+          "system-ui",
+          "sans-serif",
         ],
       },
 

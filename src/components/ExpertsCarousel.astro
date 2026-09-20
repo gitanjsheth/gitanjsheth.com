@@ -57,7 +57,7 @@ const expertsPath = localizePath(locale, "experts");
           <article class="ecar__card" data-ecar-card aria-label={`${i + 1} / ${loop.length}`} lang={locale}>
             <a class="ecar__media" href={`${expertsPath}#${e.id}`} aria-label={d.name}>
               {photoImg ? (
-                <Image src={photoImg} alt={d.name} width={600} height={800} class="ecar__img" />
+                <Image src={photoImg} alt={d.name} width={600} height={600} class="ecar__img" />
               ) : (
                 <span class="ecar__img ecar__img--ph" aria-hidden="true">{initialsOf(d.name)}</span>
               )}
@@ -100,13 +100,14 @@ const expertsPath = localizePath(locale, "experts");
 
   /* One continuous width instead of stepped breakpoints, so the card shrinks
      smoothly and never "jumps" size near 640px. The clamp is tuned so that at
-     the ~1056px desktop stage it lands on 281px = 3 full cards + a 20% peek
-     each side; on smaller stages fewer cards fit, continuously. */
+     the ~1056px desktop stage it shows ~2.5 wide cards with a peek each side;
+     on smaller stages fewer fit, continuously. Widened ~30% for the square
+     photo + 3-line brief. */
   .ecar__card {
     position: absolute;
     top: 0;
     left: 50%;
-    width: clamp(220px, 26.6%, 281px);
+    width: clamp(286px, 34.6%, 365px);
     display: flex;
     flex-direction: column;
     background: var(--paper);
@@ -125,7 +126,7 @@ const expertsPath = localizePath(locale, "experts");
 
   .ecar__media {
     display: block;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
     border-radius: 3px;
     overflow: hidden;
     background: color-mix(in srgb, var(--ink) 6%, var(--paper));
@@ -151,7 +152,7 @@ const expertsPath = localizePath(locale, "experts");
   }
   .ecar__edu {
     margin-top: 0.35rem;
-    font-size: 0.875rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem); /* 14 -> 16, fluid */
     color: var(--muted);
   }
   .ecar__role {
@@ -159,12 +160,12 @@ const expertsPath = localizePath(locale, "experts");
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-size: 0.875rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem); /* 14 -> 16, fluid */
     color: var(--gold);
   }
   .ecar__brief {
     margin-top: 0.75rem;
-    font-size: 0.9375rem;
+    font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem); /* 15 -> 17, fluid */
     line-height: 1.5;
     color: var(--ink);
   }

@@ -113,10 +113,10 @@ html[lang="hi"] .ecar__role {
   letter-spacing: normal;
 }
 
-/* Readability floor: never below 14px. Raises the smallest utility text
-   (Tailwind text-xs is 12px); unlayered so it wins over the utility. */
+/* Readability floor: never below 14px, but still fluid like everything else —
+   14px @375 -> 16px @1280. Unlayered so it wins over the Tailwind utility. */
 .text-xs {
-  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
 }
 
 @layer components {
@@ -210,7 +210,7 @@ html[lang="hi"] .ecar__role {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 0.875rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
     font-weight: 400;
     color: var(--ink-2);
     display: inline-flex;

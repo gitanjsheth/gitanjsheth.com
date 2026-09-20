@@ -57,14 +57,14 @@ function initialsOf(name: string) {
                   src={photoImg}
                   alt={d.name}
                   width={600}
-                  height={800}
+                  height={600}
                   class="w-full rounded-[4px] object-cover"
-                  style="aspect-ratio:3/4;"
+                  style="aspect-ratio:1/1;"
                 />
               ) : (
                 <div
                   class="flex items-center justify-center rounded-[4px] font-display text-4xl text-ink/40"
-                  style="aspect-ratio:3/4;background:color-mix(in srgb, var(--ink) 6%, var(--paper));"
+                  style="aspect-ratio:1/1;background:color-mix(in srgb, var(--ink) 6%, var(--paper));"
                   aria-hidden="true"
                 >
                   {initialsOf(d.name)}

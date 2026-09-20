@@ -1,6 +1,13 @@
 {
   "name": "Apurva Sheth",
-  "domain": { "en": "Strategy & Liaison", "hi": "रणनीति और संपर्क" },
+  "domain": {
+    "en": "Strategy & Liaison",
+    "hi": "रणनीति और संपर्क"
+  },
+  "education": {
+    "en": "M.Tech, BITS · B.E. · DCA · DMM · LLB",
+    "hi": "एम.टेक, BITS · बी.ई. · DCA · DMM · एलएलबी"
+  },
   "blurb": {
     "en": "Shapes the strategy behind a decision and carries the relationships that get it done — the approvals, partners and conversations a plan needs to actually move.",
     "hi": "किसी निर्णय के पीछे की रणनीति गढ़ते हैं और उन रिश्तों को सँभालते हैं जो उसे अमल में लाते हैं — वे मंज़ूरियाँ, साझेदार और बातचीत जिनके बिना कोई योजना आगे नहीं बढ़ती।"

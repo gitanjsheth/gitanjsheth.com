@@ -1,6 +1,13 @@
 {
   "name": "Viraj Sheth",
-  "domain": { "en": "AI & Automation", "hi": "एआई और ऑटोमेशन" },
+  "domain": {
+    "en": "AI & Automation",
+    "hi": "एआई और ऑटोमेशन"
+  },
+  "education": {
+    "en": "MBA, XLRI · B.Tech, DAIICT",
+    "hi": "एमबीए, XLRI · बी.टेक, DAIICT"
+  },
   "blurb": {
     "en": "Finds the repetitive, error-prone work inside a business and hands it to software — automation and AI that quietly does the job, not a demo that impresses once.",
     "hi": "व्यवसाय के भीतर के दोहराव भरे, ग़लती-प्रवण काम को ढूँढकर उसे सॉफ़्टवेयर को सौंप देते हैं — ऐसा ऑटोमेशन और एआई जो चुपचाप काम करता रहे, न कि ऐसा डेमो जो एक बार प्रभावित करके रह जाए।"

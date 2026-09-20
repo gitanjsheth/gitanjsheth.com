@@ -55,6 +55,11 @@ function initialsOf(name: string) {
         const dialogId = `tcar-letter-${x.id}`;
         return (
           <figure class="tcar__card" data-carousel-card aria-label={`${i + 1} / ${items.length}`} lang={locale}>
+            {photoImg && (
+              <div class="tcar__banner">
+                <Image src={photoImg} alt="" width={600} height={600} class="tcar__banner-img" />
+              </div>
+            )}
             <blockquote class="tcar__quote">
               <span class="tcar__mark" aria-hidden="true">&ldquo;</span>
               {quote}
@@ -170,6 +175,24 @@ function initialsOf(name: string) {
     opacity: 0;
   }
 
+  /* Photo band above the quote: fixed 64px tall, exactly the quote's width,
+     centre-cropped (object-position centre) so narrowing the card trims the
+     sides while the centre stays put. */
+  .tcar__banner {
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+  }
+  .tcar__banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   .tcar__quote {
     font-size: 1.15rem;
     line-height: 1.5;
@@ -212,7 +235,7 @@ function initialsOf(name: string) {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 0.875rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
     color: var(--muted);
     margin-top: 0.15rem;
   }

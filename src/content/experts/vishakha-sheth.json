@@ -1,6 +1,13 @@
 {
   "name": "Vishakha Sheth",
-  "domain": { "en": "Software & Product", "hi": "सॉफ़्टवेयर और प्रोडक्ट" },
+  "domain": {
+    "en": "Software & Product",
+    "hi": "सॉफ़्टवेयर और प्रोडक्ट"
+  },
+  "education": {
+    "en": "B.Tech CS, Nirma",
+    "hi": "बी.टेक सीएस, निरमा"
+  },
   "blurb": {
     "en": "Turns a rough idea into software people actually use — deciding what to build, what to cut, and how it should feel to the person on the other side.",
     "hi": "किसी कच्चे विचार को ऐसे सॉफ़्टवेयर में बदलती हैं जिसे लोग सचमुच इस्तेमाल करें — यह तय करते हुए कि क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को यह कैसा लगे।"

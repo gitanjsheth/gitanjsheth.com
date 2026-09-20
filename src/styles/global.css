@@ -86,6 +86,26 @@
   }
 }
 
+/* --- Devanagari (/hi/) sizing --------------------------------------------
+   Noto Sans Devanagari renders ~12% shorter than Latin at the same font-size,
+   so Hindi looks small next to English. Scale the root up on /hi/ pages so the
+   actual glyph HEIGHT matches (not the font-size), which also relaxes the
+   rem-based margins a touch. Headings get a little more line-height so the
+   matras above/below the shirorekha don't crowd. */
+html[lang="hi"] {
+  font-size: 110%;
+}
+html[lang="hi"] .h1 {
+  line-height: 1.2;
+}
+html[lang="hi"] .h2,
+html[lang="hi"] .person-name {
+  line-height: 1.28;
+}
+html[lang="hi"] .h3 {
+  line-height: 1.35;
+}
+
 @layer components {
   /* Constrained page gutter used across sections. */
   .container-x {

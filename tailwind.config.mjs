@@ -22,18 +22,19 @@ export default {
       fontFamily: {
         display: [
           '"Space Grotesk"',
-          '"Anek Devanagari Variable"',
+          '"Noto Sans Devanagari Variable"',
           "system-ui",
           "sans-serif",
         ],
         body: [
           '"Inter"',
-          '"Anek Devanagari Variable"',
+          '"Noto Sans Devanagari Variable"',
           "system-ui",
           "sans-serif",
         ],
         mono: [
           '"Space Mono"',
+          '"Noto Sans Devanagari Variable"',
           "ui-monospace",
           "SFMono-Regular",
           "monospace",

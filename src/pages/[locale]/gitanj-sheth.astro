@@ -12,11 +12,10 @@ const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
 
 // English-only for now (hardcoded); moves to i18n once locked.
-const work = [
-  { label: "Strategy & Growth", line: "When the next move isn't obvious." },
-  { label: "Transformation", line: "When the way the business works has to change." },
-  { label: "Technology", line: "When a technology decision is really a business decision." },
-  { label: "Complex Problems", line: "When no single specialist has the whole answer." },
+const done = [
+  "Brought in on a government subsidy scheme leaking to fraud, he left behind a tamper-proof system that cleared 22,000+ subsidies across 5 lakh+ acres in two years.",
+  "Handed the PM Gati Shakti mission's need for centimetre-accurate land maps, he orchestrated the survey that delivered 50 lakh+ sq m in six weeks.",
+  "Across 20+ businesses in real estate, manufacturing, exports, education, IT and finance, he has been handed the cross-domain problems no single specialist could own.",
 ];
 ---
 
@@ -24,18 +23,15 @@ const work = [
   locale={locale}
   pagePath="gitanj-sheth"
   title={t("person.eyebrow")}
-  description="Gitanj Sheth has been the engineer, the founder, the operator and the client. He works on the problems that cross lines, where no single specialist has the whole answer."
+  description="Gitanj Sheth has been the engineer, the founder, the operator and the client. He works the problems that cross lines, where no single specialist has the whole answer."
 >
-  <!-- Header: name + qualifications + role line + portrait (blue) -->
+  <!-- Header: name + qualifications + portrait (blue) -->
   <section class="section-ink">
     <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h1 class="person-name">{t("person.name")}</h1>
         <p class="mt-4 font-mono text-ivory/90" style="font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem)">
           {t("person.qualifications")}
-        </p>
-        <p class="mt-6 text-lg text-ivory/85">
-          He has been the engineer, the founder, the operator, and the client.
         </p>
       </div>
       <div class="person-media order-1 shrink-0 self-end sm:order-2">
@@ -44,47 +40,60 @@ const work = [
     </div>
   </section>
 
-  <!-- 1. The range (ivory) -->
+  <!-- The summary quote (ivory) -->
   <section>
-    <div class="container-x grid gap-x-12 gap-y-6 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
-      <h2 class="h2">Not a career consultant.</h2>
-      <div class="space-y-6 text-lg leading-relaxed">
-        <p>
-          Gitanj trained as an engineer and taught himself to program before an MBA at XLRI. Since
-          then he has founded and run businesses, been both the employee and the employer, advised
-          other founders, and sat on the client side of consulting himself.
-        </p>
-        <p>Most advisors have lived <em>one</em> of those roles. He has lived <em>most</em> of them.</p>
-      </div>
+    <div class="container-x py-14 md:py-24">
+      <blockquote class="summary-quote">
+        Engineer. Programmer. MBA. Founder. Operator. And the one who hires the experts.
+      </blockquote>
+      <p class="mt-8 measure text-lg leading-relaxed">
+        Not titles on a résumé. Roles he has actually lived. He taught himself to program and trained
+        as an engineer, then took an MBA at XLRI. He has built and run businesses, been both the
+        employee and the employer, advised other founders, and sat on the client's side of the table,
+        hiring specialists and living with the results.
+      </p>
     </div>
   </section>
 
-  <!-- 2. The angle (blue) -->
+  <!-- The angle (blue) -->
   <section class="section-ink">
     <div class="container-x grid gap-x-12 gap-y-6 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
-      <h2 class="h2">Most experts see one slice.</h2>
+      <h2 class="h2">The problem with experts?</h2>
       <div class="space-y-6 text-lg leading-relaxed">
         <p class="text-ivory/85">
-          An IT consultant sees technology. An engineer sees systems. An MBA sees the spreadsheet.
-          Each of them is right, and each of them is partial.
+          They see the problem from where they stand. An IT consultant sees technology. An engineer
+          sees systems. An MBA sees the spreadsheet. Each of them is right, and each of them is partial.
         </p>
         <p>
-          Having worked in each of those seats, Gitanj reads a problem through all of them at once.
-          Not to be the best engineer or the sharpest MBA in the room, but to see how the pieces fit
-          together, and where they don't.
+          Having worked in every one of those seats, Gitanj reads a problem through all of them at
+          once. Not to be the best engineer or the sharpest MBA in the room, but to see how the pieces
+          fit together, and where they don't.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- 3. The problems that cross lines (ivory) -->
+  <!-- What he's actually done (ivory) -->
   <section>
+    <div class="container-x grid gap-x-12 gap-y-8 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
+      <div>
+        <h2 class="h2">What he's actually done.</h2>
+        <p class="mt-4 text-muted italic">A few, out of many. Most of it stays behind closed doors.</p>
+      </div>
+      <ul class="done-list">
+        {done.map((d) => <li>{d}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Seeing what doesn't fit together (blue) -->
+  <section class="section-ink">
     <div class="container-x grid gap-x-12 gap-y-6 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
-      <h2 class="h2">The problems that cross lines.</h2>
+      <h2 class="h2">Seeing what doesn't fit together.</h2>
       <div class="space-y-8 text-lg leading-relaxed">
-        <p>
-          The ones worth bringing him are hard not because they are complicated, but because
-          <em>each part of the business is telling a different version of the truth.</em> Technology
+        <p class="text-ivory/85">
+          Some of the hardest problems aren't hard because they're complicated. They're hard because
+          different parts of the business are each telling a different version of the truth. Technology
           says one thing, operations another, finance a third, leadership a fourth.
         </p>
         <p class="vignette">
@@ -92,24 +101,50 @@ const work = [
           it scrapped. Everyone is partly right, and nothing moves.
         </p>
         <p>
-          His work is to step into that gap, find out what is actually going on, and then face the
-          harder question: what to do about it.
+          His work is to step into that gap, understand each version, and work out what is actually
+          going on. Then the harder question: what to do about it.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- 4. Where he's brought in (blue) -->
+  <!-- When the problem isn't neatly someone's job (ivory) -->
+  <section>
+    <div class="container-x grid gap-x-12 gap-y-6 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
+      <h2 class="h2">When the problem isn't neatly someone's job.</h2>
+      <div class="space-y-6 text-lg leading-relaxed">
+        <p>
+          Two kinds of business reach him. Something is <strong>broken</strong>: money, time or quality
+          is leaking, and what you've tried hasn't fixed it. Or nothing is broken, but it isn't
+          <strong>growing</strong>: the business runs, yet the next move isn't obvious and the usual
+          playbooks have stopped working.
+        </p>
+        <p class="text-muted">
+          In both, the real problem sits between disciplines, which is exactly why no single specialist
+          has owned it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why he does this (blue) -->
   <section class="section-ink">
-    <div class="container-x py-14 md:py-24">
-      <h2 class="h2 max-w-2xl">Where he's brought in.</h2>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {work.map(({ label, line }) => (
-          <div class="card flex flex-col p-7">
-            <h3 class="text-xl font-semibold">{label}</h3>
-            <p class="mt-3 text-muted">{line}</p>
-          </div>
-        ))}
+    <div class="container-x grid gap-x-12 gap-y-6 py-14 md:grid-cols-[1fr_1.7fr] md:py-24">
+      <h2 class="h2">Why he does this.</h2>
+      <div class="space-y-6 text-lg leading-relaxed">
+        <p class="text-ivory/85">
+          Gitanj is a director in a family business group worth over ₹100 crore. He doesn't take on
+          outside problems for the fee.
+        </p>
+        <p>
+          Years of untangling the hard problems inside his own family's businesses, and then for the
+          people around him, taught him that an unsolved, cross-boundary problem is the one thing he
+          can't leave alone. So he took it outside.
+        </p>
+        <p>
+          That changes the relationship. He isn't chasing the engagement. He takes the ones worth his
+          time, says so plainly when he can't help, and has no incentive but getting the answer right.
+        </p>
       </div>
     </div>
   </section>
@@ -125,18 +160,44 @@ const work = [
 </BaseLayout>
 
 <style>
+  /* The summary quote — the page's showcase line. */
+  .summary-quote {
+    margin: 0;
+    max-width: 24ch;
+    font-family: theme("fontFamily.display");
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    font-size: clamp(1.75rem, 1.2rem + 2.3vw, 3.25rem); /* 28 -> 52 */
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  /* Delivered-work list. */
+  .done-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .done-list li {
+    font-size: 1.125rem;
+    line-height: 1.55;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  }
+
   /* Set-off scenario, quiet not shouty. */
   .vignette {
     padding-left: 1.25rem;
     border-left: 2px solid var(--gold);
     font-style: italic;
-    color: var(--ink);
-  }
-  .section-ink .vignette {
     color: color-mix(in srgb, var(--ivory) 92%, transparent);
   }
 
-  /* The open closing question, given room to breathe. */
+  /* The open closing question. */
   .close-q {
     font-family: theme("fontFamily.display");
     font-weight: 600;

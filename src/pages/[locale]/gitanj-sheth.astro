@@ -4,7 +4,6 @@ import FounderPortrait from "../../components/FounderPortrait.astro";
 import CtaBand from "../../components/CtaBand.astro";
 import {
   localeStaticPaths,
-  localizePath,
   useTranslations,
   type Locale,
 } from "../../i18n/utils";
@@ -15,22 +14,52 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
-const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
+
+// English-only narrative for now (hardcoded); moves to i18n once locked.
+const perspectives = [
+  "IT consultants see technology.",
+  "Engineers see systems.",
+  "MBAs see frameworks, markets and spreadsheets.",
+  "Operators see what can actually get done.",
+  "Business owners see what happens when the decision is wrong.",
+];
+
+const tradeoffs = [
+  "The technology may be elegant, and impossible to operate.",
+  "The business case may look compelling, and blind to how the organisation actually works.",
+  "The process may be efficient, and quietly destroying the customer experience.",
+  "The strategy may be sound, and impossible to execute.",
+];
+
+const voices = [
+  "The technology team says one thing.",
+  "Operations says another.",
+  "Finance sees something else.",
+  "Leadership has a fourth view.",
+];
+
+const work = [
+  { label: "Strategy & Growth", line: "When the next move isn't obvious." },
+  { label: "Transformation", line: "When the way the business works needs to change." },
+  { label: "Technology", line: "When an important technology decision is really a business decision." },
+  { label: "Complex Problems", line: "When no single specialist has the complete answer." },
+];
 ---
 
 <BaseLayout
   locale={locale}
   pagePath="gitanj-sheth"
   title={t("person.eyebrow")}
-  description={t("person.lead")}
+  description="Gitanj Sheth has been the engineer, the programmer, the MBA, the founder, the operator and the client. His work begins where a problem crosses boundaries and no single specialist has the whole answer."
 >
-  <!-- Header: portrait + lead -->
+  <!-- Header: name + qualifications + portrait (blue) -->
   <section class="section-ink">
     <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h1 class="person-name">{t("person.name")}</h1>
-        <p class="person-lead mt-5">{t("person.lead")}</p>
-        <p class="person-combo mt-4 text-ivory/80">{t("person.combination")}</p>
+        <p class="mt-4 font-mono text-ivory" style="font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem)">
+          {t("person.qualifications")}
+        </p>
       </div>
       <div class="person-media order-1 shrink-0 self-end sm:order-2">
         <FounderPortrait alt={t("home.hero.portraitAlt")} />
@@ -38,36 +67,119 @@ const trackRecord: { value: string; label: string }[] = t("person.trackRecord");
     </div>
   </section>
 
-  <!-- Track record -->
+  <!-- The problem with experts + the roles he has lived (ivory) -->
   <section>
     <div class="container-x py-12 md:py-20">
-      <dl class="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          trackRecord.map((tr) => (
-            <div class="border-t border-ink/12 pt-4">
-              <dt class="font-display text-3xl leading-none">{tr.value}</dt>
-              <dd class="mt-2 text-sm text-muted">{tr.label}</dd>
-            </div>
-          ))
-        }
-      </dl>
+      <h2 class="h2">The problem with experts?</h2>
+      <p class="statement mt-6">They tend to see the problem from where they stand.</p>
+
+      <ul class="mt-8 space-y-3 measure text-lg text-muted">
+        {perspectives.map((p) => <li>{p}</li>)}
+      </ul>
+
+      <p class="statement mt-10">Gitanj has been on all of those sides.</p>
+
+      <hr class="rule my-12 md:my-16" />
+
+      <h3 class="h3 font-display">Engineer. Programmer. MBA. Founder. Builder. Operator. Consultant. Client.</h3>
+      <p class="mt-3 text-muted">Not titles on a résumé. Roles he has actually lived.</p>
+
+      <div class="mt-8 measure space-y-4 text-lg">
+        <p>He taught himself to program.</p>
+        <p>He trained as an engineer.</p>
+        <p>He went on to study management at XLRI.</p>
+        <p>
+          He has built products and businesses, worked as an employee and an employer, operated
+          businesses, advised others, and sat on the client side of consulting relationships.
+        </p>
+        <p class="text-muted">Each role taught him to look at the same problem differently.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Why + selectivity + background -->
-  <section class="border-t border-ink/10">
-    <div class="container-x grid gap-12 py-16 md:grid-cols-2 md:py-24">
-      <div class="space-y-6">
-        <p class="text-xl leading-relaxed measure">{t("person.why")}</p>
-        <p class="text-lg text-muted measure">{t("person.selectivity")}</p>
+  <!-- That's where his work begins (blue) -->
+  <section class="section-ink">
+    <div class="container-x py-12 md:py-20">
+      <h2 class="h2">That's where his work begins.</h2>
+      <p class="mt-6 measure text-lg text-ivory/80">
+        When a business problem crosses boundaries, the specialists often become part of the problem.
+      </p>
+
+      <ul class="mt-8 space-y-4 measure text-lg">
+        {tradeoffs.map((p) => <li>{p}</li>)}
+      </ul>
+
+      <p class="statement mt-10">Gitanj's advantage is being able to see the connections.</p>
+      <p class="mt-6 measure text-lg text-ivory/80">
+        He is not trying to be the best engineer in the room, the best technologist, or the best MBA.
+      </p>
+      <p class="statement mt-4">He is trying to understand the whole problem.</p>
+    </div>
+  </section>
+
+  <!-- Seeing what doesn't fit together (ivory) -->
+  <section>
+    <div class="container-x py-12 md:py-20">
+      <h2 class="h2">Seeing what doesn't fit together.</h2>
+      <p class="mt-6 measure text-lg text-muted">
+        Some of the most difficult business problems are not difficult because they are complicated.
+        They are difficult because different parts of the organisation are each telling a different
+        version of the truth.
+      </p>
+
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-x-10 measure-none text-lg">
+        {voices.map((v) => (
+          <li class="border-t border-ink/12 pt-3">{v}</li>
+        ))}
+      </ul>
+
+      <p class="mt-10 measure text-lg">
+        Gitanj's role is often to step into that gap, understand each perspective, and work out what
+        is actually going on.
+      </p>
+      <p class="mt-6 text-muted">Then comes the harder question:</p>
+      <h3 class="h3 mt-2 font-display">What should we do about it?</h3>
+    </div>
+  </section>
+
+  <!-- The kind of work he's built for (blue) -->
+  <section class="section-ink">
+    <div class="container-x py-12 md:py-20">
+      <h2 class="h2 max-w-2xl">This is the kind of work Gitanj is built for.</h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+        {work.map(({ label, line }) => (
+          <div class="card flex flex-col p-8">
+            <h3 class="h3">{label}</h3>
+            <p class="mt-3 text-lg text-muted">{line}</p>
+          </div>
+        ))}
       </div>
-      <div class="space-y-5">
-        <p>{t("person.education")}</p>
-        <p>{t("person.roles")}</p>
-        <p class="text-muted">{t("person.pedigree")}</p>
-      </div>
+    </div>
+  </section>
+
+  <!-- Close (ivory) -->
+  <section>
+    <div class="container-x py-14 text-center md:py-24">
+      <h2 class="h2 mx-auto max-w-3xl">When the problem isn't neatly someone's job.</h2>
+      <p class="statement mt-6">That's when Gitanj is most useful.</p>
     </div>
   </section>
 
   <CtaBand locale={locale} />
 </BaseLayout>
+
+<style>
+  /* Large display pull-statements that carry the page's rhythm. On ink
+     sections they inherit ivory; on ivory sections, ink. */
+  .statement {
+    font-family: theme("fontFamily.display");
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-size: clamp(1.5rem, 1.24rem + 1.1vw, 2.125rem); /* 24 -> 34 */
+    max-width: 24ch;
+  }
+  .measure-none {
+    max-width: none;
+  }
+</style>

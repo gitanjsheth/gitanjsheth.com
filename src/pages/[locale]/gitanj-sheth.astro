@@ -11,12 +11,62 @@ export function getStaticPaths() {
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
 
-// English-only for now (hardcoded); moves to i18n once locked.
-const done = [
-  "Brought in on a government subsidy scheme leaking to fraud, he left behind a tamper-proof system that cleared 22,000+ subsidies across 5 lakh+ acres in two years.",
-  "Handed the PM Gati Shakti mission's need for centimetre-accurate land maps, he orchestrated the survey that delivered 50 lakh+ sq m in six weeks.",
-  "Across 20+ businesses in real estate, manufacturing, exports, education, IT and finance, he has been handed the cross-domain problems no single specialist could own.",
-];
+const content = {
+  en: {
+    s1h: "Specialists each see one slice.",
+    s1p1: "The technologist sees the technology. The engineer sees the systems. The MBA sees the spreadsheet. Each of them is right, and each of them is partial.",
+    s1p2: "The hardest problems aren't hard because they're complicated. They're hard because each part of the business is telling a different version of the truth. Technology says one thing, operations another, finance a third, leadership a fourth.",
+    vignette: "The software works. Operations won't use it. Finance can't see the return. Leadership wants it scrapped. Everyone is partly right, and nothing moves.",
+    s1p3: "Cracking that needs someone who has sat in every one of those seats.",
+    quote: "Engineer. Programmer. MBA. Founder. Operator. Client.",
+    s2p1: "Gitanj has been all of them. Not as titles on a résumé, but as roles he has lived. He taught himself to program, trained as an engineer, took an MBA at XLRI, built and ran businesses, was both the employee and the employer, advised other founders, and sat on the client's side of the table, hiring specialists and living with the results.",
+    s2p2: "So he reads a problem through every one of those lenses at once, watching how the pieces fit together, and where they don't.",
+    s3h: "Two kinds of problem reach him.",
+    s3p1: "Something is <strong>broken</strong>: money, time or quality is leaking, and what you've tried hasn't fixed it. Or nothing is broken, but it isn't <strong>growing</strong>: the business runs, yet the next move isn't obvious and the usual playbooks have stopped working.",
+    s3p2: "In both, the real problem sits between disciplines, which is exactly why no single specialist has owned it. That's the shape of it. Here is the record.",
+    doneH: "What he's actually done.",
+    doneCaption: "None of it is a pitch. A few, out of many; most stays behind closed doors.",
+    done: [
+      "Brought in on a government subsidy scheme leaking to fraud, he left behind a tamper-proof system that cleared 22,000+ subsidies across 5 lakh+ acres in two years.",
+      "Handed the PM Gati Shakti mission's need for centimetre-accurate land maps, he orchestrated the survey that delivered 50 lakh+ sq m in six weeks.",
+      "Across 20+ businesses in real estate, manufacturing, exports, education, IT and finance, he has been handed the cross-domain problems no single specialist could own.",
+    ],
+    whyH: "Why he does this.",
+    why: [
+      "Gitanj comes from a family business group worth over ₹100 crore. He doesn't take on outside problems for the fee.",
+      "Years of untangling the hard problems inside his own family's businesses, and then for the people around him, taught him that an unsolved, cross-boundary problem is the one thing he can't leave alone. So he took it outside.",
+      "That changes the relationship. He isn't chasing the engagement. He takes the ones worth his time, says so plainly when he can't help, and has no incentive but getting the answer right.",
+    ],
+    close: "Can you think of a problem Gitanj should look at?",
+  },
+  hi: {
+    s1h: "हर विशेषज्ञ को समस्या का बस एक हिस्सा दिखता है।",
+    s1p1: "टेक्नोलॉजिस्ट को टेक्नोलॉजी दिखती है। इंजीनियर को सिस्टम दिखते हैं। एमबीए को स्प्रेडशीट दिखती है। हर कोई अपनी जगह सही है, और हर किसी की नज़र अधूरी है।",
+    s1p2: "सबसे मुश्किल समस्याएँ इसलिए मुश्किल नहीं होतीं कि वे पेचीदा हैं। वे इसलिए मुश्किल होती हैं क्योंकि बिज़नेस का हर हिस्सा सच का अपना-अपना वर्शन बता रहा होता है। टेक्नोलॉजी कुछ कहती है, ऑपरेशंस कुछ और, फ़ाइनेंस कुछ तीसरा, और लीडरशिप कुछ चौथा।",
+    vignette: "सॉफ़्टवेयर काम कर रहा है। ऑपरेशंस उसे छूना नहीं चाहते। फ़ाइनेंस को उसमें फ़ायदा नहीं दिखता। लीडरशिप उसे बंद करना चाहती है। हर कोई थोड़ा-थोड़ा सही है, और बात कहीं आगे नहीं बढ़ती।",
+    s1p3: "इसे सुलझाने के लिए कोई ऐसा चाहिए जो इन सारी कुर्सियों पर ख़ुद बैठ चुका हो।",
+    quote: "इंजीनियर। प्रोग्रामर। एमबीए। फ़ाउंडर। ऑपरेटर। क्लाइंट।",
+    s2p1: "गीतांज ये सब रह चुके हैं। रेज़्यूमे के ख़िताब के तौर पर नहीं, बल्कि उन भूमिकाओं के तौर पर जो उन्होंने सचमुच जी हैं। उन्होंने ख़ुद प्रोग्रामिंग सीखी, इंजीनियर बने, XLRI से एमबीए किया, बिज़नेस खड़े किए और चलाए, कर्मचारी भी रहे और मालिक भी, दूसरे फ़ाउंडर्स को सलाह दी, और क्लाइंट की कुर्सी पर बैठकर ख़ुद विशेषज्ञों को हायर किया और उनके नतीजों के साथ जिए।",
+    s2p2: "इसीलिए वे किसी समस्या को इन सारी नज़रों से एक साथ पढ़ते हैं, यह देखते हुए कि टुकड़े कहाँ जुड़ते हैं और कहाँ नहीं।",
+    s3h: "उनके पास दो तरह की समस्याएँ आती हैं।",
+    s3p1: "या तो कुछ <strong>टूटा हुआ</strong> है: पैसा, वक़्त या क्वालिटी रिस रही है, और जो आपने आज़माया उससे बात बनी नहीं। या फिर कुछ टूटा तो नहीं, पर <strong>बढ़ नहीं रहा</strong>: बिज़नेस चल रहा है, पर अगला कदम साफ़ नहीं है और पुराने तरीक़े काम करना बंद कर चुके हैं।",
+    s3p2: "दोनों में असली समस्या अलग-अलग विषयों के बीच बैठी होती है, और ठीक इसीलिए उसे किसी एक विशेषज्ञ ने कभी अपने ज़िम्मे नहीं लिया। बस इतनी-सी बात है। अब ज़रा काम देखिए।",
+    doneH: "उन्होंने असल में किया क्या है।",
+    doneCaption: "कोई पिच नहीं। बहुतों में से कुछ ही; ज़्यादातर बंद दरवाज़ों के पीछे रहता है।",
+    done: [
+      "धोखाधड़ी से रिसती एक सरकारी सब्सिडी योजना में उन्हें बुलाया गया, और वे पीछे एक छेड़छाड़-रोधी सिस्टम छोड़ गए जिसने दो साल में 5 लाख+ एकड़ में फैली 22,000+ सब्सिडी पास कीं।",
+      "PM गति शक्ति मिशन को सरकारी ज़मीन के सेंटीमीटर-सटीक नक्शे चाहिए थे; उन्होंने वह सर्वे संभाला जिसने छह हफ़्तों में 50 लाख+ वर्ग मीटर तैयार किया।",
+      "रियल एस्टेट, मैन्युफ़ैक्चरिंग, एक्सपोर्ट्स, एजुकेशन, IT और फ़ाइनेंस के 20+ बिज़नेस में उन्हें वे क्रॉस-डोमेन समस्याएँ सौंपी गईं जिन्हें कोई एक विशेषज्ञ अपने ज़िम्मे नहीं ले सकता था।",
+    ],
+    whyH: "वे यह करते क्यों हैं।",
+    why: [
+      "गीतांज ₹100 करोड़ से बड़े एक पारिवारिक बिज़नेस समूह से आते हैं। बाहर की समस्याएँ वे फ़ीस के लिए नहीं लेते।",
+      "सालों तक अपने ही परिवार के बिज़नेस की मुश्किल समस्याएँ सुलझाते हुए, और फिर अपने आस-पास के लोगों के लिए, उन्होंने पाया कि एक अनसुलझी, कई विषयों में फैली समस्या ही वह चीज़ है जिसे वे छोड़ नहीं पाते। तो उन्होंने यह काम बाहर भी करना शुरू कर दिया।",
+      "इससे रिश्ता ही बदल जाता है। वे काम के पीछे नहीं भागते। वही समस्याएँ लेते हैं जो उनके समय के लायक़ हों, जहाँ मदद नहीं कर सकते वहाँ साफ़ मना कर देते हैं, और उनका एकमात्र मक़सद होता है सही जवाब तक पहुँचना।",
+    ],
+    close: "कोई ऐसी समस्या याद आती है जो गीतांज को देखनी चाहिए?",
+  },
+}[locale];
 ---
 
 <BaseLayout
@@ -25,7 +75,7 @@ const done = [
   title={t("person.eyebrow")}
   description="Specialists each see one slice. Gitanj Sheth has been the engineer, the founder, the operator and the client, so he reads a problem through every lens at once."
 >
-  <!-- Header: name + qualifications + portrait (blue) -->
+  <!-- Header (blue) -->
   <section class="section-ink">
     <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-between sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
@@ -40,103 +90,66 @@ const done = [
 
   <!-- 1. The challenge (ivory) -->
   <section>
-    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
-      <h2 class="h2">Specialists each see one slice.</h2>
+    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
+      <h2 class="h2">{content.s1h}</h2>
       <div class="prose-fluid space-y-6 leading-relaxed">
-        <p>
-          The technologist sees the technology. The engineer sees the systems. The MBA sees the
-          spreadsheet. Each of them is right, and each of them is partial.
-        </p>
-        <p>
-          The hardest problems aren't hard because they're complicated. They're hard because each part
-          of the business is telling a different version of the truth. Technology says one thing,
-          operations another, finance a third, leadership a fourth.
-        </p>
-        <p class="vignette">
-          The software works. Operations won't use it. Finance can't see the return. Leadership wants
-          it scrapped. Everyone is partly right, and nothing moves.
-        </p>
-        <p>Cracking that needs someone who has sat in every one of those seats.</p>
+        <p>{content.s1p1}</p>
+        <p>{content.s1p2}</p>
+        <p class="vignette">{content.vignette}</p>
+        <p>{content.s1p3}</p>
       </div>
     </div>
   </section>
 
-  <!-- 2. How Gitanj addresses it (blue) — the roles quote lands here, as the answer -->
+  <!-- 2. How Gitanj addresses it (blue) -->
   <section class="section-ink">
-    <div class="container-x grid gap-x-12 gap-y-8 py-12 md:grid-cols-[1.35fr_1fr] md:py-16">
-      <blockquote class="summary-quote md:self-center">Engineer. Programmer. MBA. Founder. Operator. Client.</blockquote>
-      <div class="prose-fluid space-y-6 leading-relaxed md:self-center">
-        <p>
-          Gitanj has been all of them. Not as titles on a résumé, but as roles he has lived. He taught
-          himself to program, trained as an engineer, took an MBA at XLRI, built and ran businesses, was
-          both the employee and the employer, advised other founders, and sat on the client's side of
-          the table, hiring specialists and living with the results.
-        </p>
-        <p>
-          So he reads a problem through every one of those lenses at once, watching how the pieces fit
-          together, and where they don't.
-        </p>
+    <div class="container-x grid gap-x-12 gap-y-8 py-12 md:grid-cols-[1.35fr_1fr] md:items-center md:py-16">
+      <blockquote class="summary-quote">{content.quote}</blockquote>
+      <div class="prose-fluid space-y-6 leading-relaxed">
+        <p>{content.s2p1}</p>
+        <p>{content.s2p2}</p>
       </div>
     </div>
   </section>
 
   <!-- 3. The problems he takes (ivory) -->
   <section>
-    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
-      <h2 class="h2">Two kinds of problem reach him.</h2>
+    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
+      <h2 class="h2">{content.s3h}</h2>
       <div class="prose-fluid space-y-6 leading-relaxed">
-        <p>
-          Something is <strong>broken</strong>: money, time or quality is leaking, and what you've tried
-          hasn't fixed it. Or nothing is broken, but it isn't <strong>growing</strong>: the business
-          runs, yet the next move isn't obvious and the usual playbooks have stopped working.
-        </p>
-        <p>
-          In both, the real problem sits between disciplines, which is exactly why no single specialist
-          has owned it. That's the shape of it. Here is the record.
-        </p>
+        <p set:html={content.s3p1} />
+        <p>{content.s3p2}</p>
       </div>
     </div>
   </section>
 
   <!-- 4. Proof (blue) -->
   <section class="section-ink">
-    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
+    <div class="container-x grid gap-x-12 gap-y-2 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
       <div>
-        <h2 class="h2">What he's actually done.</h2>
-        <p class="prose-fluid mt-4 italic">None of it is a pitch. A few, out of many; most stays behind closed doors.</p>
+        <h2 class="h2">{content.doneH}</h2>
+        <p class="prose-fluid mt-4 italic">{content.doneCaption}</p>
       </div>
       <ul class="done-list prose-fluid">
-        {done.map((d) => <li>{d}</li>)}
+        {content.done.map((d) => <li>{d}</li>)}
       </ul>
     </div>
   </section>
 
-  <!-- 5. Why he does this (ivory) — the last hook -->
+  <!-- 5. Why he does this (ivory) -->
   <section>
-    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
-      <h2 class="h2">Why he does this.</h2>
+    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
+      <h2 class="h2">{content.whyH}</h2>
       <div class="prose-fluid space-y-6 leading-relaxed">
-        <p>
-          Gitanj comes from a family business group worth over ₹100 crore. He doesn't take on outside
-          problems for the fee.
-        </p>
-        <p>
-          Years of untangling the hard problems inside his own family's businesses, and then for the
-          people around him, taught him that an unsolved, cross-boundary problem is the one thing he
-          can't leave alone. So he took it outside.
-        </p>
-        <p>
-          That changes the relationship. He isn't chasing the engagement. He takes the ones worth his
-          time, says so plainly when he can't help, and has no incentive but getting the answer right.
-        </p>
+        {content.why.map((p) => <p>{p}</p>)}
       </div>
     </div>
   </section>
 
-  <!-- Close: open question (ivory), split from 'Why' by a subtle line -->
-  <section class="border-t border-ink/10">
-    <div class="container-x py-16 md:py-24">
-      <p class="close-q">Can you think of a problem Gitanj should look at?</p>
+  <!-- Close (ivory), split from 'Why' by a content-width hairline -->
+  <section>
+    <div class="container-x border-t border-ink/10 py-16">
+      <p class="close-q">{content.close}</p>
     </div>
   </section>
 
@@ -144,12 +157,11 @@ const done = [
 </BaseLayout>
 
 <style>
-  /* One fluid body scale for all copy on this page: 16px @375 -> 19px @1280. */
+  /* One fluid body scale for all copy: 16px @375 -> 19px @1280. */
   .prose-fluid {
     font-size: clamp(1rem, 0.922rem + 0.33vw, 1.1875rem);
   }
 
-  /* Summary quote — the showcase line (fills its column, fluid). */
   .summary-quote {
     margin: 0;
     font-family: theme("fontFamily.display");
@@ -161,29 +173,31 @@ const done = [
     border-left: 3px solid var(--gold);
   }
 
-  /* Delivered-work list. */
+  /* Delivered-work list: only a 1rem padding between points, no extra gap. */
   .done-list {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
   }
   .done-list li {
     line-height: 1.55;
     padding-top: 1rem;
     border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   }
+  .done-list li:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
 
-  /* Set-off scenario. */
   .vignette {
     padding-left: 1.25rem;
     border-left: 2px solid var(--gold);
     font-style: italic;
   }
 
-  /* Closing question — fluid, sized to sit on one line at desktop. */
   .close-q {
     font-family: theme("fontFamily.display");
     font-weight: 600;

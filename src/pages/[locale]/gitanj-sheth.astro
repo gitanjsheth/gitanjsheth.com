@@ -33,7 +33,7 @@ const content = {
     ],
     whyH: "Why he does this.",
     why: [
-      "Gitanj comes from a family business group worth over ₹100 crore. He doesn't take on outside problems for the fee.",
+      "Gitanj comes from a <a href=\"https://shethgroup1992.com/\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold\">family business group</a> worth over ₹100 crore. He doesn't take on outside problems for the fee.",
       "Years of untangling the hard problems inside his own family's businesses, and then for the people around him, taught him that an unsolved, cross-boundary problem is the one thing he can't leave alone. So he took it outside.",
       "That changes the relationship. He isn't chasing the engagement. He takes the ones worth his time, says so plainly when he can't help, and has no incentive but getting the answer right.",
     ],
@@ -60,7 +60,7 @@ const content = {
     ],
     whyH: "वे यह करते क्यों हैं।",
     why: [
-      "गीतांज ₹100 करोड़ से बड़े एक पारिवारिक बिज़नेस समूह से आते हैं। बाहर की समस्याएँ वे फ़ीस के लिए नहीं लेते।",
+      "गीतांज ₹100 करोड़ से बड़े एक <a href=\"https://shethgroup1992.com/\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold\">पारिवारिक बिज़नेस समूह</a> से आते हैं। बाहर की समस्याएँ वे फ़ीस के लिए नहीं लेते।",
       "सालों तक अपने ही परिवार के बिज़नेस की मुश्किल समस्याएँ सुलझाते हुए, और फिर अपने आस-पास के लोगों के लिए, उन्होंने पाया कि एक अनसुलझी, कई विषयों में फैली समस्या ही वह चीज़ है जिसे वे छोड़ नहीं पाते। तो उन्होंने यह काम बाहर भी करना शुरू कर दिया।",
       "इससे रिश्ता ही बदल जाता है। वे काम के पीछे नहीं भागते। वही समस्याएँ लेते हैं जो उनके समय के लायक़ हों, जहाँ मदद नहीं कर सकते वहाँ साफ़ मना कर देते हैं, और उनका एकमात्र मक़सद होता है सही जवाब तक पहुँचना।",
     ],
@@ -141,7 +141,7 @@ const content = {
     <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
       <h2 class="h2">{content.whyH}</h2>
       <div class="prose-fluid space-y-6 leading-relaxed">
-        {content.why.map((p) => <p>{p}</p>)}
+        {content.why.map((p) => <p set:html={p} />)}
       </div>
     </div>
   </section>

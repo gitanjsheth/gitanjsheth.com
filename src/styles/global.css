@@ -236,6 +236,16 @@ html[lang="hi"] .ecar__role {
     color: color-mix(in srgb, var(--ivory) 78%, transparent);
   }
 
+  /* Bullet separator in the qualifications line. The • glyph is centred on
+     x-height, so on a line of caps it reads low — nudge it up to cap-centre
+     and give it a little breathing room and a softer weight. */
+  .qsep {
+    display: inline-block;
+    vertical-align: 0.12em;
+    margin: 0 0.15em;
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+
   /* Thin 1px separators, never heavy boxes. */
   .rule {
     border: 0;

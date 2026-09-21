@@ -27,7 +27,7 @@ const done = [
 >
   <!-- Header: name + qualifications + portrait (blue) -->
   <section class="section-ink">
-    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
+    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-between sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h1 class="person-name">{t("person.name")}</h1>
         <p class="prose-fluid mt-4 font-mono text-ivory">{t("person.qualifications")}</p>
@@ -64,7 +64,7 @@ const done = [
   <!-- 2. How Gitanj addresses it (blue) — the roles quote lands here, as the answer -->
   <section class="section-ink">
     <div class="container-x grid gap-x-12 gap-y-8 py-12 md:grid-cols-[1.35fr_1fr] md:py-16">
-      <blockquote class="summary-quote">Engineer. Programmer. MBA. Founder. Operator. Client.</blockquote>
+      <blockquote class="summary-quote md:self-center">Engineer. Programmer. MBA. Founder. Operator. Client.</blockquote>
       <div class="prose-fluid space-y-6 leading-relaxed md:self-center">
         <p>
           Gitanj has been all of them. Not as titles on a résumé, but as roles he has lived. He taught
@@ -100,7 +100,7 @@ const done = [
 
   <!-- 4. Proof (blue) -->
   <section class="section-ink">
-    <div class="container-x grid gap-x-12 gap-y-8 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
+    <div class="container-x grid gap-x-12 gap-y-6 py-12 md:grid-cols-[1fr_1.7fr] md:py-16">
       <div>
         <h2 class="h2">What he's actually done.</h2>
         <p class="prose-fluid mt-4 italic">None of it is a pitch. A few, out of many; most stays behind closed doors.</p>
@@ -133,8 +133,8 @@ const done = [
     </div>
   </section>
 
-  <!-- Close: open question (blue), flowing into the shared band -->
-  <section class="section-ink">
+  <!-- Close: open question (ivory), split from 'Why' by a subtle line -->
+  <section class="border-t border-ink/10">
     <div class="container-x py-16 md:py-24">
       <p class="close-q">Can you think of a problem Gitanj should look at?</p>
     </div>
@@ -168,11 +168,11 @@ const done = [
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .done-list li {
     line-height: 1.55;
-    padding-top: 1.25rem;
+    padding-top: 1rem;
     border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   }
 

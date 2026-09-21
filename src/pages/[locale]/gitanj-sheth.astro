@@ -125,7 +125,7 @@ const content = {
 
   <!-- 4. Proof (blue) -->
   <section class="section-ink">
-    <div class="container-x grid gap-x-12 gap-y-2 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
+    <div class="container-x grid gap-x-12 gap-y-4 py-12 md:grid-cols-[1fr_1.7fr] md:items-center md:py-16">
       <div>
         <h2 class="h2">{content.doneH}</h2>
         <p class="prose-fluid mt-4 italic">{content.doneCaption}</p>
@@ -148,8 +148,11 @@ const content = {
 
   <!-- Close (ivory), split from 'Why' by a content-width hairline -->
   <section>
-    <div class="container-x border-t border-ink/10 py-16">
-      <p class="close-q">{content.close}</p>
+    <div class="container-x">
+      <div class="border-t border-ink/10"></div>
+      <div class="py-16">
+        <p class="close-q">{content.close}</p>
+      </div>
     </div>
   </section>
 

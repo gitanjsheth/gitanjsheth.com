@@ -1,12 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FounderPortrait from "../../components/FounderPortrait.astro";
-import CtaBand from "../../components/CtaBand.astro";
-import {
-  localeStaticPaths,
-  useTranslations,
-  type Locale,
-} from "../../i18n/utils";
+import { localeStaticPaths, localizePath, useTranslations, type Locale } from "../../i18n/utils";
 
 export function getStaticPaths() {
   return localeStaticPaths();
@@ -16,33 +11,20 @@ const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
 
 // English-only narrative for now (hardcoded); moves to i18n once locked.
-const perspectives = [
-  "IT consultants see technology.",
-  "Engineers see systems.",
-  "MBAs see frameworks, markets and spreadsheets.",
-  "Operators see what can actually get done.",
-  "Business owners see what happens when the decision is wrong.",
-];
-
-const tradeoffs = [
-  "The technology may be elegant, and impossible to operate.",
-  "The business case may look compelling, and blind to how the organisation actually works.",
-  "The process may be efficient, and quietly destroying the customer experience.",
-  "The strategy may be sound, and impossible to execute.",
-];
+const roles = ["Engineer", "Programmer", "MBA", "Founder", "Builder", "Operator", "Consultant", "Client"];
 
 const voices = [
-  "The technology team says one thing.",
-  "Operations says another.",
-  "Finance sees something else.",
-  "Leadership has a fourth view.",
+  { who: "Technology", sees: "sees the systems" },
+  { who: "Operations", sees: "sees the work" },
+  { who: "Finance", sees: "sees the numbers" },
+  { who: "Leadership", sees: "sees the risk" },
 ];
 
 const work = [
   { label: "Strategy & Growth", line: "When the next move isn't obvious." },
-  { label: "Transformation", line: "When the way the business works needs to change." },
-  { label: "Technology", line: "When an important technology decision is really a business decision." },
-  { label: "Complex Problems", line: "When no single specialist has the complete answer." },
+  { label: "Transformation", line: "When the way the business works has to change." },
+  { label: "Technology", line: "When a technology decision is really a business decision." },
+  { label: "Complex Problems", line: "When no single specialist has the whole answer." },
 ];
 ---
 
@@ -50,16 +32,18 @@ const work = [
   locale={locale}
   pagePath="gitanj-sheth"
   title={t("person.eyebrow")}
-  description="Gitanj Sheth has been the engineer, the programmer, the MBA, the founder, the operator and the client. His work begins where a problem crosses boundaries and no single specialist has the whole answer."
+  description="Gitanj Sheth has been the engineer, the MBA, the founder and the client. His work begins where a problem crosses boundaries and no single specialist has the whole answer."
 >
-  <!-- Header: name + qualifications + portrait (blue) -->
+  <script is:inline>document.documentElement.classList.add("reveal-on");</script>
+  <!-- Header: name + qualifications + hook + portrait (blue) -->
   <section class="section-ink">
     <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-12 md:gap-16">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h1 class="person-name">{t("person.name")}</h1>
-        <p class="mt-4 font-mono text-ivory" style="font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem)">
+        <p class="mt-4 font-mono text-ivory/90" style="font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem)">
           {t("person.qualifications")}
         </p>
+        <p class="lede mt-7">He has stood on every side of the table.</p>
       </div>
       <div class="person-media order-1 shrink-0 self-end sm:order-2">
         <FounderPortrait alt={t("home.hero.portraitAlt")} />
@@ -67,88 +51,74 @@ const work = [
     </div>
   </section>
 
-  <!-- The problem with experts + the roles he has lived (ivory) -->
+  <!-- The roles he has lived (ivory) — the credibility centrepiece -->
   <section>
-    <div class="container-x py-12 md:py-20">
-      <h2 class="h2">The problem with experts?</h2>
-      <p class="statement mt-6">They tend to see the problem from where they stand.</p>
-
-      <ul class="mt-8 space-y-3 measure text-lg text-muted">
-        {perspectives.map((p) => <li>{p}</li>)}
+    <div class="container-x py-14 md:py-24">
+      <p class="mono-label" data-reveal>Not titles on a résumé. Roles he has lived.</p>
+      <ul class="role-chips mt-6" data-reveal>
+        {roles.map((r) => <li class="role-chip">{r}</li>)}
       </ul>
-
-      <p class="statement mt-10">Gitanj has been on all of those sides.</p>
-
-      <hr class="rule my-12 md:my-16" />
-
-      <h3 class="h3 font-display">Engineer. Programmer. MBA. Founder. Builder. Operator. Consultant. Client.</h3>
-      <p class="mt-3 text-muted">Not titles on a résumé. Roles he has actually lived.</p>
-
-      <div class="mt-8 measure space-y-4 text-lg">
-        <p>He taught himself to program.</p>
-        <p>He trained as an engineer.</p>
-        <p>He went on to study management at XLRI.</p>
+      <div class="mt-10 measure text-lg" data-reveal>
         <p>
-          He has built products and businesses, worked as an employee and an employer, operated
-          businesses, advised others, and sat on the client side of consulting relationships.
+          He taught himself to code, trained as an engineer, and studied management at XLRI. He has
+          built products and businesses, been both the employee and the employer, run companies,
+          advised founders, and sat on the client side of the table.
         </p>
-        <p class="text-muted">Each role taught him to look at the same problem differently.</p>
+        <p class="statement mt-8">Every seat taught him to read the same problem differently.</p>
       </div>
     </div>
   </section>
 
-  <!-- That's where his work begins (blue) -->
+  <!-- Why hard problems stay stuck + the diagram (blue) -->
   <section class="section-ink">
-    <div class="container-x py-12 md:py-20">
-      <h2 class="h2">That's where his work begins.</h2>
-      <p class="mt-6 measure text-lg text-ivory/80">
-        When a business problem crosses boundaries, the specialists often become part of the problem.
+    <div class="container-x py-14 md:py-24">
+      <h2 class="h2" data-reveal>Why hard problems stay stuck.</h2>
+      <p class="mt-6 measure text-lg text-ivory/80" data-reveal>
+        The most stubborn business problems are rarely stuck because they are complicated. They are
+        stuck because every part of the company is telling a different version of the truth.
       </p>
 
-      <ul class="mt-8 space-y-4 measure text-lg">
-        {tradeoffs.map((p) => <li>{p}</li>)}
-      </ul>
+      <div class="voices-wrap mt-12" data-reveal>
+        <svg class="voices" viewBox="0 0 1000 320" role="img"
+          aria-label="Technology, Operations, Finance and Leadership each describe a different version of the same problem.">
+          <g stroke="var(--ivory)" stroke-opacity="0.3" stroke-width="1.5" fill="none">
+            <path d="M140 92 L500 214" />
+            <path d="M380 92 L500 214" />
+            <path d="M620 92 L500 214" />
+            <path d="M860 92 L500 214" />
+          </g>
+          {voices.map((v, i) => {
+            const cx = 140 + i * 240;
+            return (
+              <g>
+                <rect x={cx - 105} y="16" width="210" height="76" rx="6" fill="none" stroke="var(--ivory)" stroke-opacity="0.4" />
+                <text x={cx} y="50" text-anchor="middle" fill="var(--ivory)" font-size="24" font-weight="600" font-family="Inter, sans-serif">{v.who}</text>
+                <text x={cx} y="74" text-anchor="middle" fill="var(--ivory)" fill-opacity="0.6" font-size="16" font-family="Inter, sans-serif">{v.sees}</text>
+              </g>
+            );
+          })}
+          <rect x="350" y="214" width="300" height="66" rx="6" fill="none" stroke="var(--gold)" stroke-width="1.75" />
+          <text x="500" y="254" text-anchor="middle" fill="var(--gold)" font-size="24" font-weight="600" font-family="Inter, sans-serif">one real problem</text>
+        </svg>
+      </div>
 
-      <p class="statement mt-10">Gitanj's advantage is being able to see the connections.</p>
-      <p class="mt-6 measure text-lg text-ivory/80">
-        He is not trying to be the best engineer in the room, the best technologist, or the best MBA.
+      <p class="vignette mt-12" data-reveal>
+        The software works. Operations won't touch it. Finance can't see the return. Leadership wants
+        it scrapped. Everyone is partly right, and nothing moves.
       </p>
-      <p class="statement mt-4">He is trying to understand the whole problem.</p>
+
+      <p class="statement mt-12" data-reveal>Gitanj steps into that gap and works out what is actually going on.</p>
+      <p class="mt-6 measure text-lg text-ivory/80" data-reveal>Then the harder part: deciding what to do about it.</p>
     </div>
   </section>
 
-  <!-- Seeing what doesn't fit together (ivory) -->
+  <!-- Where he's most useful (ivory) -->
   <section>
-    <div class="container-x py-12 md:py-20">
-      <h2 class="h2">Seeing what doesn't fit together.</h2>
-      <p class="mt-6 measure text-lg text-muted">
-        Some of the most difficult business problems are not difficult because they are complicated.
-        They are difficult because different parts of the organisation are each telling a different
-        version of the truth.
-      </p>
-
-      <ul class="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-x-10 measure-none text-lg">
-        {voices.map((v) => (
-          <li class="border-t border-ink/12 pt-3">{v}</li>
-        ))}
-      </ul>
-
-      <p class="mt-10 measure text-lg">
-        Gitanj's role is often to step into that gap, understand each perspective, and work out what
-        is actually going on.
-      </p>
-      <p class="mt-6 text-muted">Then comes the harder question:</p>
-      <h3 class="h3 mt-2 font-display">What should we do about it?</h3>
-    </div>
-  </section>
-
-  <!-- The kind of work he's built for (blue) -->
-  <section class="section-ink">
-    <div class="container-x py-12 md:py-20">
-      <h2 class="h2 max-w-2xl">This is the kind of work Gitanj is built for.</h2>
+    <div class="container-x py-14 md:py-24">
+      <h2 class="h2 max-w-2xl" data-reveal>Where he's most useful.</h2>
       <div class="mt-10 grid gap-6 sm:grid-cols-2">
         {work.map(({ label, line }) => (
-          <div class="card flex flex-col p-8">
+          <div class="card flex flex-col p-8" data-reveal>
             <h3 class="h3">{label}</h3>
             <p class="mt-3 text-lg text-muted">{line}</p>
           </div>
@@ -157,29 +127,131 @@ const work = [
     </div>
   </section>
 
-  <!-- Close (ivory) -->
-  <section>
-    <div class="container-x py-14 text-center md:py-24">
-      <h2 class="h2 mx-auto max-w-3xl">When the problem isn't neatly someone's job.</h2>
-      <p class="statement mt-6">That's when Gitanj is most useful.</p>
+  <!-- Close: the reflective question (blue) -->
+  <section class="section-ink border-t border-gold/30">
+    <div class="container-x py-16 md:py-24">
+      <h2 class="close-q max-w-3xl" data-reveal>Can you think of a problem Gitanj should look at?</h2>
+      <p class="mt-5 measure text-lg text-ivory/75" data-reveal>The kind that was never neatly anyone's job.</p>
+      <div class="mt-9" data-reveal>
+        <a href={localizePath(locale, "contact")} class="btn btn-reversed">{t("person.cta")}</a>
+      </div>
     </div>
   </section>
-
-  <CtaBand locale={locale} />
 </BaseLayout>
 
 <style>
-  /* Large display pull-statements that carry the page's rhythm. On ink
-     sections they inherit ivory; on ivory sections, ink. */
+  /* Hook line under the name. */
+  .lede {
+    font-family: theme("fontFamily.display");
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem); /* 24 -> 36 */
+    max-width: 20ch;
+  }
+
+  /* Large display pull-statements that carry the rhythm. */
   .statement {
     font-family: theme("fontFamily.display");
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.2;
-    font-size: clamp(1.5rem, 1.24rem + 1.1vw, 2.125rem); /* 24 -> 34 */
-    max-width: 24ch;
+    font-size: clamp(1.375rem, 1.16rem + 0.9vw, 2rem); /* 22 -> 32 */
+    max-width: 26ch;
   }
-  .measure-none {
-    max-width: none;
+
+  .close-q {
+    font-family: theme("fontFamily.display");
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-size: clamp(1.875rem, 1.4rem + 2vw, 3rem); /* 30 -> 48 */
+    color: var(--ivory);
+  }
+
+  /* Small mono-ish label (now Inter via the mono token). */
+  .mono-label {
+    font-family: theme("fontFamily.mono");
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
+    color: var(--muted);
+  }
+
+  /* Roles as tag chips. */
+  .role-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .role-chip {
+    font-family: theme("fontFamily.display");
+    font-weight: 600;
+    font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem); /* 17 -> 22 */
+    line-height: 1;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+    border-radius: 999px;
+    color: var(--ink);
+  }
+
+  .vignette {
+    font-size: clamp(1.0625rem, 0.98rem + 0.36vw, 1.3125rem); /* 17 -> 21 */
+    line-height: 1.6;
+    max-width: 40ch;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--gold);
+    color: color-mix(in srgb, var(--ivory) 92%, transparent);
+  }
+
+  .voices-wrap { width: 100%; }
+  .voices {
+    width: 100%;
+    height: auto;
+    max-width: 46rem;
+    display: block;
+  }
+
+  /* Scroll-reveal (only when JS marks the root; graceful without it). */
+  :global(.reveal-on) [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  :global(.reveal-on) [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(.reveal-on) [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
+
+<script>
+  // Root already marked .reveal-on inline (above) to avoid a flash.
+  const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+  }
+</script>

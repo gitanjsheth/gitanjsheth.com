@@ -236,15 +236,6 @@ html[lang="hi"] .ecar__role {
     color: color-mix(in srgb, var(--ivory) 78%, transparent);
   }
 
-  /* Bullet separator in the qualifications line. The • glyph is centred on
-     x-height, so on a line of caps it reads low — nudge it up to cap-centre
-     and give it a little breathing room and a softer weight. */
-  .qsep {
-    display: inline-block;
-    vertical-align: 0.12em;
-    margin: 0 0.15em;
-    color: color-mix(in srgb, currentColor 60%, transparent);
-  }
 
   /* Thin 1px separators, never heavy boxes. */
   .rule {
@@ -442,4 +433,28 @@ html[lang="hi"] .ecar__role {
 .section-ink .card h3,
 .section-ink .card h4 {
   color: var(--ink);
+}
+
+/* Separator dot in the qualifications line (`person.qualifications`).
+   The font's • glyph is only a couple of pixels wide at this size, so hinting
+   snaps it unevenly to the pixel grid and the dots look like they step up and
+   down. Draw our own instead: a fixed, perfectly round CSS circle — identical
+   size and vertical position every time, immune to font hinting. The literal •
+   in the string is collapsed to zero.
+   NOTE: kept OUTSIDE @layer on purpose. `.qsep` lives only in the i18n JSON
+   (rendered via set:html), and Tailwind does not scan .json, so an @layer rule
+   would be purged as "unused". Unlayered CSS is never purged. */
+.qsep {
+  font-size: 0;
+}
+.qsep::before {
+  content: "";
+  display: inline-block;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  vertical-align: 0.26rem;
+  margin: 0 0.55rem;
 }

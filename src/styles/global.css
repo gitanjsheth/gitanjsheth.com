@@ -91,9 +91,16 @@
    so Hindi looks small next to English. Scale the root up on /hi/ pages so the
    actual glyph HEIGHT matches (not the font-size), which also relaxes the
    rem-based margins a touch. Headings get a little more line-height so the
-   matras above/below the shirorekha don't crowd. */
+   matras above/below the shirorekha don't crowd.
+
+   --hi-scale tracks that bump so Latin islands (lang="en") can undo it and
+   stay the same absolute size as on /en/ pages. */
+html {
+  --hi-scale: 1;
+}
 html[lang="hi"] {
   font-size: 110%;
+  --hi-scale: 1.1;
 }
 html[lang="hi"] .h1 {
   line-height: 1.2;

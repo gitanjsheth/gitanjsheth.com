@@ -127,9 +127,9 @@ html[lang="hi"] .ecar__role {
 }
 
 /* Intros / emphasised body use text-lg all over the site. It must be fluid,
-   not a fixed 18px — 17px @375 -> 20px @1280. Unlayered so it beats Tailwind. */
+   not a fixed 18px — 16px @375 -> 18px @1280. Unlayered so it beats Tailwind. */
 .text-lg {
-  font-size: clamp(1.0625rem, 0.986rem + 0.33vw, 1.25rem);
+  font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem);
   line-height: 1.6;
 }
 

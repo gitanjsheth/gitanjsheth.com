@@ -70,8 +70,8 @@
   "person": {
     "eyebrow": "The Principal",
     "name": "Gitanj Sheth",
-    "lead": "An operator and builder, not a career consultant. Gitanj has run and fixed real businesses from inside a business family — pairing an owner's instinct for what actually moves a company with an engineer's rigour and a strategist's read of where it's headed.",
-    "combination": "A rare mix — engineering, management and computer science — backed by a real operating record, not a corporate career spent watching from a desk.",
+    "lead": "An operator and builder, not a career consultant. Gitanj has run and fixed real businesses from inside a business family, pairing an owner's instinct for what actually moves a company with an engineer's rigour and a strategist's read of where it's headed.",
+    "combination": "A rare mix of engineering, management and computer science — backed by a real operating record, not a corporate career spent watching from a desk.",
     "qualifications": "CAT National Topper <span class=\"qsep\">•</span> MBA, XLRI <span class=\"qsep\">•</span> M.S., Computer Science <span class=\"qsep\">•</span> B.Tech, Mechanical",
     "trackRecordLabel": "Track record",
     "trackRecord": [
@@ -126,7 +126,7 @@
   },
   "ctaBand": {
     "title": "Bring us the problem you can't pin down.",
-    "subtitle": "One free call, and an honest answer on whether we can help.",
+    "subtitle": "One free call, and an honest answer on how we can help.",
     "button": "Request an intro call"
   },
   "caseStudies": {

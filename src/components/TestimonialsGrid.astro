@@ -151,7 +151,7 @@ function initialsOf(name: string) {
     margin: 0;
     padding: 1.5rem;
     background: var(--paper);
-    color: var(--ink);
+    color: var(--muted); /* content on a light card = Color 3 */
     border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
     border-radius: 4px;
   }
@@ -176,7 +176,7 @@ function initialsOf(name: string) {
   .tgrid__quote {
     margin: 0;
     flex: 1;
-    font-size: 1.05rem;
+    font-size: clamp(1.0625rem, 1.011rem + 0.22vw, 1.1875rem); /* 17 -> 19 */
     line-height: 1.55;
   }
   .tgrid__mark {
@@ -262,8 +262,8 @@ function initialsOf(name: string) {
   .tgrid__glimpse-label {
     display: inline-block;
     margin-top: 0.55rem;
-    font-size: 0.85rem;
-    color: var(--ink);
+    font-size: 0.9rem;
+    color: var(--muted);
     transition: color 200ms ease;
   }
   .tgrid__glimpse-label--muted { color: var(--muted); }

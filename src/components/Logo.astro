@@ -16,7 +16,7 @@ interface Props {
 const { variant = "ink", showText = true, class: className = "" } = Astro.props;
 
 const src = variant === "reversed" ? "/logo/gs-nocorners-white.svg" : "/logo/gs-nocorners-ink.svg";
-const textColor = variant === "reversed" ? "text-ivory" : "text-ink";
+const textColor = variant === "reversed" ? "text-hdark" : "text-hlight";
 ---
 
 <span class={`inline-flex items-center gap-2.5 ${className}`}>

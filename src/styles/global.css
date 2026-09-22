@@ -9,12 +9,20 @@
    we never override the root font-size.
 --------------------------------------------------------------------------- */
 :root {
-  --ink: #16233b;
+  --ink: #16233b; /* dark section background / borders / buttons — NOT body text */
   --ink-2: #2c3a55;
   --gold: #b08a54;
   --ivory: #f7f5f1;
   --paper: #ffffff;
-  --muted: #6b7280;
+
+  /* --- Text theme: every piece of text is one of these four ------------
+     On light (ivory/paper): headings = --c1, content = --muted (--c3).
+     On dark  (ink):         headings = --c2, content = --c4.
+     Gold stays a decorative accent; buttons keep their own colours. */
+  --c1: #131a26; /* Color 1 — headings on light (near-black) */
+  --c2: #fcfbf9; /* Color 2 — headings on dark (near-white) */
+  --muted: #333b47; /* Color 3 — content on light (near-black, softer) */
+  --c4: #d4d9de; /* Color 4 — content on dark (near-white, softer) */
 
   --hairline: 1px; /* px is reserved ONLY for hairlines/borders */
   --measure: 68ch; /* comfortable max line length */
@@ -41,7 +49,7 @@
 
   body {
     background-color: var(--ivory);
-    color: var(--ink);
+    color: var(--muted); /* content on light = Color 3 */
     font-family: theme("fontFamily.body");
     /* Body copy itself is fluid, so paragraphs — not just headings — grow with
        the viewport up to the content cap, then hold. */
@@ -58,7 +66,7 @@
   h3,
   h4 {
     font-family: theme("fontFamily.display");
-    color: var(--ink);
+    color: var(--c1); /* headings on light = Color 1 */
     line-height: 1.08;
     font-weight: 600;
     letter-spacing: -0.02em; /* grotesque reads tighter and more confident */
@@ -127,10 +135,26 @@ html[lang="hi"] .ecar__role {
 }
 
 /* Intros / emphasised body use text-lg all over the site. It must be fluid,
-   not a fixed 18px — 16px @375 -> 18px @1280. Unlayered so it beats Tailwind. */
+   not a fixed 18px — 17px @375 -> 19px @1280. Unlayered so it beats Tailwind. */
 .text-lg {
-  font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.011rem + 0.22vw, 1.1875rem);
   line-height: 1.6;
+}
+
+/* Small UI text — fixed, legible: 0.95rem / 24px line. Unlayered, beats Tailwind. */
+.text-sm {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+}
+
+/* The degree / qualifications line (person block + bio header): 16 -> 18px. */
+.degree-line {
+  font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem);
+}
+
+/* Hero subtitle ("An independent expert…"): 18 -> 20px. */
+.hero-sub {
+  font-size: clamp(1.125rem, 1.073rem + 0.22vw, 1.25rem);
 }
 
 @layer components {
@@ -196,22 +220,17 @@ html[lang="hi"] .ecar__role {
     font-size: clamp(1.75rem, 1.44rem + 1.33vw, 2.5rem);
     line-height: 1.1;
   }
+  /* Lead + combo share ONE size now: 17 -> 19px, uniform across viewports. */
   .person-lead {
-    font-size: clamp(1.0625rem, 0.959rem + 0.44vw, 1.3125rem);
+    font-size: clamp(1.0625rem, 1.011rem + 0.22vw, 1.1875rem);
     line-height: 1.5;
   }
   .person-combo {
-    font-size: clamp(1rem, 0.922rem + 0.33vw, 1.1875rem);
+    font-size: clamp(1.0625rem, 1.011rem + 0.22vw, 1.1875rem);
   }
   @media (min-width: 640px) {
     .person-name {
       font-size: clamp(1.5rem, 0.5rem + 2.5vw, 2.5rem);
-    }
-    .person-lead {
-      font-size: clamp(0.9375rem, 0.5625rem + 0.9375vw, 1.3125rem);
-    }
-    .person-combo {
-      font-size: clamp(0.8125rem, 0.4375rem + 0.9375vw, 1.1875rem);
     }
     .person-copy {
       padding-bottom: clamp(2rem, 1rem + 2.5vw, 3rem);
@@ -226,7 +245,7 @@ html[lang="hi"] .ecar__role {
     letter-spacing: 0.14em;
     font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
     font-weight: 400;
-    color: var(--ink-2);
+    color: var(--muted); /* label = content on light (Color 3) */
     display: inline-flex;
     align-items: center;
     gap: 0.6em;
@@ -238,9 +257,9 @@ html[lang="hi"] .ecar__role {
     background: var(--gold);
     flex: none;
   }
-  /* Reversed eyebrow on dark sections. */
+  /* Reversed eyebrow on dark sections = content on dark (Color 4). */
   .section-ink .eyebrow {
-    color: color-mix(in srgb, var(--ivory) 78%, transparent);
+    color: var(--c4);
   }
 
   /* Bullet separator in the qualifications line. The • glyph is centred on
@@ -428,25 +447,25 @@ html[lang="hi"] .ecar__role {
   }
 }
 
-/* Dark (ink) sections: reverse text colour and heading colour. */
+/* Dark (ink) sections: content = Color 4, headings = Color 2. */
 .section-ink {
   background-color: var(--ink);
-  color: var(--ivory);
+  color: var(--c4);
 }
 .section-ink h1,
 .section-ink h2,
 .section-ink h3,
 .section-ink h4 {
-  color: var(--ivory);
+  color: var(--c2);
 }
-/* A .card has its own light background, so its text must stay dark even when
-   the card sits inside a dark (.section-ink) section. */
+/* A .card has its own light background, so its text stays on the light theme
+   (content = Color 3, headings = Color 1) even inside a dark section. */
 .card {
-  color: var(--ink);
+  color: var(--muted);
 }
 .section-ink .card h1,
 .section-ink .card h2,
 .section-ink .card h3,
 .section-ink .card h4 {
-  color: var(--ink);
+  color: var(--c1);
 }

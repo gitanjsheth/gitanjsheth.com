@@ -111,7 +111,7 @@ const expertsPath = localizePath(locale, "experts");
     display: flex;
     flex-direction: column;
     background: var(--paper);
-    color: var(--ink); /* explicit, so card text never inherits a dark section's ivory */
+    color: var(--muted); /* content on a light card = Color 3 */
     border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
     border-radius: 4px;
     padding: 1.2rem 1.2rem 1.4rem;
@@ -165,9 +165,9 @@ const expertsPath = localizePath(locale, "experts");
   }
   .ecar__brief {
     margin-top: 0.75rem;
-    font-size: clamp(0.9375rem, 0.885rem + 0.22vw, 1.0625rem); /* 15 -> 17, fluid */
+    font-size: clamp(1rem, 0.948rem + 0.22vw, 1.125rem); /* 16 -> 18, fluid */
     line-height: 1.5;
-    color: var(--ink);
+    color: var(--muted); /* content on a light card = Color 3 */
   }
   .ecar__more {
     margin-top: 1.1rem;

@@ -13,7 +13,13 @@ export default {
         gold: "#B08A54", // accent only — surgical use
         ivory: "#F7F5F1", // clean warm-white background
         paper: "#FFFFFF", // cards / contrast
-        muted: "#6B7280", // secondary text
+        // --- Text theme (4 roles, high contrast) ------------------------
+        // On light (ivory/paper): headings = hlight, content = muted.
+        // On dark  (ink):         headings = hdark,  content = cdark.
+        muted: "#333B47", // Color 3 — content on light (was a low-contrast grey)
+        hlight: "#131A26", // Color 1 — headings on light
+        hdark: "#FCFBF9", // Color 2 — headings on dark
+        cdark: "#D4D9DE", // Color 4 — content on dark
       },
 
       // --- Typography -----------------------------------------------------

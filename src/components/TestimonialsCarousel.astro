@@ -493,3 +493,40 @@ function initialsOf(name: string) {
     });
   });
 </script>
+
+<script>
+  /* Background-warm the full letters AFTER the rest of the page has loaded, so
+     a viewer who opens one sees it instantly — without the heavy letters
+     competing with the initial render. The dialog <img> stays loading="lazy"
+     (never fetched during first paint); once the page's other graphics are
+     done we prefetch each letter on idle, one at a time, at low priority. */
+  (() => {
+    const warm = () => {
+      const urls = Array.from(
+        new Set(
+          Array.from(
+            document.querySelectorAll<HTMLImageElement>("img.letter-dialog__img")
+          )
+            .map((i) => i.getAttribute("src"))
+            .filter((u): u is string => !!u)
+        )
+      );
+      const ric: (cb: () => void) => void = (window as any).requestIdleCallback
+        ? (cb) => (window as any).requestIdleCallback(cb)
+        : (cb) => window.setTimeout(cb, 300);
+      let i = 0;
+      const step = () => {
+        if (i >= urls.length) return;
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.as = "image";
+        link.href = urls[i++];
+        document.head.appendChild(link);
+        ric(step);
+      };
+      ric(step);
+    };
+    if (document.readyState === "complete") warm();
+    else window.addEventListener("load", warm, { once: true });
+  })();
+</script>

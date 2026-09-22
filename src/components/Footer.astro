@@ -11,6 +11,7 @@ const t = useTranslations(locale);
 const year = new Date().getFullYear();
 
 const nav = [
+  { key: "ourStory", href: localizePath(locale, "our-story") },
   { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
   ...(sections.experts
     ? [{ key: "experts", href: localizePath(locale, "experts") }]

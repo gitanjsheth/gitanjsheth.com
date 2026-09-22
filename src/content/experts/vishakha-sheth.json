@@ -5,16 +5,16 @@
     "hi": "सॉफ़्टवेयर और प्रोडक्ट"
   },
   "education": {
-    "en": "B.Tech CS, Nirma",
-    "hi": "बी.टेक सीएस, निरमा"
+    "en": "B.Tech CS, Nirma • CSPO",
+    "hi": "बी.टेक सीएस, निरमा • CSPO"
   },
   "blurb": {
-    "en": "Turns a rough idea into software people actually use — deciding what to build, what to cut, and how it should feel to the person on the other side.",
-    "hi": "किसी कच्चे विचार को ऐसे सॉफ़्टवेयर में बदलती हैं जिसे लोग सचमुच इस्तेमाल करें — यह तय करते हुए कि क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को यह कैसा लगे।"
+    "en": "Nine years turning rough ideas into products people actually use, from full-stack engineer to technical product manager. She decides what to build, what to cut, and how the whole thing should feel to the person on the other side.",
+    "hi": "नौ साल से कच्चे विचारों को ऐसे प्रोडक्ट में बदल रही हैं जिन्हें लोग सचमुच इस्तेमाल करें, फ़ुल-स्टैक इंजीनियर से लेकर टेक्निकल प्रोडक्ट मैनेजर तक। वे तय करती हैं कि क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को यह कैसा लगे।"
   },
   "description": {
-    "en": "Owns the path from a rough idea to working software — what to build first, what to leave out, and how the whole thing should feel to the person using it. Keeps engineering honest about the product and the product honest about engineering, so what ships is something customers understand and the team can keep improving.",
-    "hi": "कच्चे विचार से चलते-फिरते सॉफ़्टवेयर तक का रास्ता सँभालती हैं — पहले क्या बनाना है, क्या छोड़ना है, और इस्तेमाल करने वाले को पूरी चीज़ कैसी लगे। इंजीनियरिंग को प्रोडक्ट के प्रति और प्रोडक्ट को इंजीनियरिंग के प्रति ईमानदार रखती हैं, ताकि जो बने उसे ग्राहक समझ सकें और टीम उसे लगातार बेहतर बना सके।"
+    "en": "Vishakha has spent nine years shipping software, moving from full-stack engineer to technical product manager and leading cross-functional teams from a rough idea all the way to launch. A Certified Scrum Product Owner, she has owned products end to end across fintech, proptech and AI, deciding what to build first, what to leave out, and how the whole thing should feel to the person using it. She keeps engineering honest about the product and the product honest about engineering, so what ships is something customers understand and the team can keep improving.",
+    "hi": "विशाखा ने नौ साल सॉफ़्टवेयर बनाने में बिताए हैं, फ़ुल-स्टैक इंजीनियर से टेक्निकल प्रोडक्ट मैनेजर तक का सफ़र तय करते हुए, और किसी कच्चे विचार से लॉन्च तक क्रॉस-फ़ंक्शनल टीमों को लीड करते हुए। एक Certified Scrum Product Owner के तौर पर उन्होंने फ़िनटेक, प्रॉपटेक और एआई में प्रोडक्ट्स को शुरू से आख़िर तक सँभाला है, यह तय करते हुए कि पहले क्या बनाना है, क्या छोड़ना है, और पूरी चीज़ इस्तेमाल करने वाले को कैसी लगे। वे इंजीनियरिंग को प्रोडक्ट के प्रति और प्रोडक्ट को इंजीनियरिंग के प्रति ईमानदार रखती हैं, ताकि जो बने उसे ग्राहक समझ सकें और टीम उसे लगातार बेहतर बना सके।"
   },
   "photo": "people/vishakha-sheth.jpg",
   "order": 2,

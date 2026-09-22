@@ -21,13 +21,17 @@ const body: string[] = t("ourStory.body");
     </div>
   </section>
 
-  <section class="border-t border-ink/10">
-    <div class="container-x space-y-6 pt-8 text-lg leading-relaxed md:pt-10 pb-10 md:pb-16">
-      {body.map((para) => <p>{para}</p>)}
-      <div class="pt-4">
-        <a href={localizePath(locale, "how-we-engage")} class="btn btn-ghost">
-          {t("ourStory.more")}
-        </a>
+  <section>
+    <div class="container-x">
+      <!-- Hairline inset to the content width, not bled to the viewport edge. -->
+      <div class="border-t border-ink/10"></div>
+      <div class="space-y-6 pt-8 text-lg leading-relaxed md:pt-10 pb-10 md:pb-16">
+        {body.map((para) => <p>{para}</p>)}
+        <div class="flex justify-center pt-4">
+          <a href={localizePath(locale, "how-we-engage")} class="btn btn-ghost">
+            {t("ourStory.more")}
+          </a>
+        </div>
       </div>
     </div>
   </section>

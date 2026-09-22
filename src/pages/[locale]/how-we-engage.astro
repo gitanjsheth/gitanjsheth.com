@@ -22,26 +22,32 @@ const notes: string[] = t("engage.notes");
     </div>
   </section>
 
-  <section class="border-t border-ink/10">
-    <div class="container-x pt-8 md:pt-10 pb-10 md:pb-16">
-      <!-- The journey, told as a flow. -->
-      <div class="measure space-y-6 text-lg leading-relaxed">
-        {flow.map((para) => <p>{para}</p>)}
-      </div>
+  <section>
+    <div class="container-x">
+      <div class="max-w-3xl">
+        <!-- Hairline held to the text width, not bled to the viewport edge. -->
+        <div class="border-t border-ink/10"></div>
+        <div class="pt-8 md:pt-10 pb-10 md:pb-16">
+          <!-- The journey, told as a flow. -->
+          <div class="space-y-6 text-lg leading-relaxed">
+            {flow.map((para) => <p>{para}</p>)}
+          </div>
 
-      <!-- Practical notes, kept apart from the story above. -->
-      <div class="mt-12 max-w-2xl md:mt-16">
-        <h2 class="text-xl">{t("engage.notesHeading")}</h2>
-        <ul class="mt-5 space-y-4">
-          {
-            notes.map((note) => (
-              <li class="grid grid-cols-[auto_1fr] gap-3 text-muted">
-                <span class="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
-                <span>{note}</span>
-              </li>
-            ))
-          }
-        </ul>
+          <!-- Practical notes, kept apart from the story above. -->
+          <div class="mt-8">
+            <h2 class="text-xl">{t("engage.notesHeading")}</h2>
+            <ul class="mt-5 space-y-4">
+              {
+                notes.map((note) => (
+                  <li class="grid grid-cols-[auto_1fr] gap-3 text-muted">
+                    <span class="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+                    <span>{note}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>

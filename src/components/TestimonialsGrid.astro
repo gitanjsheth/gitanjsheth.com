@@ -120,7 +120,7 @@ function initialsOf(name: string) {
         <dialog id={dialogId} class="letter-dialog" data-letter-dialog aria-label={`${t("testimonials.letterPlaceholder")} — ${d.name}`}>
           <button type="button" class="letter-dialog__close" data-close-dialog aria-label={t("testimonials.closeLetter")}>&times;</button>
           <div class="letter-dialog__inner">
-            <img src={d.letterImage} alt={`Testimonial letter — ${d.name}, ${d.company}`} class="letter-dialog__img" draggable="false" />
+            <img src={d.letterImage} alt={`Testimonial letter — ${d.name}, ${d.company}`} class="letter-dialog__img" draggable="false" loading="lazy" decoding="async" />
           </div>
         </dialog>
       );

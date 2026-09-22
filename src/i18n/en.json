@@ -59,11 +59,15 @@
   },
   "ourStory": {
     "eyebrow": "Our story",
-    "title": "A bench, not a solo act.",
-    "intro": "Independent expert advisory, built as a bench — not a solo act, and not a big-firm pyramid.",
+    "title": "The help we wished we'd had.",
+    "intro": "Not a tidy origin story. The honest version is simpler: we kept hitting problems we couldn't solve alone, went looking for help, rarely found the kind we needed, and decided to become it.",
     "body": [
-      "G A Sheth & Associates is the vehicle: an independent advisory firm assembled from a bench of practitioners across software, finance, operations and strategy. We exist for the problems that fall between the seams — the ones every specialist you called passed on because they were only ever part of the answer.",
-      "We take one problem at a time, point the right people at it together, and stay only as long as we are useful. No retainers by default, no interest in keeping you dependent — a clear read, a decision you can act on, and a way forward you own."
+      "Every one of us has hired the expert who was going to fix it, and watched it drift instead: the fix that ran long, cost more than the problem, and left the real trouble untouched. You explain what's wrong, they nod, and then they solve the version that fits what they already sell.",
+      "Rarely bad intent. A specialist sees deeply, but only down their own line, and many defend it hard, filing anything unfamiliar under a problem they've seen before. The symptom gets handled while the cause keeps working. And since it was never really their business, once it got heavy they had little reason to stay. Trust thins. It usually ends one way: you let them go, or you do it yourself.",
+      "Doing it yourself is no win. You have a company to run and a life to live. Becoming the reluctant expert on a problem you paid someone else to own is the opposite of what you needed.",
+      "What we learned is that the missing piece was never more expertise. It was the willingness to think past the brief, to sit on your side of the table, to keep pushing until it's actually done. That doesn't come with a qualification. It comes from putting your own money, name and sleep on the line, watching it fail, and finding a way through anyway.",
+      "That's who we are. Entrepreneurs and operators who have carried the weight, fallen badly, and climbed back. We know the loneliness of a problem that's yours alone, and the dread of watching it grow while the people you hired look away. So when we meet someone stuck in the same place, we can't quite leave them there. Not as a vendor selling hours, but as people who've stood where they're standing, turning back to help.",
+      "We do this because we know, first-hand, how much it matters to have someone who actually cares."
     ],
     "more": "Learn how we engage"
   },
@@ -156,25 +160,19 @@
     "domainLabel": "Domain"
   },
   "engage": {
-    "title": "How we engage",
-    "intro": "No price list. Just a plain account of how working with G A Sheth & Associates begins and how consideration is decided.",
-    "points": [
-      {
-        "heading": "The first call is free.",
-        "body": "We start with a conversation, at no charge, to understand the problem and tell you honestly whether we're the right people for it."
-      },
-      {
-        "heading": "No upfront charge, no commitment.",
-        "body": "You are not asked to pay to begin, and you are not locked into continuing. We earn the next step, or we don't."
-      },
-      {
-        "heading": "Travel only at actuals.",
-        "body": "If the problem needs us on the ground, you cover travel and stay at actuals — nothing marked up, nothing hidden."
-      },
-      {
-        "heading": "Consideration decided together.",
-        "body": "Scope and fees are agreed mutually once value is on the table, in proportion to what the work is worth to you."
-      }
+    "title": "How it usually goes.",
+    "intro": "No contract up front, no sales dance. Here's how working together usually unfolds.",
+    "flow": [
+      "It starts with a conversation. A call or a few messages, enough for each of us to get a feel for the other and what you're dealing with.",
+      "From there, we come to you. Sitting in your office, walking the floor and meeting your people tells us far more than any screen can, so we strongly prefer to visit in person. You cover the travel and stay, and in return we see the problem where it actually lives, which is rarely where everyone assumes. If an in-person visit truly isn't possible, we do this part online.",
+      "Then you get a preliminary read: what we think is really going on, and how we'd go about fixing it. If it feels right on both sides, that's when we agree the terms, with the problem finally in full view.",
+      "From there we get to work, and we see it through until the problem is actually solved."
+    ],
+    "notesHeading": "A few things worth stating plainly:",
+    "notes": [
+      "The on-site visit is on your account: travel and stay, at cost. You can ask to keep it virtual, but a business is hard to read through a keyhole, and that tends to slow the fix or weaken it.",
+      "The engagement can be a one-time fee or a retainer, whichever fits the work and your preference.",
+      "If our preliminary read doesn't convince you, you owe us nothing and walk freely. No strings attached."
     ]
   },
   "contact": {

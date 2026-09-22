@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CtaBand from "../../components/CtaBand.astro";
-import { localizePath, useTranslations, type Locale } from "../../i18n/utils";
+import { useTranslations, type Locale } from "../../i18n/utils";
 import { localeStaticPaths } from "../../i18n/utils";
 
 export function getStaticPaths() {
@@ -10,7 +10,8 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = useTranslations(locale);
-const points: { heading: string; body: string }[] = t("engage.points");
+const flow: string[] = t("engage.flow");
+const notes: string[] = t("engage.notes");
 ---
 
 <BaseLayout locale={locale} pagePath="how-we-engage" title={t("engage.title")} description={t("engage.intro")}>
@@ -23,21 +24,25 @@ const points: { heading: string; body: string }[] = t("engage.points");
 
   <section class="border-t border-ink/10">
     <div class="container-x pt-8 md:pt-10 pb-10 md:pb-16">
-      <ol class="grid gap-x-12 gap-y-12 md:grid-cols-2">
-        {
-          points.map((p, i) => (
-            <li class="grid grid-cols-[auto_1fr] gap-5">
-              <span class="font-display text-3xl text-gold leading-none">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h2 class="text-xl">{p.heading}</h2>
-                <p class="mt-2 text-muted">{p.body}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
+      <!-- The journey, told as a flow. -->
+      <div class="measure space-y-6 text-lg leading-relaxed">
+        {flow.map((para) => <p>{para}</p>)}
+      </div>
+
+      <!-- Practical notes, kept apart from the story above. -->
+      <div class="mt-12 max-w-2xl md:mt-16">
+        <h2 class="text-xl">{t("engage.notesHeading")}</h2>
+        <ul class="mt-5 space-y-4">
+          {
+            notes.map((note) => (
+              <li class="grid grid-cols-[auto_1fr] gap-3 text-muted">
+                <span class="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+                <span>{note}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </section>
 

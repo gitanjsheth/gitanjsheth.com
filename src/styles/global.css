@@ -126,6 +126,13 @@ html[lang="hi"] .ecar__role {
   font-size: clamp(0.875rem, 0.823rem + 0.22vw, 1rem);
 }
 
+/* Intros / emphasised body use text-lg all over the site. It must be fluid,
+   not a fixed 18px — 17px @375 -> 20px @1280. Unlayered so it beats Tailwind. */
+.text-lg {
+  font-size: clamp(1.0625rem, 0.986rem + 0.33vw, 1.25rem);
+  line-height: 1.6;
+}
+
 @layer components {
   /* Constrained page gutter used across sections. */
   .container-x {

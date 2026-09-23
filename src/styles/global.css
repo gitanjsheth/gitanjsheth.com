@@ -202,13 +202,14 @@ html[lang="hi"] .ecar__role {
   /* Founder portrait width — two bands:
      <640: unchanged (280 floor, 220px+15.5vw)
      ≥640: 320@640 → 400@1280 (max only at 1280) */
-  /* Portrait +10% overall (both bands scaled from the originals). */
+  /* Portrait +10%, then column narrowed ~17% now that the transparent side
+     margins are cropped out of the image (that width goes back to the text). */
   .person-media {
-    width: clamp(308px, 242px + 17.05vw, 440px);
+    width: clamp(254px, 200px + 14.07vw, 363px);
   }
   @media (min-width: 640px) {
     .person-media {
-      width: clamp(352px, 264px + 13.75vw, 440px);
+      width: clamp(290px, 218px + 11.34vw, 363px);
     }
   }
 

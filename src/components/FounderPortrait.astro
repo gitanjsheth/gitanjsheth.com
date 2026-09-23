@@ -53,7 +53,9 @@ const found = Object.values(candidates)[0]?.default;
   .founder-portrait {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    /* Matches the cropped cut-out (transparent side margins removed), so the
+       figure fills the frame with no letterbox and no runtime distortion. */
+    aspect-ratio: 1073 / 1628;
   }
   /* Only the empty state gets a framed panel; a real (often transparent)
      portrait is shown as a clean cut-out with no background behind it. */
@@ -65,9 +67,8 @@ const found = Object.values(candidates)[0]?.default;
   .founder-portrait__img {
     width: 100%;
     height: 100%;
-    /* Fill the 4:5 frame (was `contain`): stretches the cut-out ~5% wider,
-       a deliberate slight distortion. */
-    object-fit: fill;
+    /* The 5% widening is now baked into the file, so no runtime distortion. */
+    object-fit: contain;
     object-position: right bottom;
     display: block;
   }

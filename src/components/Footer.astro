@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Logo from "./Logo.astro";
 import { localizePath, useTranslations, type Locale } from "../i18n/utils";
 import { sections } from "../config";
@@ -25,12 +27,43 @@ const nav = [
   { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
   { key: "contact", href: localizePath(locale, "contact") },
 ];
+
+// --- Group / associate companies (each is one legal entity + one or more
+// brand logos that each link to their own site). -----------------------------
+const brandImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/brands/*.{png,PNG,webp,jpg,jpeg}",
+  { eager: true }
+);
+const logo = (file: string) => brandImages[`/src/assets/brands/${file}`]?.default;
+
+type Company = { name: string; logos: { img?: ImageMetadata; href: string; alt: string }[] };
+
+const parent: Company[] = [
+  {
+    name: "Swapna Srushti Horizon Pvt Ltd",
+    logos: [{ img: logo("swapna-srushti.png"), href: "https://shethgroup1992.com/", alt: "Sheth Group 1992" }],
+  },
+];
+const associates: Company[] = [
+  {
+    name: "Virgit Smart Solutions LLP",
+    logos: [{ img: logo("parth-ai.png"), href: "https://parthaisolutions.com/", alt: "Parth AI Solutions" }],
+  },
+  {
+    name: "Sheth Saga Pvt Ltd",
+    logos: [
+      { img: logo("realty-gateway.png"), href: "http://realtygateway.in/", alt: "Realty Gateway" },
+      { img: logo("your-own-class.png"), href: "https://www.yourownclass.com/", alt: "Your Own Class" },
+    ],
+  },
+];
 ---
 
 <footer class="border-t border-ink/10">
   <div class="container-x py-14">
-    <div class="grid gap-10 md:grid-cols-2">
-      <!-- Brand / firm entity -->
+    <!-- Firm + tagline (left) and nav (right). On mobile they stack in this
+         order: firm/tagline, then nav, then the brands block, then copyright. -->
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
       <div>
         <span class="inline-flex items-center gap-2.5">
           <Logo variant="ink" showText={false} />
@@ -41,7 +74,6 @@ const nav = [
         <p class="mt-4 text-sm text-muted measure">{t("footer.tagline")}</p>
       </div>
 
-      <!-- Nav -->
       <nav aria-label="Footer">
         <ul class="space-y-2">
           {
@@ -57,9 +89,108 @@ const nav = [
       </nav>
     </div>
 
+    <!-- Brands: parent + associate ventures. The two groups sit side by side and
+         the Associate group wraps below the Parent group as width tightens. -->
+    <div class="footer-brands mt-12">
+      <div class="footer-brand-group">
+        <h3 class="footer-brand-label">{t("footer.parentLabel")}</h3>
+        <div class="footer-companies">
+          {parent.map((c) => (
+            <div class="footer-company">
+              <div class="footer-company__logos">
+                {c.logos.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
+                    {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
+                  </a>
+                ))}
+              </div>
+              <p class="footer-company__name">{c.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="footer-brand-group">
+        <h3 class="footer-brand-label">{t("footer.associatesLabel")}</h3>
+        <div class="footer-companies">
+          {associates.map((c) => (
+            <div class="footer-company">
+              <div class="footer-company__logos">
+                {c.logos.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
+                    {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
+                  </a>
+                ))}
+              </div>
+              <p class="footer-company__name">{c.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
     <hr class="rule rule-gold mt-12 mb-6 opacity-60" />
     <p class="text-xs text-muted">
       &copy; {year} {t("site.firm")} &middot; {t("footer.rights")}
     </p>
   </div>
 </footer>
+
+<style>
+  /* Two brand groups side by side; Associate group wraps below when tight. */
+  .footer-brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem 4rem;
+  }
+  .footer-brand-label {
+    font-family: theme("fontFamily.mono");
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  /* Companies within a group: each wraps to the next line as needed. */
+  .footer-companies {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    align-items: flex-start;
+  }
+  .footer-company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .footer-company__logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 2.25rem;
+  }
+  .footer-company__name {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  .footer-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.85;
+    transition: opacity 200ms ease;
+  }
+  .footer-brand-logo:hover,
+  .footer-brand-logo:focus-visible {
+    opacity: 1;
+  }
+  .footer-brand-logo__img {
+    height: 2.25rem;
+    width: auto;
+    max-width: 11rem;
+    object-fit: contain;
+    display: block;
+  }
+</style>

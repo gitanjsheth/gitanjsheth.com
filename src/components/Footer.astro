@@ -136,8 +136,12 @@ const associates: Company[] = [
 </footer>
 
 <style>
-  /* Mobile: firm/tagline -> nav -> brands stacked. Desktop: firm top-left,
-     nav on the right spanning both rows, brands filling below the tagline. */
+  /* Below 768: firm/tagline -> nav -> brands, stacked at full/comfortable size
+     (the stacked layout adapts on its own, so nothing shrinks here).
+     >= 768: grid (firm top-left, nav on the right spanning, brands below), and
+     EVERY piece — labels, names, logos, gaps — shrinks together as the row
+     tightens toward 768, back to full size by ~1280. This keeps it side-by-side
+     without sudden rearranging. */
   .footer-layout {
     display: flex;
     flex-direction: column;
@@ -147,34 +151,13 @@ const associates: Company[] = [
   .footer-nav { order: 2; }
   .footer-brands { order: 3; }
 
-  @media (min-width: 768px) {
-    .footer-layout {
-      display: grid;
-      /* col1 = content (firm/brands), col2 = nav. Packed to the left so the nav
-         sits just past the brands, never stranded at the far edge. */
-      grid-template-columns: auto auto;
-      grid-template-areas:
-        "firm nav"
-        "brands nav";
-      justify-content: start;
-      column-gap: clamp(3rem, 7vw, 7rem);
-      row-gap: 3.25rem;
-      align-items: start;
-    }
-    .footer-firm { grid-area: firm; }
-    .footer-nav { grid-area: nav; }
-    .footer-brands { grid-area: brands; }
-  }
-
-  /* Parent then Associate groups: left-aligned, fluid gap between them, wrapping
-     to a new line when tight — never stretched to the extremes. */
+  /* Parent then Associate groups: left-aligned, wrapping when tight. */
   .footer-brands {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 3rem clamp(2.5rem, 5vw, 5rem);
+    gap: 3rem 5rem;
   }
-
   .footer-brand-label {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
@@ -183,16 +166,13 @@ const associates: Company[] = [
     font-weight: 400;
     color: var(--muted);
   }
-
-  /* Companies within a group: left-aligned with a fluid gap. */
   .footer-companies {
     margin-top: 1.85rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem clamp(2rem, 4vw, 4rem);
+    gap: 2rem 4rem;
     align-items: flex-start;
   }
-
   .footer-company {
     display: flex;
     flex-direction: column;
@@ -203,12 +183,12 @@ const associates: Company[] = [
   .footer-company--inline {
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   .footer-company__logos {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 2.5vw, 1.75rem);
+    gap: 1.75rem;
     min-height: 2.25rem;
   }
   .footer-company--inline .footer-company__logos { min-height: 0; }
@@ -220,9 +200,9 @@ const associates: Company[] = [
   }
   .footer-company--inline .footer-company__name {
     text-align: left;
-    max-width: 10rem; /* wraps the parent name onto two lines */
+    max-width: 10rem;
+    line-height: 1.7; /* wider gap between the two wrapped lines */
   }
-
   .footer-brand-logo {
     display: inline-flex;
     align-items: center;
@@ -231,16 +211,52 @@ const associates: Company[] = [
   }
   .footer-brand-logo:hover,
   .footer-brand-logo:focus-visible { opacity: 1; }
-  /* Logos scale smoothly with the viewport so widths shift instead of jumping. */
   .footer-brand-logo__img {
-    height: clamp(1.9rem, 1.55rem + 0.7vw, 2.25rem);
+    height: 2.25rem;
     width: auto;
     max-width: 11rem;
     object-fit: contain;
     display: block;
   }
   .footer-company--inline .footer-brand-logo__img {
-    height: clamp(2.75rem, 2rem + 1.6vw, 3.5rem);
+    height: 3.5rem;
     max-width: 9rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-layout {
+      display: grid;
+      /* col1 = content (firm/brands), col2 = nav, packed left so the nav sits
+         just past the brands rather than at the far edge. */
+      grid-template-columns: auto auto;
+      grid-template-areas:
+        "firm nav"
+        "brands nav";
+      justify-content: start;
+      column-gap: clamp(2.5rem, 7vw, 7rem);
+      row-gap: 3.25rem;
+      align-items: start;
+    }
+    .footer-firm { grid-area: firm; }
+    .footer-nav { grid-area: nav; }
+    .footer-brands { grid-area: brands; }
+
+    /* Shrink toward the 768 edge (24px logos, 12.8px labels, 12.5px names,
+       tighter gaps), returning to full size by ~1280. */
+    .footer-brands { column-gap: clamp(2rem, -2.5rem + 9.38vw, 5rem); }
+    .footer-companies {
+      margin-top: clamp(1.25rem, 0.35rem + 1.88vw, 1.85rem);
+      column-gap: clamp(1.5rem, -2.25rem + 7.81vw, 4rem);
+    }
+    .footer-company__logos { gap: clamp(1rem, -0.13rem + 2.34vw, 1.75rem); }
+    .footer-brand-label { font-size: clamp(0.8rem, 0.575rem + 0.47vw, 0.95rem); }
+    .footer-company__name { font-size: clamp(0.78rem, 0.6rem + 0.38vw, 0.9rem); }
+    .footer-company--inline .footer-company__name {
+      max-width: clamp(8rem, 5rem + 6.25vw, 10rem);
+    }
+    .footer-brand-logo__img { height: clamp(1.5rem, 0.375rem + 2.34vw, 2.25rem); }
+    .footer-company--inline .footer-brand-logo__img {
+      height: clamp(2.25rem, 0.375rem + 3.91vw, 3.5rem);
+    }
   }
 </style>

@@ -61,10 +61,11 @@ const associates: Company[] = [
 
 <footer class="border-t border-ink/10">
   <div class="container-x py-14">
-    <!-- Firm + tagline (left) and nav (right). On mobile they stack in this
-         order: firm/tagline, then nav, then the brands block, then copyright. -->
-    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-      <div>
+    <!-- Desktop: firm/tagline top-left, nav on the right (spanning), brands
+         filling the space below the tagline beside the nav. Mobile: stacks in
+         order firm/tagline -> nav -> brands -> copyright. -->
+    <div class="footer-layout">
+      <div class="footer-firm">
         <span class="inline-flex items-center gap-2.5">
           <Logo variant="ink" showText={false} />
           <span class="font-display font-semibold text-hlight" style="font-size:1.25rem;letter-spacing:-0.01em;">
@@ -74,7 +75,7 @@ const associates: Company[] = [
         <p class="mt-4 text-sm text-muted measure">{t("footer.tagline")}</p>
       </div>
 
-      <nav aria-label="Footer">
+      <nav class="footer-nav" aria-label="Footer">
         <ul class="space-y-2">
           {
             nav.map((item) => (
@@ -87,44 +88,42 @@ const associates: Company[] = [
           }
         </ul>
       </nav>
-    </div>
 
-    <!-- Brands: parent + associate ventures. The two groups sit side by side and
-         the Associate group wraps below the Parent group as width tightens. -->
-    <div class="footer-brands mt-12">
-      <div class="footer-brand-group">
-        <h3 class="footer-brand-label">{t("footer.parentLabel")}</h3>
-        <div class="footer-companies">
-          {parent.map((c) => (
-            <div class="footer-company">
-              <div class="footer-company__logos">
-                {c.logos.map((l) => (
-                  <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
-                    {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
-                  </a>
-                ))}
+      <div class="footer-brands">
+        <div class="footer-brand-group">
+          <h3 class="footer-brand-label">{t("footer.parentLabel")}</h3>
+          <div class="footer-companies">
+            {parent.map((c) => (
+              <div class="footer-company footer-company--inline">
+                <div class="footer-company__logos">
+                  {c.logos.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
+                      {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
+                    </a>
+                  ))}
+                </div>
+                <p class="footer-company__name">{c.name}</p>
               </div>
-              <p class="footer-company__name">{c.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div class="footer-brand-group">
-        <h3 class="footer-brand-label">{t("footer.associatesLabel")}</h3>
-        <div class="footer-companies">
-          {associates.map((c) => (
-            <div class="footer-company">
-              <div class="footer-company__logos">
-                {c.logos.map((l) => (
-                  <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
-                    {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
-                  </a>
-                ))}
+        <div class="footer-brand-group footer-brand-group--grow">
+          <h3 class="footer-brand-label">{t("footer.associatesLabel")}</h3>
+          <div class="footer-companies footer-companies--spread">
+            {associates.map((c) => (
+              <div class="footer-company">
+                <div class="footer-company__logos">
+                  {c.logos.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener" class="footer-brand-logo" aria-label={c.name}>
+                      {l.img ? <Image src={l.img} alt={l.alt} class="footer-brand-logo__img" /> : l.alt}
+                    </a>
+                  ))}
+                </div>
+                <p class="footer-company__name">{c.name}</p>
               </div>
-              <p class="footer-company__name">{c.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -137,33 +136,74 @@ const associates: Company[] = [
 </footer>
 
 <style>
-  /* Two brand groups side by side; Associate group wraps below when tight. */
+  /* Mobile: firm/tagline -> nav -> brands stacked. Desktop: firm top-left,
+     nav on the right spanning both rows, brands filling below the tagline. */
+  .footer-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .footer-firm { order: 1; }
+  .footer-nav { order: 2; }
+  .footer-brands { order: 3; }
+
+  @media (min-width: 768px) {
+    .footer-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "firm nav"
+        "brands nav";
+      column-gap: clamp(2rem, 4vw, 4rem);
+      row-gap: 2.75rem;
+      align-items: start;
+    }
+    .footer-firm { grid-area: firm; }
+    .footer-nav { grid-area: nav; }
+    .footer-brands { grid-area: brands; }
+  }
+
+  /* Brand groups: Parent then Associates; Associates grow to fill the row and
+     their companies spread across it. Wraps to a new line when tight. */
   .footer-brands {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5rem 4rem;
+    gap: 2.25rem 3.5rem;
   }
+  .footer-brand-group--grow { flex: 1 1 24rem; }
+
   .footer-brand-label {
     font-family: theme("fontFamily.mono");
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 400;
     color: var(--muted);
   }
-  /* Companies within a group: each wraps to the next line as needed. */
+
   .footer-companies {
-    margin-top: 1.25rem;
+    margin-top: 1.15rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem 2.5rem;
+    gap: 1.75rem 2.5rem;
     align-items: flex-start;
   }
+  .footer-companies--spread {
+    justify-content: space-between;
+    gap: 1.75rem 2rem;
+  }
+
   .footer-company {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
+  }
+  /* Parent: logo beside the name so the logo can be shown larger. */
+  .footer-company--inline {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
   }
   .footer-company__logos {
     display: flex;
@@ -171,11 +211,14 @@ const associates: Company[] = [
     gap: 1.5rem;
     min-height: 2.25rem;
   }
+  .footer-company--inline .footer-company__logos { min-height: 0; }
   .footer-company__name {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--muted);
     text-align: center;
   }
+  .footer-company--inline .footer-company__name { text-align: left; }
+
   .footer-brand-logo {
     display: inline-flex;
     align-items: center;
@@ -183,14 +226,17 @@ const associates: Company[] = [
     transition: opacity 200ms ease;
   }
   .footer-brand-logo:hover,
-  .footer-brand-logo:focus-visible {
-    opacity: 1;
-  }
+  .footer-brand-logo:focus-visible { opacity: 1; }
   .footer-brand-logo__img {
     height: 2.25rem;
     width: auto;
     max-width: 11rem;
     object-fit: contain;
     display: block;
+  }
+  /* The inline (parent) logo is allowed to be larger. */
+  .footer-company--inline .footer-brand-logo__img {
+    height: 3.5rem;
+    max-width: 9rem;
   }
 </style>

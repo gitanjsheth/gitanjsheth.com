@@ -48,7 +48,7 @@ const experts = (await getCollection("experts")).sort(
        which STANDS at the section's bottom edge on ≥640px. Mobile: portrait
        leads (face-first), text below. The fuller bio lives on /gitanj-sheth. -->
   <section id="person" class="scroll-mt-24 section-ink overflow-hidden">
-    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-12 sm:pb-0 sm:pt-8 md:gap-16">
+    <div class="container-x flex flex-col items-center gap-8 py-12 sm:flex-row sm:items-end sm:justify-center sm:gap-[clamp(2rem,5vw,4rem)] sm:pb-0 sm:pt-8">
       <div class="person-copy order-2 w-full max-w-[34rem] sm:order-1 sm:w-auto sm:flex-1">
         <h2 class="person-name">{t("person.name")}</h2>
         <p class="mt-3 font-mono text-cdark degree-line" set:html={t("person.qualifications")} />

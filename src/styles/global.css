@@ -202,12 +202,13 @@ html[lang="hi"] .ecar__role {
   /* Founder portrait width — two bands:
      <640: unchanged (280 floor, 220px+15.5vw)
      ≥640: 320@640 → 400@1280 (max only at 1280) */
+  /* Portrait +10% overall (both bands scaled from the originals). */
   .person-media {
-    width: clamp(280px, 220px + 15.5vw, 400px);
+    width: clamp(308px, 242px + 17.05vw, 440px);
   }
   @media (min-width: 640px) {
     .person-media {
-      width: clamp(320px, 240px + 12.5vw, 400px);
+      width: clamp(352px, 264px + 13.75vw, 440px);
     }
   }
 
@@ -234,6 +235,16 @@ html[lang="hi"] .ecar__role {
     }
     .person-copy {
       padding-bottom: clamp(2rem, 1rem + 2.5vw, 3rem);
+    }
+    /* ≥640 band for the Principal block: below 640 these keep their base
+       (mobile) size; from 640 up they fluid to the desktop cap.
+         education line 14 -> 18   lead + combo 15 -> 19 */
+    #person .degree-line {
+      font-size: clamp(0.875rem, 0.625rem + 0.625vw, 1.125rem);
+    }
+    .person-lead,
+    .person-combo {
+      font-size: clamp(0.9375rem, 0.6875rem + 0.625vw, 1.1875rem);
     }
   }
 

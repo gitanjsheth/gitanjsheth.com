@@ -32,6 +32,13 @@ const address = t("contact.address");
               <a href={`mailto:${CONTACT_EMAIL}`} class="link">{CONTACT_EMAIL}</a>
             </p>
             <p class="text-muted measure">{address}</p>
+            <p class="text-muted">
+              {t("contact.whatsappLabel")}:{" "}
+              <a href={t("contact.whatsappUrl")} target="_blank" rel="noopener" class="link">{t("contact.whatsapp")}</a>
+            </p>
+            <p class="text-muted">
+              {t("contact.hoursLabel")}: {t("contact.hours")}
+            </p>
           </div>
         </aside>
       </div>

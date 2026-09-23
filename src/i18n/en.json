@@ -5,7 +5,7 @@
     "name": "Gitanj Sheth",
     "shortName": "Gitanj Sheth",
     "tagline": "Fix what's stuck. Build what's next.",
-    "description": "An independent expert for owners and founders — brought in on the problems that don't fit any single specialist."
+    "description": "A 360° expert for owners and founders — brought in on the problems that don't fit any single specialist."
   },
   "gate": {
     "heading": "Choose your language",
@@ -40,7 +40,7 @@
     "hero": {
       "eyebrow": "For owners and founders",
       "title": "Fix what's stuck. Build what's next.",
-      "subtitle": "An independent expert for owners and founders — brought in on the problems that don't fit any single specialist.",
+      "subtitle": "A 360° expert for owners and founders — brought in on the problems that don't fit any single specialist.",
       "cta": "Request an intro call",
       "portraitAlt": "Portrait of Gitanj Sheth"
     },
@@ -74,9 +74,9 @@
   "person": {
     "eyebrow": "The Principal",
     "name": "Gitanj Sheth",
-    "lead": "An operator and builder, not a career consultant. Gitanj has run and fixed real businesses from inside a business family, pairing an owner's instinct for what actually moves a company with an engineer's rigour and a strategist's read of where it's headed.",
+    "lead": "An Operator and Creator, not a Career Consultant. Gitanj has run and fixed real businesses from inside a business family, pairing an owner's instinct for what actually moves a company with an engineer's rigour and a strategist's read of where it's headed.",
     "combination": "A rare mix of engineering, management and computer science — backed by a real operating record, not a corporate career spent watching from a desk.",
-    "qualifications": "CAT National Topper <span class=\"qsep\">•</span> MBA, XLRI <span class=\"qsep\">•</span> M.S., Computer Science <span class=\"qsep\">•</span> B.Tech, Mechanical",
+    "qualifications": "CAT National Topper <span class=\"qsep\">•</span> MBA, XLRI<br>M.S., Computer Science<br>B.Tech, Mechanical Engineering",
     "trackRecordLabel": "Track record",
     "trackRecord": [
       { "value": "State Rank 1", "label": "CAT 2018 — Gujarat" },
@@ -186,7 +186,12 @@
     "phone": "",
     "website": "gitanjsheth.com",
     "websiteUrl": "https://gitanjsheth.com",
-    "address": "B 302, Shapath Hexa, Sola, SG Highway, Ahmedabad, Gujarat. 380060"
+    "address": "B 302, Shapath Hexa, Sola, SG Highway, Ahmedabad, Gujarat. 380060",
+    "whatsappLabel": "Business WhatsApp",
+    "whatsapp": "9773100045",
+    "whatsappUrl": "https://wa.me/919773100045",
+    "hoursLabel": "Working hours",
+    "hours": "10 AM to 6 PM, Mon–Fri"
   },
   "form": {
     "name": "Name",

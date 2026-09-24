@@ -5,6 +5,7 @@ import FounderPortrait from "../../components/FounderPortrait.astro";
 import TestimonialsCarousel from "../../components/TestimonialsCarousel.astro";
 import ExpertsCarousel from "../../components/ExpertsCarousel.astro";
 import CtaBand from "../../components/CtaBand.astro";
+import { sections } from "../../config";
 import {
   localeStaticPaths,
   localizePath,
@@ -110,11 +111,15 @@ const experts = (await getCollection("experts")).sort(
         }
       </div>
 
-      <div class="mt-8 flex justify-center">
-        <a href={localizePath(locale, "case-studies")} class="btn btn-reversed">
-          {t("solutions.casesLink")}
-        </a>
-      </div>
+      {
+        sections.caseStudies && (
+          <div class="mt-8 flex justify-center">
+            <a href={localizePath(locale, "case-studies")} class="btn btn-reversed">
+              {t("solutions.casesLink")}
+            </a>
+          </div>
+        )
+      }
     </div>
   </section>
 

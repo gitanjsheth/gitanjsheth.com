@@ -13,6 +13,7 @@
 import Logo from "./Logo.astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import { localizePath, useTranslations, type Locale } from "../i18n/utils";
+import { sections } from "../config";
 
 interface Props {
   locale: Locale;
@@ -36,7 +37,9 @@ const groups: Group[] = [
   {
     key: "work",
     items: [
-      { key: "caseStudies", href: localizePath(locale, "case-studies") },
+      ...(sections.caseStudies
+        ? [{ key: "caseStudies", href: localizePath(locale, "case-studies") }]
+        : []),
       { key: "testimonials", href: localizePath(locale, "testimonials") },
     ],
   },
@@ -51,7 +54,9 @@ const singles: Item[] = [
 const mobileLinks: Item[] = [
   { key: "ourStory", href: localizePath(locale, "our-story") },
   { key: "gitanj", href: localizePath(locale, "gitanj-sheth") },
-  { key: "caseStudies", href: localizePath(locale, "case-studies") },
+  ...(sections.caseStudies
+    ? [{ key: "caseStudies", href: localizePath(locale, "case-studies") }]
+    : []),
   { key: "testimonials", href: localizePath(locale, "testimonials") },
   { key: "experts", href: localizePath(locale, "experts") },
   { key: "howWeEngage", href: localizePath(locale, "how-we-engage") },
@@ -133,10 +138,7 @@ const mobileLinks: Item[] = [
         mobileLinks.map((item) => (
           <a
             href={item.href}
-            class:list={[
-              "block py-3 border-b border-ink/5 text-base text-hlight",
-              item.key === "gitanj" && "font-semibold",
-            ]}
+            class="block py-3 border-b border-ink/5 text-base text-hlight"
             data-menu-link
           >
             {t(`nav.${item.key}`)}

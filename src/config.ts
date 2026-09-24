@@ -23,7 +23,7 @@ export const LOCALE_STORAGE_KEY = "gsco_locale";
  * Routes under /{locale}/… still exist; they just won't be linked when off.
  */
 export const sections = {
-  experts: false, // set true when real expert content is ready
+  experts: true, // real expert content is live
   testimonials: true,
-  caseStudies: true,
+  caseStudies: false, // hidden for now — no case-study links anywhere
 } as const;

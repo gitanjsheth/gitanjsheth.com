@@ -38,6 +38,14 @@ const t = useTranslations(locale);
       <span class="mb-1.5 block text-sm font-medium">{t("form.phone")} *</span>
       <input type="tel" name="phone" required autocomplete="tel" class="field" />
     </label>
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.city")} *</span>
+      <input type="text" name="city" required autocomplete="address-level2" class="field" />
+    </label>
+    <label class="block">
+      <span class="mb-1.5 block text-sm font-medium">{t("form.website")}</span>
+      <input type="url" name="website" autocomplete="url" inputmode="url" placeholder="https://" class="field" />
+    </label>
   </div>
 
   <label class="mt-5 block">
